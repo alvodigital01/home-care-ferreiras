@@ -279,21 +279,37 @@
     /* Hamburger */
     .hamburger {
       display: none;
+      align-items: center;
+      justify-content: center;
       flex-direction: column;
-      gap: 5px;
+      gap: 4px;
       cursor: pointer;
-      padding: 6px;
-      border: none;
-      background: none;
+      width: 44px;
+      height: 44px;
+      border: 1px solid var(--green-light);
+      border-radius: 14px;
+      background: var(--green-pale);
+      box-shadow: var(--shadow-sm);
+      transition: background var(--transition), border-color var(--transition), transform var(--transition);
+    }
+    .hamburger:hover {
+      background: var(--green-light);
+      border-color: rgba(26,143,78,.28);
+      transform: translateY(-1px);
     }
     .hamburger span {
       display: block;
-      width: 24px; height: 2px;
-      background: var(--dark);
+      width: 20px; height: 2px;
+      background: var(--green-dark);
       border-radius: 2px;
       transition: all var(--transition);
     }
-    .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px,5px); }
+    .hamburger.open {
+      background: var(--green-primary);
+      border-color: var(--green-primary);
+    }
+    .hamburger.open span { background: white; }
+    .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(4px,4px); }
     .hamburger.open span:nth-child(2) { opacity: 0; }
     .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px,-5px); }
 
@@ -302,28 +318,37 @@
       display: none;
       position: fixed;
       top: 70px; left: 0; right: 0;
-      background: white;
-      padding: 20px 24px 28px;
-      box-shadow: var(--shadow-md);
+      background: rgba(255,255,255,.98);
+      backdrop-filter: blur(14px);
+      padding: 16px 24px 24px;
+      box-shadow: 0 18px 44px rgba(15,110,58,.14);
       border-bottom: 1px solid var(--gray-mid);
+      border-radius: 0 0 22px 22px;
       z-index: 999;
       flex-direction: column;
-      gap: 4px;
+      gap: 6px;
     }
     .mobile-nav.open { display: flex; }
     .mobile-nav a {
       font-size: .95rem;
-      font-weight: 500;
+      font-weight: 600;
       color: var(--text);
-      padding: 12px 14px;
-      border-radius: 10px;
+      padding: 13px 16px;
+      border-radius: 12px;
       transition: all var(--transition);
     }
     .mobile-nav a:hover {
       background: var(--green-pale);
       color: var(--green-primary);
     }
-    .mobile-nav .btn-nav-whatsapp { margin-top: 12px; justify-content: center; font-size: .95rem; }
+    .mobile-nav .btn-nav-whatsapp {
+      margin-top: 12px;
+      justify-content: center;
+      font-size: .95rem;
+      padding: 13px 18px;
+      border-radius: 14px;
+      box-shadow: 0 8px 24px rgba(37,211,102,.28);
+    }
 
     /* ======================================================
        HERO SECTION
@@ -434,30 +459,14 @@
       max-width: 430px;
     }
 
-    /* Placeholder para foto real — substitua pela tag <img> com a foto real */
-    .hero-photo-placeholder {
+    .hero-photo {
       width: 100%;
       aspect-ratio: 4/4.2;
       border-radius: var(--radius-lg);
-      background: linear-gradient(145deg, #a8d5b8 0%, #5aaa7a 40%, #1a8f4e 100%);
-      position: relative;
-      overflow: hidden;
+      object-fit: cover;
+      object-position: center;
       box-shadow: var(--shadow-lg);
     }
-    .hero-photo-placeholder::after {
-      content: '\f0f0';
-      font-family: 'Font Awesome 6 Free';
-      font-weight: 900;
-      position: absolute;
-      bottom: 30px; left: 50%;
-      transform: translateX(-50%);
-      font-size: 5rem;
-      color: rgba(255,255,255,.25);
-    }
-
-    /* Nota: adicione sua foto aqui substituindo .hero-photo-placeholder por:
-       <img src="foto-profissional.jpg" alt="Profissional de home care cuidando de paciente idoso em casa" ...>
-    */
 
     /* Card flutuante sobre a imagem */
     .hero-float-card {
@@ -490,12 +499,12 @@
       background: var(--green-primary);
       color: white;
       border-radius: var(--radius);
-      padding: 12px 16px;
+      padding: 8px 12px;
       box-shadow: var(--shadow-md);
       text-align: center;
     }
-    .hero-float-card2 strong { display: block; font-size: 1.4rem; font-weight: 800; }
-    .hero-float-card2 span { font-size: .75rem; opacity: .9; }
+    .hero-float-card2 strong { display: block; font-size: 1.05rem; font-weight: 800; }
+    .hero-float-card2 span { font-size: .65rem; opacity: .9; }
 
     /* ======================================================
        PROBLEMA E SOLUÇÃO
@@ -1277,6 +1286,7 @@
     @media (max-width: 768px) {
       .section { padding: 64px 0; }
       nav { display: none; }
+      .header-actions > .btn-nav-whatsapp { display: none; }
       .hamburger { display: flex; }
       #hero { padding-top: 96px; }
       .hero-title { font-size: 1.85rem; }
@@ -1408,11 +1418,7 @@
         <div class="hero-image fade-up" style="transition-delay:.15s">
           <div class="hero-img-wrapper">
 
-            <!--
-              SUBSTITUIR: Adicione aqui uma foto real de profissional de saúde cuidando de paciente em casa.
-              Exemplo: <img src="imagens/cuidadora-idoso.jpg" alt="Profissional de home care cuidando de paciente idoso no conforto do lar" style="width:100%;border-radius:22px;box-shadow:var(--shadow-lg);" width="480" height="600">
-            -->
-            <div class="hero-photo-placeholder" role="img" aria-label="Profissional de home care cuidando de paciente idoso em casa"></div>
+            <img class="hero-photo" src="mascote.jpg" alt="Mascote da Home Care Ferreiras" width="430" height="452">
 
             <!-- Card flutuante inferior -->
             <div class="hero-float-card" aria-hidden="true">
@@ -1425,7 +1431,7 @@
 
             <!-- Card flutuante superior -->
             <div class="hero-float-card2" aria-hidden="true">
-              <strong>+100</strong>
+              <strong>+120</strong>
               <span>Famílias atendidas</span>
             </div>
           </div>
