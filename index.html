@@ -215,6 +215,11 @@
       gap: 10px;
       flex-shrink: 0;
     }
+    .logo-img {
+      width: auto;
+      height: 52px;
+      object-fit: contain;
+    }
     .logo-icon {
       width: 40px; height: 40px;
       background: var(--green-primary);
@@ -261,18 +266,18 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: var(--whatsapp);
+      background: var(--green-primary);
       color: white;
       font-size: .85rem;
       font-weight: 600;
       padding: 10px 20px;
       border-radius: 100px;
       transition: background var(--transition), transform var(--transition);
-      box-shadow: 0 2px 12px rgba(37,211,102,.3);
+      box-shadow: var(--shadow-sm);
       white-space: nowrap;
     }
     .btn-nav-whatsapp:hover {
-      background: #1db954;
+      background: var(--green-dark);
       transform: translateY(-1px);
     }
 
@@ -464,6 +469,7 @@
       width: 100%;
       aspect-ratio: 4/4.2;
       border-radius: var(--radius-lg);
+      border: 1px solid var(--green-primary);
       object-fit: cover;
       object-position: center;
       box-shadow: var(--shadow-lg);
@@ -481,6 +487,7 @@
       align-items: center;
       gap: 12px;
       min-width: 200px;
+      z-index: 2;
     }
     .hero-float-card .icon {
       width: 42px; height: 42px;
@@ -503,67 +510,10 @@
       padding: 8px 12px;
       box-shadow: var(--shadow-md);
       text-align: center;
+      z-index: 2;
     }
     .hero-float-card2 strong { display: block; font-size: 1.05rem; font-weight: 800; }
     .hero-float-card2 span { font-size: .65rem; opacity: .9; }
-
-    /* ======================================================
-       PROBLEMA E SOLUÇÃO
-    ====================================================== */
-    #problema {
-      background: white;
-    }
-
-    .problema-inner {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 64px;
-      align-items: center;
-    }
-
-    .problema-text p {
-      font-size: 1.05rem;
-      color: var(--gray-text);
-      margin-bottom: 28px;
-      line-height: 1.75;
-    }
-
-    .problema-list {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-    }
-    .problema-item {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: .9rem;
-      font-weight: 500;
-      color: var(--text);
-      background: var(--green-pale);
-      padding: 10px 14px;
-      border-radius: 10px;
-      border-left: 3px solid var(--green-primary);
-    }
-    .problema-item i { color: var(--green-primary); font-size: .95rem; flex-shrink: 0; }
-
-    .problema-visual {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-    .problema-stat {
-      background: var(--green-pale);
-      border-radius: var(--radius);
-      padding: 24px 28px;
-      border-left: 4px solid var(--green-primary);
-    }
-    .problema-stat .number {
-      font-size: 2rem;
-      font-weight: 800;
-      color: var(--green-primary);
-    }
-    .problema-stat p { font-size: .9rem; color: var(--gray-text); margin-top: 4px; }
 
     /* ======================================================
        DIFERENCIAIS
@@ -637,6 +587,9 @@
       transition: all var(--transition);
       position: relative;
       overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
     }
     .servico-card::before {
       content: '';
@@ -668,12 +621,14 @@
       font-weight: 700;
       color: var(--dark);
       margin-bottom: 8px;
+      text-align: center;
     }
     .servico-card p {
       font-size: .87rem;
       color: var(--gray-text);
       line-height: 1.6;
       margin-bottom: 10px;
+      text-align: center;
     }
     .servico-beneficio {
       font-size: .8rem;
@@ -681,22 +636,28 @@
       color: var(--green-primary);
       display: flex;
       align-items: center;
+      justify-content: center;
       gap: 6px;
       margin-bottom: 18px;
+      text-align: center;
     }
     .servico-beneficio i { font-size: .75rem; }
     .btn-servico {
       display: inline-flex;
       align-items: center;
+      justify-content: center;
+      align-self: center;
       gap: 7px;
       background: var(--green-pale);
       color: var(--green-dark);
       font-size: .82rem;
       font-weight: 600;
       padding: 8px 16px;
+      min-height: 38px;
       border-radius: 100px;
       transition: all var(--transition);
       border: 1px solid var(--green-light);
+      margin-top: auto;
     }
     .btn-servico:hover {
       background: var(--whatsapp);
@@ -1147,6 +1108,7 @@
     }
 
     .footer-brand .logo { margin-bottom: 16px; }
+    .footer-brand .logo-img { height: 58px; }
     .footer-brand .logo-text strong { color: white; }
     .footer-brand .logo-text span { color: #7ee8a2; }
     .footer-brand p {
@@ -1238,18 +1200,18 @@
     }
     .whatsapp-float-btn {
       width: 60px; height: 60px;
-      background: var(--whatsapp);
+      background: var(--green-primary);
       border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
       color: white;
       font-size: 1.7rem;
-      box-shadow: 0 4px 24px rgba(37,211,102,.5);
+      box-shadow: 0 4px 24px rgba(26,143,78,.35);
       transition: transform var(--transition), box-shadow var(--transition);
       flex-shrink: 0;
     }
     .whatsapp-float-btn:hover {
       transform: scale(1.08);
-      box-shadow: 0 8px 32px rgba(37,211,102,.6);
+      box-shadow: 0 8px 32px rgba(26,143,78,.45);
     }
 
     /* Pulso animado */
@@ -1258,7 +1220,7 @@
       position: absolute;
       width: 60px; height: 60px;
       border-radius: 50%;
-      background: rgba(37,211,102,.4);
+      background: rgba(26,143,78,.28);
       animation: pulse 2.5s ease infinite;
     }
     @keyframes pulse {
@@ -1275,8 +1237,6 @@
       .hero-img-wrapper { max-width: 330px; margin: 0 auto; }
       .hero-float-card { display: none; }
       .hero-float-card2 { right: 0; }
-      .problema-inner { grid-template-columns: 1fr; gap: 40px; }
-      .problema-list { grid-template-columns: 1fr; }
       .passos { grid-template-columns: repeat(2, 1fr); gap: 32px; }
       .passos::before { display: none; }
       .numeros-grid { grid-template-columns: repeat(2, 1fr); }
@@ -1343,20 +1303,14 @@
 
         <!-- Logo -->
         <a href="#hero" class="logo" aria-label="Home Care Ferreiras - Página inicial">
-          <div class="logo-icon" aria-hidden="true">
-            <i class="fas fa-heart-pulse"></i>
-          </div>
-          <div class="logo-text">
-            <strong>Home Care Ferreiras</strong>
-            <span>Cuidado Domiciliar</span>
-          </div>
+          <img class="logo-img" src="logo.jpg" alt="Home Care Ferreiras" width="500" height="200">
         </a>
 
         <!-- Navegação desktop -->
         <nav role="navigation" aria-label="Menu principal">
           <a href="#hero">Início</a>
-          <a href="#diferenciais">Diferenciais</a>
           <a href="#servicos">Serviços</a>
+          <a href="#diferenciais">Diferenciais</a>
           <a href="#profissionais">Profissionais</a>
           <a href="#depoimentos">Depoimentos</a>
           <a href="#faq">Contato</a>
@@ -1380,8 +1334,8 @@
   <!-- Menu mobile -->
   <nav class="mobile-nav" id="mobile-nav" role="navigation" aria-label="Menu mobile">
     <a href="#hero">Início</a>
-    <a href="#diferenciais">Diferenciais</a>
     <a href="#servicos">Serviços</a>
+    <a href="#diferenciais">Diferenciais</a>
     <a href="#profissionais">Profissionais</a>
     <a href="#depoimentos">Depoimentos</a>
     <a href="#faq">FAQ</a>
@@ -1463,115 +1417,6 @@
       </div>
     </div>
   </section>
-
-
-  <!-- ======================================================
-       PROBLEMA E SOLUÇÃO
-  ====================================================== -->
-  <section id="problema" class="section" aria-label="Como podemos ajudar">
-    <div class="container">
-      <div class="problema-inner">
-
-        <div class="problema-text fade-up">
-          <span class="tag">Entendemos sua situação</span>
-          <h2 class="section-title">Encontrar um profissional confiável faz toda a diferença</h2>
-          <p>
-            Encontrar um profissional de confiança para cuidar de alguém da família é uma decisão importante. Por isso, a Home Care Ferreiras oferece atendimento domiciliar com profissionais preparados, acompanhamento próximo e cuidado humanizado em cada detalhe.
-          </p>
-
-          <div class="problema-list" role="list">
-            <div class="problema-item" role="listitem">
-              <i class="fas fa-user-group" aria-hidden="true"></i>
-              Cuidado com idosos
-            </div>
-            <div class="problema-item" role="listitem">
-              <i class="fas fa-bandage" aria-hidden="true"></i>
-              Pós-operatório
-            </div>
-            <div class="problema-item" role="listitem">
-              <i class="fas fa-syringe" aria-hidden="true"></i>
-              Enfermagem domiciliar
-            </div>
-            <div class="problema-item" role="listitem">
-              <i class="fas fa-pills" aria-hidden="true"></i>
-              Medicamentos
-            </div>
-            <div class="problema-item" role="listitem">
-              <i class="fas fa-person-walking" aria-hidden="true"></i>
-              Reabilitação
-            </div>
-            <div class="problema-item" role="listitem">
-              <i class="fas fa-calendar-check" aria-hidden="true"></i>
-              Acompanhamento contínuo
-            </div>
-          </div>
-        </div>
-
-        <div class="problema-visual fade-up" style="transition-delay:.15s" aria-hidden="true">
-          <div class="problema-stat">
-            <div class="number">+120</div>
-            <p>Famílias atendidas com cuidado profissional e humanizado</p>
-          </div>
-          <div class="problema-stat">
-            <div class="number">+45</div>
-            <p>Profissionais qualificados disponíveis na nossa rede</p>
-          </div>
-          <div class="problema-stat">
-            <div class="number">8</div>
-            <p>Anos de experiência em atendimento home care particular</p>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ======================================================
-       DIFERENCIAIS
-  ====================================================== -->
-  <section id="diferenciais" class="section section-alt" aria-label="Nossos diferenciais">
-    <div class="container">
-      <div class="section-header center fade-up">
-        <span class="tag">Por que nos escolher</span>
-        <h2 class="section-title">O que faz a Home Care Ferreiras diferente</h2>
-        <p class="section-sub">Unimos profissionalismo, agilidade e cuidado humanizado para oferecer o melhor atendimento domiciliar para sua família.</p>
-      </div>
-
-      <div class="diferenciais-grid">
-        <article class="diferencial-card fade-up">
-          <div class="diferencial-icon" aria-hidden="true"><i class="fas fa-user-nurse"></i></div>
-          <h3>Profissionais capacitados</h3>
-          <p>Equipe preparada, com capacitação contínua, supervisão técnica e controle de qualidade no atendimento.</p>
-        </article>
-
-        <article class="diferencial-card fade-up" style="transition-delay:.1s">
-          <div class="diferencial-icon" aria-hidden="true"><i class="fas fa-network-wired"></i></div>
-          <h3>Ampla rede de profissionais</h3>
-          <p>Disponibilidade de profissionais qualificados para diferentes necessidades, com agilidade na escala de atendimento.</p>
-        </article>
-
-        <article class="diferencial-card fade-up" style="transition-delay:.2s">
-          <div class="diferencial-icon" aria-hidden="true"><i class="fas fa-heart-pulse"></i></div>
-          <h3>Atendimento humanizado</h3>
-          <p>Cuidado acolhedor, próximo e familiar, respeitando a rotina, as necessidades e a individualidade de cada paciente.</p>
-        </article>
-
-        <article class="diferencial-card fade-up" style="transition-delay:.3s">
-          <div class="diferencial-icon" aria-hidden="true"><i class="fas fa-bolt"></i></div>
-          <h3>Rápido e personalizado</h3>
-          <p>Entendimento da necessidade da família para indicar o profissional mais adequado ao cuidado.</p>
-        </article>
-
-        <article class="diferencial-card fade-up" style="transition-delay:.4s">
-          <div class="diferencial-icon" aria-hidden="true"><i class="fas fa-shield-halved"></i></div>
-          <h3>Segurança para a família</h3>
-          <p>Mais tranquilidade para familiares que buscam um cuidado profissional, responsável e humanizado dentro de casa.</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
 
   <!-- ======================================================
        SERVIÇOS
@@ -1660,6 +1505,50 @@
     </div>
   </section>
 
+  <!-- ======================================================
+       DIFERENCIAIS
+  ====================================================== -->
+  <section id="diferenciais" class="section section-alt" aria-label="Nossos diferenciais">
+    <div class="container">
+      <div class="section-header center fade-up">
+        <span class="tag">Por que nos escolher</span>
+        <h2 class="section-title">O que faz a Home Care Ferreiras diferente</h2>
+        <p class="section-sub">Unimos profissionalismo, agilidade e cuidado humanizado para oferecer o melhor atendimento domiciliar para sua família.</p>
+      </div>
+
+      <div class="diferenciais-grid">
+        <article class="diferencial-card fade-up">
+          <div class="diferencial-icon" aria-hidden="true"><i class="fas fa-user-nurse"></i></div>
+          <h3>Profissionais capacitados</h3>
+          <p>Equipe preparada, com capacitação contínua, supervisão técnica e controle de qualidade no atendimento.</p>
+        </article>
+
+        <article class="diferencial-card fade-up" style="transition-delay:.1s">
+          <div class="diferencial-icon" aria-hidden="true"><i class="fas fa-network-wired"></i></div>
+          <h3>Ampla rede de profissionais</h3>
+          <p>Disponibilidade de profissionais qualificados para diferentes necessidades, com agilidade na escala de atendimento.</p>
+        </article>
+
+        <article class="diferencial-card fade-up" style="transition-delay:.2s">
+          <div class="diferencial-icon" aria-hidden="true"><i class="fas fa-heart-pulse"></i></div>
+          <h3>Atendimento humanizado</h3>
+          <p>Cuidado acolhedor, próximo e familiar, respeitando a rotina, as necessidades e a individualidade de cada paciente.</p>
+        </article>
+
+        <article class="diferencial-card fade-up" style="transition-delay:.3s">
+          <div class="diferencial-icon" aria-hidden="true"><i class="fas fa-bolt"></i></div>
+          <h3>Rápido e personalizado</h3>
+          <p>Entendimento da necessidade da família para indicar o profissional mais adequado ao cuidado.</p>
+        </article>
+
+        <article class="diferencial-card fade-up" style="transition-delay:.4s">
+          <div class="diferencial-icon" aria-hidden="true"><i class="fas fa-shield-halved"></i></div>
+          <h3>Segurança para a família</h3>
+          <p>Mais tranquilidade para familiares que buscam um cuidado profissional, responsável e humanizado dentro de casa.</p>
+        </article>
+      </div>
+    </div>
+  </section>
 
   <!-- ======================================================
        PROFISSIONAIS
@@ -2141,11 +2030,7 @@
         <!-- Marca -->
         <div class="footer-brand">
           <div class="logo" aria-label="Home Care Ferreiras">
-            <div class="logo-icon" aria-hidden="true"><i class="fas fa-heart-pulse"></i></div>
-            <div class="logo-text">
-              <strong>Home Care Ferreiras</strong>
-              <span>Cuidado Domiciliar</span>
-            </div>
+            <img class="logo-img" src="logo.jpg" alt="Home Care Ferreiras" width="500" height="200">
           </div>
           <p>Cuidado domiciliar seguro, humanizado e profissional para quem você ama. Profissionais qualificados, atendimento rápido e personalizado em São Paulo.</p>
           <div class="footer-social" aria-label="Redes sociais">
@@ -2161,8 +2046,8 @@
           <h4>Links rápidos</h4>
           <ul>
             <li><a href="#hero">Início</a></li>
-            <li><a href="#diferenciais">Diferenciais</a></li>
             <li><a href="#servicos">Serviços</a></li>
+            <li><a href="#diferenciais">Diferenciais</a></li>
             <li><a href="#profissionais">Profissionais</a></li>
             <li><a href="#como-funciona">Como funciona</a></li>
             <li><a href="#depoimentos">Depoimentos</a></li>
