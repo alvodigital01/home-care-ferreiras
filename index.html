@@ -1271,7 +1271,6 @@
     ====================================================== */
     @media (max-width: 992px) {
       .hero-inner { grid-template-columns: 1fr; gap: 48px; }
-      .hero-image { order: -1; }
       .hero-img-wrapper { max-width: 330px; margin: 0 auto; }
       .hero-float-card2 { right: 0; }
       .problema-inner { grid-template-columns: 1fr; gap: 40px; }
@@ -1295,7 +1294,14 @@
       .hero-ctas .btn-whatsapp,
       .hero-ctas .btn-outline { width: 100%; justify-content: center; }
       .hero-float-card { left: 0; bottom: -10px; }
-      .hero-float-card2 { top: 10px; right: 0; }
+      .hero-float-card2 {
+        top: 8px;
+        right: 6px;
+        padding: 6px 9px;
+        border-radius: 10px;
+      }
+      .hero-float-card2 strong { font-size: .88rem; }
+      .hero-float-card2 span { font-size: .55rem; }
       .passos { grid-template-columns: 1fr; }
       .numeros-grid { grid-template-columns: repeat(2, 1fr); }
       .seguranca-grid { grid-template-columns: 1fr; }
