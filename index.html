@@ -329,7 +329,7 @@
        HERO SECTION
     ====================================================== */
     #hero {
-      padding-top: 70px;
+      padding-top: 110px;
       min-height: 100vh;
       display: flex;
       align-items: center;
@@ -382,12 +382,13 @@
     .hero-badge i { font-size: .9rem; }
 
     .hero-title {
-      font-size: clamp(2rem, 4.5vw, 3rem);
+      font-size: clamp(2rem, 4vw, 2.8rem);
       font-weight: 800;
       color: var(--dark);
       line-height: 1.18;
       margin-bottom: 20px;
     }
+    .hero-title .nowrap { white-space: nowrap; }
     .hero-title .highlight {
       color: var(--green-primary);
       position: relative;
@@ -405,7 +406,7 @@
       display: flex;
       align-items: center;
       gap: 14px;
-      flex-wrap: wrap;
+      flex-wrap: nowrap;
       margin-bottom: 14px;
     }
 
@@ -419,27 +420,6 @@
     }
     .hero-microcopy i { color: var(--green-medium); }
 
-    /* Selos hero */
-    .hero-seals {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-    .seal {
-      display: flex;
-      align-items: center;
-      gap: 7px;
-      background: white;
-      border: 1px solid var(--green-light);
-      border-radius: 100px;
-      padding: 7px 14px;
-      font-size: .8rem;
-      font-weight: 600;
-      color: var(--dark);
-      box-shadow: var(--shadow-sm);
-    }
-    .seal i { color: var(--green-primary); font-size: .85rem; }
-
     /* Imagem hero */
     .hero-image {
       position: relative;
@@ -451,13 +431,13 @@
     .hero-img-wrapper {
       position: relative;
       width: 100%;
-      max-width: 480px;
+      max-width: 430px;
     }
 
     /* Placeholder para foto real — substitua pela tag <img> com a foto real */
     .hero-photo-placeholder {
       width: 100%;
-      aspect-ratio: 4/5;
+      aspect-ratio: 4/4.2;
       border-radius: var(--radius-lg);
       background: linear-gradient(145deg, #a8d5b8 0%, #5aaa7a 40%, #1a8f4e 100%);
       position: relative;
@@ -1282,7 +1262,7 @@
     @media (max-width: 992px) {
       .hero-inner { grid-template-columns: 1fr; gap: 48px; }
       .hero-image { order: -1; }
-      .hero-img-wrapper { max-width: 360px; margin: 0 auto; }
+      .hero-img-wrapper { max-width: 330px; margin: 0 auto; }
       .hero-float-card2 { right: 0; }
       .problema-inner { grid-template-columns: 1fr; gap: 40px; }
       .problema-list { grid-template-columns: 1fr; }
@@ -1298,6 +1278,7 @@
       .section { padding: 64px 0; }
       nav { display: none; }
       .hamburger { display: flex; }
+      #hero { padding-top: 96px; }
       .hero-title { font-size: 1.85rem; }
       .hero-ctas { flex-direction: column; align-items: flex-start; }
       .hero-ctas .btn-whatsapp,
@@ -1397,7 +1378,9 @@
           </div>
 
           <h1 class="hero-title">
-            Cuidado domiciliar seguro e <span class="highlight">humanizado</span> para quem você ama
+            Cuidado domiciliar<br>
+            <span class="nowrap">seguro e <span class="highlight">humanizado</span></span><br>
+            para quem você ama
           </h1>
 
           <p class="hero-sub">
@@ -1407,7 +1390,7 @@
           <div class="hero-ctas">
             <a href="#LINK_WHATSAPP#" class="btn-whatsapp" aria-label="Solicitar orçamento pelo WhatsApp">
               <i class="fab fa-whatsapp" aria-hidden="true"></i>
-              Solicitar orçamento pelo WhatsApp
+              Solicitar orçamento
             </a>
             <a href="#servicos" class="btn-outline">
               <i class="fas fa-stethoscope" aria-hidden="true"></i>
@@ -1419,26 +1402,6 @@
             <i class="fas fa-check-circle" aria-hidden="true"></i>
             Atendimento rápido, humanizado e personalizado para sua família.
           </p>
-
-          <!-- Selos de confiança -->
-          <div class="hero-seals" role="list">
-            <div class="seal" role="listitem">
-              <i class="fas fa-user-nurse" aria-hidden="true"></i>
-              Profissionais capacitados
-            </div>
-            <div class="seal" role="listitem">
-              <i class="fas fa-star" aria-hidden="true"></i>
-              Atendimento particular
-            </div>
-            <div class="seal" role="listitem">
-              <i class="fas fa-hands-holding-heart" aria-hidden="true"></i>
-              Suporte humanizado
-            </div>
-            <div class="seal" role="listitem">
-              <i class="fas fa-bolt" aria-hidden="true"></i>
-              Rapidez na escala
-            </div>
-          </div>
         </div>
 
         <!-- Imagem -->
@@ -1462,7 +1425,7 @@
 
             <!-- Card flutuante superior -->
             <div class="hero-float-card2" aria-hidden="true">
-              <strong>+[INSERIR]</strong>
+              <strong>+100</strong>
               <span>Famílias atendidas</span>
             </div>
           </div>
