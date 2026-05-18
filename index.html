@@ -405,6 +405,7 @@
       box-shadow: var(--shadow-sm);
     }
     .hero-badge i { font-size: .9rem; }
+    .hero-badge-mobile { display: none; }
 
     .hero-title {
       font-size: clamp(2rem, 4vw, 2.8rem);
@@ -1289,6 +1290,16 @@
       .header-actions > .btn-nav-whatsapp { display: none; }
       .hamburger { display: flex; }
       #hero { padding: 96px 0 56px; }
+      .hero-inner { gap: 28px; }
+      .hero-badge-mobile {
+        display: inline-flex;
+        justify-self: center;
+        order: 1;
+        margin-bottom: 0;
+      }
+      .hero-content { order: 3; }
+      .hero-content .hero-badge { display: none; }
+      .hero-image { order: 2; }
       .hero-title { font-size: 1.95rem; text-align: center; }
       .hero-microcopy { justify-content: flex-start; text-align: left; }
       .hero-ctas { flex-direction: column; align-items: flex-start; }
@@ -1387,6 +1398,10 @@
   <section id="hero" aria-label="Apresentação">
     <div class="container">
       <div class="hero-inner">
+        <div class="hero-badge hero-badge-mobile">
+          <i class="fas fa-shield-check" aria-hidden="true"></i>
+          Atendimento Home Care Particular em São Paulo
+        </div>
 
         <!-- Conteúdo -->
         <div class="hero-content fade-up">
