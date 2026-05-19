@@ -618,7 +618,7 @@
     }
 
     .servico-card {
-      border: 1px solid var(--gray-mid);
+      border: 1px solid var(--green-light);
       border-radius: var(--radius-lg);
       padding: 30px 26px;
       transition: all var(--transition);
@@ -627,6 +627,8 @@
       display: flex;
       flex-direction: column;
       height: 100%;
+      box-shadow: var(--shadow-md);
+      transform: translateY(-4px);
     }
     .servico-card::before {
       content: '';
@@ -634,23 +636,23 @@
       bottom: 0; left: 0; right: 0;
       height: 3px;
       background: var(--green-primary);
-      transform: scaleX(0);
+      transform: scaleX(1);
       transition: transform var(--transition);
     }
     .servico-card:hover {
       border-color: var(--green-light);
-      box-shadow: var(--shadow-md);
-      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-6px);
     }
     .servico-card:hover::before { transform: scaleX(1); }
 
     .servico-icon {
       width: 52px; height: 52px;
-      background: linear-gradient(135deg, var(--green-pale) 0%, var(--green-light) 100%);
-      border: 1px solid var(--green-light);
+      background: linear-gradient(135deg, var(--green-primary), var(--green-dark));
+      border: 1px solid var(--green-dark);
       border-radius: 14px;
       display: flex; align-items: center; justify-content: center;
-      color: var(--green-primary);
+      color: white;
       font-size: 1.4rem;
       margin-bottom: 18px;
       transition: all var(--transition);
@@ -689,7 +691,7 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      align-self: flex-start;
+      align-self: center;
       gap: 7px;
       background: var(--green-pale);
       color: var(--green-dark);
