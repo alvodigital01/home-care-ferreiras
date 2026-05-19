@@ -1601,6 +1601,15 @@
       .hero-ctas { flex-direction: column; align-items: flex-start; }
       .hero-ctas .btn-whatsapp,
       .hero-ctas .btn-outline { width: 100%; justify-content: center; }
+      .como-cta .btn-whatsapp {
+        max-width: calc(100vw - 48px);
+        justify-content: center;
+        padding: 13px 18px;
+        font-size: .88rem;
+        white-space: normal;
+        text-align: center;
+        line-height: 1.25;
+      }
       .hero-float-card {
         bottom: -14px;
         left: 10px;
@@ -1660,6 +1669,10 @@
     @media (max-width: 480px) {
       .diferenciais-grid { grid-template-columns: 1fr; }
       .profissionais-grid { grid-template-columns: repeat(2, 1fr); }
+      .como-cta .btn-whatsapp {
+        padding: 12px 14px;
+        font-size: .82rem;
+      }
     }
 
     @media (prefers-reduced-motion: reduce) {
