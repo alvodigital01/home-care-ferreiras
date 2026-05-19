@@ -169,15 +169,67 @@
       color: var(--white);
     }
 
-    /* Animação de entrada */
-    .fade-up {
-      opacity: 0;
-      transform: translateY(32px);
-      transition: opacity .6s ease, transform .6s ease;
+    /* ---- Barra de progresso de scroll ---- */
+    #scroll-progress {
+      position: fixed;
+      top: 0; left: 0;
+      height: 3px;
+      width: 0%;
+      background: linear-gradient(90deg, var(--green-primary), var(--green-medium));
+      z-index: 9999;
+      transition: width .1s linear;
+      border-radius: 0 2px 2px 0;
     }
-    .fade-up.visible {
+
+    /* ---- Partículas hero ---- */
+    #hero-canvas {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+    }
+    #hero .container { position: relative; z-index: 1; }
+
+    /* ---- Animações de entrada ---- */
+    .fade-up, .fade-left, .fade-right, .fade-scale {
+      opacity: 0;
+      transition: opacity .65s cubic-bezier(.22,1,.36,1), transform .65s cubic-bezier(.22,1,.36,1);
+    }
+    .fade-up    { transform: translateY(36px); }
+    .fade-left  { transform: translateX(-44px); }
+    .fade-right { transform: translateX(44px); }
+    .fade-scale { transform: scale(.88); }
+    .fade-up.visible, .fade-left.visible, .fade-right.visible, .fade-scale.visible {
       opacity: 1;
-      transform: translateY(0);
+      transform: none;
+    }
+
+    /* ---- Float hero image ---- */
+    @keyframes float {
+      0%, 100% { transform: translateY(0) var(--parallax-y, translateY(0)); }
+      50%       { transform: translateY(-10px); }
+    }
+    .hero-img-wrapper { animation: float 5s ease-in-out infinite; will-change: transform; }
+
+    /* ---- Tilt cards ---- */
+    .tilt { transform-style: preserve-3d; will-change: transform; }
+
+    /* ---- Cursor glow nos botões ---- */
+    .btn-magnetic { position: relative; overflow: hidden; }
+    .btn-magnetic::after {
+      content: '';
+      position: absolute;
+      width: 100px; height: 100px;
+      background: radial-gradient(circle, rgba(255,255,255,.25) 0%, transparent 70%);
+      border-radius: 50%;
+      transform: translate(-50%, -50%) scale(0);
+      transition: transform .4s ease, opacity .4s ease;
+      pointer-events: none;
+      opacity: 0;
+    }
+    .btn-magnetic:hover::after {
+      transform: translate(var(--mx,50%), var(--my,50%)) scale(2.5);
+      opacity: 1;
     }
 
     /* ======================================================
@@ -1566,6 +1618,7 @@
        HERO SECTION
   ====================================================== -->
   <section id="hero" aria-label="Apresentação">
+    <canvas id="hero-canvas" aria-hidden="true"></canvas>
     <div class="container">
       <div class="hero-inner">
         <div class="hero-badge hero-badge-mobile">
@@ -1603,7 +1656,7 @@
 
           <div class="hero-stats" aria-label="Números da Home Care Ferreiras">
             <div class="hero-stat">
-              <strong>+120</strong>
+              <strong data-count="120" data-prefix="+">+120</strong>
               <span>Famílias atendidas</span>
             </div>
             <div class="hero-stat">
@@ -1611,7 +1664,7 @@
               <span>Disponibilidade</span>
             </div>
             <div class="hero-stat">
-              <strong>100%</strong>
+              <strong data-count="100" data-suffix="%">100%</strong>
               <span>Particular</span>
             </div>
           </div>
@@ -1883,7 +1936,7 @@
             </div>
           </article>
 
-          <article class="depoimento-card depoimento-card--dark">
+          <article class="depoimento-card">
             <div class="depoimento-stars" aria-label="5 estrelas">
               <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
               <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
@@ -1915,7 +1968,7 @@
             </div>
           </article>
 
-          <article class="depoimento-card depoimento-card--dark">
+          <article class="depoimento-card">
             <div class="depoimento-stars" aria-label="5 estrelas">
               <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
               <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
@@ -1963,7 +2016,7 @@
             </div>
           </article>
 
-          <article class="depoimento-card depoimento-card--dark">
+          <article class="depoimento-card">
             <div class="depoimento-stars" aria-label="5 estrelas">
               <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
               <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
@@ -1995,7 +2048,7 @@
             </div>
           </article>
 
-          <article class="depoimento-card depoimento-card--dark">
+          <article class="depoimento-card">
             <div class="depoimento-stars" aria-label="5 estrelas">
               <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
               <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
@@ -2027,7 +2080,7 @@
             </div>
           </article>
 
-          <article class="depoimento-card depoimento-card--dark">
+          <article class="depoimento-card">
             <div class="depoimento-stars" aria-label="5 estrelas">
               <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
               <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
@@ -2171,7 +2224,7 @@
             </div>
           </article>
 
-          <article class="depoimento-card depoimento-card--dark" aria-hidden="true">
+          <article class="depoimento-card" aria-hidden="true">
             <div class="depoimento-stars" aria-label="5 estrelas">
               <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
               <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
@@ -2358,7 +2411,7 @@
       <div class="cta-final-inner fade-up">
 
         <!-- lado esquerdo: texto + trust signals -->
-        <div class="cta-final-text">
+        <div class="cta-final-text fade-left">
           <div class="cta-final-badge">
             Fale com a gente
           </div>
@@ -2371,7 +2424,7 @@
         </div>
 
         <!-- lado direito: card de ação -->
-        <div class="cta-final-card">
+        <div class="cta-final-card fade-right">
           <div class="cta-card-icon" aria-hidden="true">
             <i class="fas fa-house-medical"></i>
           </div>
@@ -2621,18 +2674,180 @@
     startDepoimentosMobileAuto();
 
     /* -------------------------------------------------------
+       BARRA DE PROGRESSO DE SCROLL
+    ------------------------------------------------------- */
+    const progressBar = document.createElement('div');
+    progressBar.id = 'scroll-progress';
+    document.body.prepend(progressBar);
+    window.addEventListener('scroll', () => {
+      const pct = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+      progressBar.style.width = pct + '%';
+    }, { passive: true });
+
+    /* -------------------------------------------------------
+       PARTÍCULAS NO HERO
+    ------------------------------------------------------- */
+    const canvas = document.getElementById('hero-canvas');
+    if (canvas) {
+      const ctx = canvas.getContext('2d');
+      let particles = [];
+
+      function resizeCanvas() {
+        const hero = document.getElementById('hero');
+        canvas.width  = hero.offsetWidth;
+        canvas.height = hero.offsetHeight;
+      }
+
+      function createParticles() {
+        particles = [];
+        const count = Math.floor(canvas.width / 14);
+        for (let i = 0; i < count; i++) {
+          particles.push({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            r: Math.random() * 2.5 + 0.5,
+            dx: (Math.random() - 0.5) * 0.4,
+            dy: (Math.random() - 0.5) * 0.4,
+            o: Math.random() * 0.35 + 0.05
+          });
+        }
+      }
+
+      function drawParticles() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        particles.forEach(p => {
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(26,143,78,${p.o})`;
+          ctx.fill();
+          p.x += p.dx;
+          p.y += p.dy;
+          if (p.x < 0 || p.x > canvas.width)  p.dx *= -1;
+          if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
+        });
+        // linhas entre partículas próximas
+        for (let i = 0; i < particles.length; i++) {
+          for (let j = i + 1; j < particles.length; j++) {
+            const dx = particles[i].x - particles[j].x;
+            const dy = particles[i].y - particles[j].y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < 90) {
+              ctx.beginPath();
+              ctx.moveTo(particles[i].x, particles[i].y);
+              ctx.lineTo(particles[j].x, particles[j].y);
+              ctx.strokeStyle = `rgba(26,143,78,${0.06 * (1 - dist / 90)})`;
+              ctx.lineWidth = 0.6;
+              ctx.stroke();
+            }
+          }
+        }
+        requestAnimationFrame(drawParticles);
+      }
+
+      resizeCanvas();
+      createParticles();
+      drawParticles();
+      window.addEventListener('resize', () => { resizeCanvas(); createParticles(); }, { passive: true });
+    }
+
+    /* -------------------------------------------------------
+       PARALLAX SUAVE NO HERO
+    ------------------------------------------------------- */
+    const heroSection = document.getElementById('hero');
+    const heroImgCol  = document.querySelector('.hero-image');
+    if (heroImgCol && heroSection) {
+      window.addEventListener('scroll', () => {
+        const heroBottom = heroSection.getBoundingClientRect().bottom;
+        if (heroBottom < 0) return;
+        const y = window.scrollY * 0.1;
+        heroImgCol.style.transform = `translateY(${-y}px)`;
+      }, { passive: true });
+    }
+
+    /* -------------------------------------------------------
        ANIMAÇÕES DE ENTRADA (IntersectionObserver)
     ------------------------------------------------------- */
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
+    const revealObs = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
+          const el = entry.target;
+          const delay = el.dataset.delay || 0;
+          setTimeout(() => el.classList.add('visible'), delay);
+          revealObs.unobserve(el);
         }
       });
-    }, { threshold: 0.12 });
+    }, { threshold: 0.1 });
 
-    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+    document.querySelectorAll('.fade-up, .fade-left, .fade-right, .fade-scale').forEach((el, i) => {
+      revealObs.observe(el);
+    });
+
+    /* Stagger automático para filhos diretos de grids */
+    document.querySelectorAll('.servicos-grid, .passos, .profissionais-grid, .footer-grid').forEach(grid => {
+      [...grid.children].forEach((child, i) => {
+        if (!child.classList.contains('fade-up') && !child.classList.contains('fade-left') && !child.classList.contains('fade-right')) {
+          child.classList.add('fade-up');
+          child.dataset.delay = i * 100;
+          revealObs.observe(child);
+        }
+      });
+    });
+
+    /* -------------------------------------------------------
+       CONTADOR ANIMADO NOS STATS
+    ------------------------------------------------------- */
+    const counterObs = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const el = entry.target;
+        const target = +el.dataset.count;
+        const prefix = el.dataset.prefix || '';
+        const suffix = el.dataset.suffix || '';
+        const duration = 1400;
+        const start = performance.now();
+        function tick(now) {
+          const elapsed = now - start;
+          const progress = Math.min(elapsed / duration, 1);
+          const ease = 1 - Math.pow(1 - progress, 3);
+          el.textContent = prefix + Math.round(target * ease) + suffix;
+          if (progress < 1) requestAnimationFrame(tick);
+        }
+        requestAnimationFrame(tick);
+        counterObs.unobserve(el);
+      });
+    }, { threshold: 0.5 });
+
+    document.querySelectorAll('[data-count]').forEach(el => counterObs.observe(el));
+
+    /* -------------------------------------------------------
+       TILT NOS CARDS
+    ------------------------------------------------------- */
+    document.querySelectorAll('.servico-card, .depoimento-card').forEach(card => {
+      card.classList.add('tilt');
+      card.addEventListener('mousemove', e => {
+        const rect = card.getBoundingClientRect();
+        const x = (e.clientX - rect.left) / rect.width  - 0.5;
+        const y = (e.clientY - rect.top)  / rect.height - 0.5;
+        card.style.transform = `perspective(700px) rotateY(${x * 8}deg) rotateX(${-y * 8}deg) translateY(-4px)`;
+      });
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = '';
+      });
+    });
+
+    /* -------------------------------------------------------
+       BOTÕES MAGNÉTICOS (efeito glow no cursor)
+    ------------------------------------------------------- */
+    document.querySelectorAll('.btn-whatsapp, .btn-outline, .btn-servico').forEach(btn => {
+      btn.classList.add('btn-magnetic');
+      btn.addEventListener('mousemove', e => {
+        const rect = btn.getBoundingClientRect();
+        const x = ((e.clientX - rect.left) / rect.width  * 100).toFixed(1);
+        const y = ((e.clientY - rect.top)  / rect.height * 100).toFixed(1);
+        btn.style.setProperty('--mx', x + '%');
+        btn.style.setProperty('--my', y + '%');
+      });
+    });
 
     /* -------------------------------------------------------
        SCROLL SUAVE PARA LINKS ÂNCORA
