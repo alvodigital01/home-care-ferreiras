@@ -446,7 +446,7 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      padding: 60px 48px 100px 80px;
+      padding: 60px 48px 100px 96px;
       max-width: 600px;
       width: 100%;
       margin-left: 0;
@@ -479,6 +479,7 @@
       margin-bottom: 16px;
     }
     .slide-title .highlight { color: var(--green-primary); }
+    .slide-title .nowrap { white-space: nowrap; }
 
     .slide-sub {
       font-size: 1.05rem;
@@ -528,7 +529,7 @@
     .hero-controls {
       position: absolute;
       bottom: 36px;
-      left: 80px;
+      left: 96px;
       display: flex;
       align-items: center;
       gap: 14px;
@@ -1566,7 +1567,7 @@
         );
       }
       .slide-content {
-        padding: 36px 24px 90px 28px;
+        padding: 36px 32px 90px 36px;
         max-width: 100%;
         margin-left: 0;
         justify-content: flex-end;
@@ -1580,8 +1581,9 @@
       .slide-title { color: white; font-size: clamp(1.55rem, 6.5vw, 2rem); text-shadow: 0 2px 10px rgba(0,0,0,.3); }
       .slide-title .highlight { color: #6ee89a; }
       .slide-sub { color: rgba(255,255,255,.88); font-size: .9rem; }
+      .slide-cta { align-self: center; }
       /* Setas e dots — estilo claro para fundo escuro */
-      .hero-controls { left: 24px; bottom: 22px; gap: 10px; }
+      .hero-controls { left: 36px; bottom: 22px; gap: 10px; }
       .hero-arrow {
         width: 36px; height: 36px;
         background: rgba(255,255,255,.15);
@@ -1747,11 +1749,11 @@
         <div class="slide-overlay" aria-hidden="true"></div>
         <div class="slide-content">
           <span class="slide-tag">
-            <i class="fas fa-shield-check" aria-hidden="true"></i>
+            <i class="fas fa-location-dot" aria-hidden="true"></i>
             Atendimento particular · São Paulo
           </span>
           <h1 class="slide-title">
-            Cuidado domiciliar <span class="highlight">seguro</span> e humanizado para quem você ama
+            Cuidado domiciliar <span class="nowrap"><span class="highlight">seguro</span> e humanizado</span> <span class="nowrap">para quem você ama</span>
           </h1>
           <p class="slide-sub">
             Profissionais capacitados, suporte humanizado e cuidado personalizado no conforto do lar.
@@ -1777,7 +1779,9 @@
             Equipe qualificada disponível
           </span>
           <h1 class="slide-title">
-            Enfermagem domiciliar com <span class="highlight">profissionalismo</span> e cuidado real
+            <span class="nowrap">Enfermagem domiciliar</span><br>
+            <span class="nowrap">com <span class="highlight">profissionalismo</span></span><br>
+            <span class="nowrap">e cuidado real</span>
           </h1>
           <p class="slide-sub">
             Atendimento técnico e humanizado no conforto do lar, com acompanhamento próximo e seguro.
@@ -1803,7 +1807,7 @@
             Cuidado humanizado
           </span>
           <h1 class="slide-title">
-            Acompanhamento <span class="highlight">contínuo</span> para sua família ter tranquilidade
+            Acompanhamento <span class="highlight">contínuo</span> para sua <span class="nowrap">família ter tranquilidade</span>
           </h1>
           <p class="slide-sub">
             Suporte com profissionais dedicados para o cuidado frequente e prolongado do seu familiar.
