@@ -9,6 +9,7 @@
   <meta name="description" content="Cuidado domiciliar seguro e humanizado com a Home Care Ferreiras. Cuidadores, enfermagem domiciliar, pós-operatório, reabilitação e acompanhamento contínuo em São Paulo." />
   <meta name="keywords" content="home care em São Paulo, cuidador domiciliar, enfermagem domiciliar, atendimento home care particular, cuidador para idosos, atendimento domiciliar, cuidados paliativos, acompanhamento pós-operatório" />
   <meta name="robots" content="index, follow" />
+  <link rel="icon" type="image/jpeg" href="logo%20-%20C%C3%B3pia.jpg" />
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
@@ -300,6 +301,7 @@
       padding: 7px 14px;
       border-radius: 8px;
       transition: color var(--transition), background var(--transition);
+      white-space: nowrap;
     }
     nav a:hover {
       color: var(--green-primary);
@@ -1487,11 +1489,12 @@
         justify-self: center;
         order: 1;
         margin-bottom: 0;
-        max-width: calc(100vw - 44px);
+        max-width: calc(100vw - 20px);
         gap: 6px;
-        padding: 7px 12px;
-        font-size: .64rem;
+        padding: 7px 10px;
+        font-size: clamp(.58rem, 2.65vw, .68rem);
         letter-spacing: .02em;
+        white-space: nowrap;
       }
       .hero-badge-mobile i { font-size: .8rem; }
       .hero-content { order: 3; }
