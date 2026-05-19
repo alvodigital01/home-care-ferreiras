@@ -185,14 +185,6 @@
       border-radius: 0 2px 2px 0;
     }
 
-    /* ---- Partículas hero ---- */
-    #hero-canvas {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      z-index: 0;
-    }
-    #hero .container { position: relative; z-index: 1; }
 
     /* ---- Animações de entrada ---- */
     .fade-up, .fade-left, .fade-right, .fade-scale {
@@ -209,13 +201,7 @@
     }
 
     /* ---- Float hero image ---- */
-    @keyframes float {
-      0%, 100% { transform: translateY(0) var(--parallax-y, translateY(0)); }
-      50%       { transform: translateY(-10px); }
-    }
-    .hero-img-wrapper { animation: float 5s ease-in-out infinite; will-change: transform; }
-
-    /* ---- Tilt cards ---- */
+/* ---- Tilt cards ---- */
     .tilt { transform-style: preserve-3d; will-change: transform; }
 
     /* ---- Cursor glow nos botões ---- */
@@ -411,195 +397,185 @@
     }
 
     /* ======================================================
-       HERO SECTION
+       HERO CAROUSEL — FULL SCREEN
     ====================================================== */
     #hero {
-      padding-top: 110px;
-      min-height: 100vh;
+      margin-top: 70px;
+      height: calc(100vh - 70px);
+      min-height: 520px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Track deslizante */
+    .hero-track {
       display: flex;
-      align-items: center;
+      height: 100%;
+      transition: transform .7s cubic-bezier(.4,0,.2,1);
+      will-change: transform;
+    }
+
+    /* Cada slide — ocupa 100% da tela */
+    .hero-slide {
+      min-width: 100%;
+      height: 100%;
       position: relative;
       overflow: hidden;
-      background:
-        radial-gradient(ellipse 80% 60% at 70% 40%, rgba(209,250,229,.55) 0%, transparent 60%),
-        radial-gradient(ellipse 50% 50% at 10% 80%, rgba(167,243,208,.3) 0%, transparent 55%),
-        linear-gradient(170deg, #f0fdf4 0%, #f8fff9 60%, var(--white) 100%);
-    }
-
-    #hero::before {
-      content: '';
-      position: absolute;
-      top: -60px; right: -80px;
-      width: 520px; height: 520px;
-      background: radial-gradient(circle, rgba(26,143,78,.11) 0%, transparent 65%);
-      border-radius: 50%;
-    }
-
-    #hero::after {
-      content: '';
-      position: absolute;
-      bottom: -60px; left: -60px;
-      width: 360px; height: 360px;
-      background: radial-gradient(circle, rgba(39,174,96,.08) 0%, transparent 65%);
-      border-radius: 50%;
-    }
-
-    /* Stats row no hero */
-    .hero-stats {
       display: flex;
-      gap: 0;
-      padding-top: 28px;
-      margin-top: 28px;
-      border-top: 1px solid rgba(26,143,78,.15);
-    }
-    .hero-stat {
-      flex: 1;
-      padding: 0 24px;
-      text-align: center;
-    }
-    .hero-stat:not(:last-child) {
-      border-right: 1px solid rgba(26,143,78,.15);
-    }
-    .hero-stat strong {
-      display: block;
-      font-family: 'Lora', Georgia, serif;
-      font-size: 1.55rem;
-      font-weight: 700;
-      color: var(--dark);
-      line-height: 1;
-      margin-bottom: 4px;
-    }
-    .hero-stat span {
-      font-size: .73rem;
-      color: var(--gray-text);
-      line-height: 1.3;
-    }
-
-    .hero-inner {
-      position: relative;
-      z-index: 1;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 64px;
       align-items: center;
     }
 
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 9px;
-      background: linear-gradient(135deg, #ffffff 0%, #f0faf4 100%);
-      color: var(--green-dark);
-      font-size: .78rem;
-      font-weight: 700;
-      letter-spacing: .03em;
-      text-transform: uppercase;
-      padding: 9px 18px;
-      border-radius: 100px;
-      border: 1.5px solid var(--green-medium);
-      margin-bottom: 20px;
-      box-shadow: 0 2px 14px rgba(26,143,78,.14), inset 0 1px 0 rgba(255,255,255,.9);
-      position: relative;
-      overflow: hidden;
-    }
-    .hero-badge::before {
-      content: '';
+    /* Imagem de banner — bg completo */
+    .slide-bg {
       position: absolute;
       inset: 0;
-      border-radius: inherit;
-      background: linear-gradient(90deg, rgba(39,174,96,.08) 0%, transparent 60%);
-      pointer-events: none;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
     }
-    .hero-badge i { font-size: 1rem; color: var(--green-medium); }
-    .hero-badge-mobile { display: none; }
 
-    .hero-title {
+    /* Overlay removido — banner já tem fundo próprio */
+    .slide-overlay { display: none; }
+
+    /* Conteúdo de texto sobre o banner */
+    .slide-content {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 60px 48px 100px 80px;
+      max-width: 600px;
+      width: 100%;
+      margin-left: 0;
+    }
+
+    .slide-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: var(--green-light);
+      border: 1px solid var(--green-medium);
+      color: var(--green-dark);
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 100px;
+      margin-bottom: 22px;
+      width: fit-content;
+    }
+    .slide-tag i { font-size: .8rem; }
+
+    .slide-title {
       font-family: 'Lora', Georgia, serif;
-      font-size: clamp(2rem, 4vw, 2.9rem);
+      font-size: clamp(1.9rem, 3.2vw, 3rem);
       font-weight: 700;
       color: var(--dark);
-      line-height: 1.18;
-      margin-bottom: 20px;
+      line-height: 1.2;
+      margin-bottom: 16px;
     }
-    .hero-title .nowrap { white-space: nowrap; }
-    .hero-title .highlight {
-      color: var(--green-primary);
-      position: relative;
-    }
+    .slide-title .highlight { color: var(--green-primary); }
 
-    .hero-sub {
-      font-size: 1.1rem;
+    .slide-sub {
+      font-size: 1.05rem;
       color: var(--gray-text);
+      line-height: 1.68;
       margin-bottom: 36px;
-      max-width: 480px;
-      line-height: 1.7;
+      max-width: 420px;
     }
 
-    .hero-ctas {
+    .slide-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--whatsapp);
+      color: white;
+      font-size: 1rem;
+      font-weight: 700;
+      padding: 15px 28px;
+      border-radius: 100px;
+      width: fit-content;
+      box-shadow: 0 4px 24px rgba(37,211,102,.45);
+      transition: background .25s, transform .25s, box-shadow .25s;
+    }
+    .slide-cta:hover {
+      background: #1db954;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(37,211,102,.55);
+    }
+    .slide-cta i { font-size: 1.15rem; }
+
+    /* Contador (canto inferior direito) */
+    .slide-counter {
+      position: absolute;
+      bottom: 28px; right: 28px;
+      z-index: 3;
+      background: white;
+      border: 1px solid var(--gray-mid);
+      border-radius: 100px;
+      padding: 5px 14px;
+      font-size: .75rem;
+      font-weight: 700;
+      color: var(--dark);
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* Controles: setas + dots — sobre o hero */
+    .hero-controls {
+      position: absolute;
+      bottom: 36px;
+      left: 80px;
       display: flex;
       align-items: center;
       gap: 14px;
-      flex-wrap: nowrap;
-      margin-bottom: 14px;
+      z-index: 10;
     }
 
-    /* Imagem hero */
-    .hero-image {
-      position: relative;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
+    .hero-arrows { display: flex; gap: 8px; }
 
-    .hero-img-wrapper {
-      position: relative;
-      width: 100%;
-      max-width: 430px;
-    }
-
-    .hero-photo {
-      width: 100%;
-      aspect-ratio: 4/4.2;
-      border-radius: var(--radius-lg);
-      border: 1px solid var(--green-primary);
-      object-fit: cover;
-      object-position: center;
-      box-shadow: var(--shadow-lg);
-      transition: transform .35s ease, box-shadow .35s ease, filter .35s ease;
-    }
-
-    .hero-img-wrapper:hover .hero-photo {
-      transform: translateY(-6px) scale(1.025);
-      box-shadow: 0 22px 58px rgba(26,143,78,.26);
-      filter: saturate(1.05) contrast(1.03);
-    }
-
-    /* Card flutuante sobre a imagem */
-    .hero-float-card {
-      position: absolute;
-      bottom: -20px; left: -20px;
+    .hero-arrow {
+      width: 42px; height: 42px;
+      border-radius: 50%;
+      border: 1.5px solid var(--gray-mid);
       background: white;
-      border-radius: var(--radius);
-      padding: 14px 18px;
-      box-shadow: 0 8px 32px rgba(26,143,78,.18);
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      min-width: 190px;
-      z-index: 2;
-      border: 1px solid var(--green-light);
-    }
-    .hero-float-card-icon {
-      width: 38px; height: 38px;
-      background: linear-gradient(135deg, var(--green-primary), var(--green-dark));
-      border-radius: 10px;
+      color: var(--dark);
+      font-size: .82rem;
+      cursor: pointer;
       display: flex; align-items: center; justify-content: center;
-      color: white;
-      font-size: .95rem;
-      flex-shrink: 0;
+      transition: all .25s;
+      box-shadow: var(--shadow-sm);
     }
-    .hero-float-card strong { display: block; font-size: .9rem; color: var(--dark); font-weight: 700; }
-    .hero-float-card span { font-size: .72rem; color: var(--gray-text); }
+    .hero-arrow:hover {
+      background: var(--green-primary);
+      border-color: var(--green-primary);
+      color: white;
+      transform: scale(1.08);
+    }
+
+    .hero-dots {
+      display: flex;
+      gap: 7px;
+      align-items: center;
+    }
+    .hero-dot {
+      width: 8px; height: 8px;
+      border-radius: 100px;
+      background: var(--gray-mid);
+      border: none;
+      cursor: pointer;
+      transition: all .3s ease;
+      padding: 0;
+    }
+    .hero-dot.active {
+      width: 28px;
+      background: var(--green-primary);
+    }
+
+
 
     /* ======================================================
        DIFERENCIAIS
@@ -1565,9 +1541,8 @@
        RESPONSIVO
     ====================================================== */
     @media (max-width: 992px) {
-      .hero-inner { grid-template-columns: 1fr; gap: 48px; }
-      .hero-img-wrapper { max-width: 330px; margin: 0 auto; }
-      .hero-float-card { left: 0; bottom: -16px; }
+      .slide-content { padding: 48px 36px 90px 48px; }
+      .hero-controls { left: 48px; bottom: 24px; }
       .passos { grid-template-columns: repeat(2, 1fr); gap: 32px; }
       .passos::before { display: none; }
       .footer-grid { grid-template-columns: 1fr 1fr; }
@@ -1579,28 +1554,53 @@
       nav { display: none; }
       .header-actions > .btn-nav-whatsapp { display: none; }
       .hamburger { display: flex; }
-      #hero { padding: 96px 0 56px; }
-      .hero-inner { gap: 28px; }
-      .hero-badge-mobile {
-        display: inline-flex;
-        justify-self: center;
-        order: 1;
-        margin-bottom: 0;
-        max-width: calc(100vw - 20px);
-        gap: 6px;
-        padding: 7px 10px;
-        font-size: clamp(.58rem, 2.65vw, .68rem);
-        letter-spacing: .02em;
-        white-space: nowrap;
+      /* Hero mobile — overlay escuro ativo */
+      #hero { height: 88vh; min-height: 480px; }
+      .slide-overlay {
+        display: block;
+        background: linear-gradient(
+          to bottom,
+          rgba(10,30,15,.55) 0%,
+          rgba(10,30,15,.45) 60%,
+          rgba(10,30,15,.65) 100%
+        );
       }
-      .hero-badge-mobile i { font-size: .8rem; }
-      .hero-content { order: 3; }
-      .hero-content .hero-badge { display: none; }
-      .hero-image { order: 2; }
-      .hero-title { font-size: clamp(2.12rem, 9vw, 2.35rem); text-align: center; }
-      .hero-ctas { flex-direction: column; align-items: flex-start; }
-      .hero-ctas .btn-whatsapp,
-      .hero-ctas .btn-outline { width: 100%; justify-content: center; }
+      .slide-content {
+        padding: 36px 24px 90px 28px;
+        max-width: 100%;
+        margin-left: 0;
+        justify-content: flex-end;
+      }
+      /* Textos viram brancos por causa do overlay */
+      .slide-tag {
+        background: rgba(255,255,255,.15);
+        border-color: rgba(255,255,255,.3);
+        color: white;
+      }
+      .slide-title { color: white; font-size: clamp(1.55rem, 6.5vw, 2rem); text-shadow: 0 2px 10px rgba(0,0,0,.3); }
+      .slide-title .highlight { color: #6ee89a; }
+      .slide-sub { color: rgba(255,255,255,.88); font-size: .9rem; }
+      /* Setas e dots — estilo claro para fundo escuro */
+      .hero-controls { left: 24px; bottom: 22px; gap: 10px; }
+      .hero-arrow {
+        width: 36px; height: 36px;
+        background: rgba(255,255,255,.15);
+        border-color: rgba(255,255,255,.35);
+        color: white;
+        backdrop-filter: blur(6px);
+      }
+      .hero-arrow:hover { background: var(--whatsapp); border-color: var(--whatsapp); }
+      .hero-dot { background: rgba(255,255,255,.4); }
+      .hero-dot.active { background: white; }
+      /* Contador */
+      .slide-counter {
+        bottom: 20px; right: 16px;
+        font-size: .7rem;
+        background: rgba(255,255,255,.15);
+        border-color: rgba(255,255,255,.25);
+        color: white;
+        backdrop-filter: blur(6px);
+      }
       .como-cta .btn-whatsapp {
         max-width: calc(100vw - 48px);
         justify-content: center;
@@ -1610,14 +1610,6 @@
         text-align: center;
         line-height: 1.25;
       }
-      .hero-float-card {
-        bottom: -14px;
-        left: 10px;
-        min-width: 0;
-        padding: 9px 12px;
-        border-radius: 10px;
-      }
-      .hero-float-card strong { font-size: .78rem; }
       .passos { grid-template-columns: 1fr; }
       .depoimentos-marquee {
         overflow: hidden;
@@ -1738,83 +1730,111 @@
 
 
   <!-- ======================================================
-       HERO SECTION
+       HERO CAROUSEL
   ====================================================== -->
   <section id="hero" aria-label="Apresentação">
-    <canvas id="hero-canvas" aria-hidden="true"></canvas>
-    <div class="container">
-      <div class="hero-inner">
-        <div class="hero-badge hero-badge-mobile">
-          <i class="fas fa-shield-check" aria-hidden="true"></i>
-          Atendimento Home Care Particular em São Paulo
-        </div>
 
-        <!-- Conteúdo -->
-        <div class="hero-content fade-up">
-          <div class="hero-badge">
+    <!-- Track deslizante -->
+    <div class="hero-track" id="heroTrack" aria-live="polite">
+
+      <!-- ── Slide 1 ── -->
+      <div class="hero-slide" role="group" aria-label="Slide 1 de 3">
+        <!-- Banner de fundo — substitua por banner completo quando pronto -->
+        <picture>
+          <source media="(max-width: 768px)" srcset="bgmobile.jpg">
+          <img class="slide-bg" src="bgpc.jpg" alt="" aria-hidden="true" width="1920" height="900" loading="eager">
+        </picture>
+        <div class="slide-overlay" aria-hidden="true"></div>
+        <div class="slide-content">
+          <span class="slide-tag">
             <i class="fas fa-shield-check" aria-hidden="true"></i>
-            Atendimento Home Care Particular em São Paulo
-          </div>
-
-          <h1 class="hero-title">
-            Cuidado domiciliar<br>
-            <span class="nowrap">seguro e <span class="highlight">humanizado</span></span><br>
-            para quem você ama
+            Atendimento particular · São Paulo
+          </span>
+          <h1 class="slide-title">
+            Cuidado domiciliar <span class="highlight">seguro</span> e humanizado para quem você ama
           </h1>
-
-          <p class="hero-sub">
-            Atendimento Home Care particular com profissionais capacitados, suporte humanizado e cuidado personalizado no conforto do lar.
+          <p class="slide-sub">
+            Profissionais capacitados, suporte humanizado e cuidado personalizado no conforto do lar.
           </p>
-
-          <div class="hero-ctas">
-            <a href="#LINK_WHATSAPP#" class="btn-whatsapp" aria-label="Solicitar orçamento pelo WhatsApp">
-              <i class="fab fa-whatsapp" aria-hidden="true"></i>
-              Solicitar orçamento
-            </a>
-            <a href="#servicos" class="btn-outline">
-              <i class="fas fa-stethoscope" aria-hidden="true"></i>
-              Conhecer serviços
-            </a>
-          </div>
-
-          <div class="hero-stats" aria-label="Números da Home Care Ferreiras">
-            <div class="hero-stat">
-              <strong data-count="120" data-prefix="+">+120</strong>
-              <span>Famílias atendidas</span>
-            </div>
-            <div class="hero-stat">
-              <strong>24h</strong>
-              <span>Disponibilidade</span>
-            </div>
-            <div class="hero-stat">
-              <strong data-count="100" data-suffix="%">100%</strong>
-              <span>Particular</span>
-            </div>
-          </div>
+          <a href="#LINK_WHATSAPP#" class="slide-cta" aria-label="Solicitar orçamento pelo WhatsApp">
+            <i class="fab fa-whatsapp" aria-hidden="true"></i>
+            Solicitar orçamento
+          </a>
         </div>
+        <span class="slide-counter" aria-hidden="true">01 / 03</span>
+      </div>
 
-        <!-- Imagem -->
-        <div class="hero-image fade-up" style="transition-delay:.15s">
-          <div class="hero-img-wrapper">
-
-            <img class="hero-photo" src="mascote.jpg" alt="Mascote da Home Care Ferreiras" width="430" height="452">
-
-            <!-- Card flutuante inferior -->
-            <div class="hero-float-card" aria-hidden="true">
-              <div class="hero-float-card-icon">
-                <i class="fas fa-user-nurse"></i>
-              </div>
-              <div>
-                <strong>Dra. Mariana Ferreira</strong>
-                <span>Enfermeira responsável</span>
-              </div>
-            </div>
-
-          </div>
+      <!-- ── Slide 2 ── -->
+      <div class="hero-slide" role="group" aria-label="Slide 2 de 3" aria-hidden="true">
+        <picture>
+          <source media="(max-width: 768px)" srcset="bgmobile.jpg">
+          <img class="slide-bg" src="bgpc.jpg" alt="" aria-hidden="true" width="1920" height="900" loading="lazy">
+        </picture>
+        <div class="slide-overlay" aria-hidden="true"></div>
+        <div class="slide-content">
+          <span class="slide-tag">
+            <i class="fas fa-user-nurse" aria-hidden="true"></i>
+            Equipe qualificada disponível
+          </span>
+          <h1 class="slide-title">
+            Enfermagem domiciliar com <span class="highlight">profissionalismo</span> e cuidado real
+          </h1>
+          <p class="slide-sub">
+            Atendimento técnico e humanizado no conforto do lar, com acompanhamento próximo e seguro.
+          </p>
+          <a href="#LINK_WHATSAPP#" class="slide-cta" aria-label="Solicitar orçamento pelo WhatsApp">
+            <i class="fab fa-whatsapp" aria-hidden="true"></i>
+            Solicitar orçamento
+          </a>
         </div>
+        <span class="slide-counter" aria-hidden="true">02 / 03</span>
+      </div>
 
+      <!-- ── Slide 3 ── -->
+      <div class="hero-slide" role="group" aria-label="Slide 3 de 3" aria-hidden="true">
+        <picture>
+          <source media="(max-width: 768px)" srcset="bgmobile.jpg">
+          <img class="slide-bg" src="bgpc.jpg" alt="" aria-hidden="true" width="1920" height="900" loading="lazy">
+        </picture>
+        <div class="slide-overlay" aria-hidden="true"></div>
+        <div class="slide-content">
+          <span class="slide-tag">
+            <i class="fas fa-heart" aria-hidden="true"></i>
+            Cuidado humanizado
+          </span>
+          <h1 class="slide-title">
+            Acompanhamento <span class="highlight">contínuo</span> para sua família ter tranquilidade
+          </h1>
+          <p class="slide-sub">
+            Suporte com profissionais dedicados para o cuidado frequente e prolongado do seu familiar.
+          </p>
+          <a href="#LINK_WHATSAPP#" class="slide-cta" aria-label="Solicitar orçamento pelo WhatsApp">
+            <i class="fab fa-whatsapp" aria-hidden="true"></i>
+            Solicitar orçamento
+          </a>
+        </div>
+        <span class="slide-counter" aria-hidden="true">03 / 03</span>
+      </div>
+
+    </div><!-- /hero-track -->
+
+    <!-- Controles: setas + dots -->
+    <div class="hero-controls" aria-label="Controles do carrossel">
+      <div class="hero-arrows">
+        <button class="hero-arrow" id="heroPrev" aria-label="Slide anterior">
+          <i class="fas fa-chevron-left" aria-hidden="true"></i>
+        </button>
+        <button class="hero-arrow" id="heroNext" aria-label="Próximo slide">
+          <i class="fas fa-chevron-right" aria-hidden="true"></i>
+        </button>
+      </div>
+      <div class="hero-dots" role="tablist" aria-label="Slides">
+        <button class="hero-dot active" data-slide="0" role="tab" aria-selected="true"  aria-label="Slide 1"></button>
+        <button class="hero-dot"        data-slide="1" role="tab" aria-selected="false" aria-label="Slide 2"></button>
+        <button class="hero-dot"        data-slide="2" role="tab" aria-selected="false" aria-label="Slide 3"></button>
       </div>
     </div>
+
   </section>
 
   <!-- ======================================================
@@ -2842,99 +2862,59 @@
     }, { passive: true });
 
     /* -------------------------------------------------------
-       PARTÍCULAS NO HERO
+       HERO CAROUSEL
     ------------------------------------------------------- */
-    function initParticles() {
-      const canvas = document.getElementById('hero-canvas');
-      if (!canvas) return;
+    (function () {
+      const track   = document.getElementById('heroTrack');
+      const slides  = track.querySelectorAll('.hero-slide');
+      const dots    = document.querySelectorAll('.hero-dot');
+      const prevBtn = document.getElementById('heroPrev');
+      const nextBtn = document.getElementById('heroNext');
+      const TOTAL   = slides.length;
+      let current   = 0;
+      let timer;
 
-      const hero = document.getElementById('hero');
-      const ctx  = canvas.getContext('2d');
-      let particles = [];
-      let animId;
+      function goTo(n) {
+        current = (n + TOTAL) % TOTAL;
+        track.style.transform = `translateX(-${current * 100}%)`;
 
-      function resizeCanvas() {
-        canvas.width  = hero.offsetWidth  || window.innerWidth;
-        canvas.height = hero.offsetHeight || window.innerHeight;
-      }
-
-      function createParticles() {
-        particles = [];
-        const count = Math.floor(canvas.width / 14);
-        for (let i = 0; i < count; i++) {
-          particles.push({
-            x: Math.random() * canvas.width,
-            y: Math.random() * canvas.height,
-            r: Math.random() * 2.5 + 0.5,
-            dx: (Math.random() - 0.5) * 0.4,
-            dy: (Math.random() - 0.5) * 0.4,
-            o: Math.random() * 0.35 + 0.05
-          });
-        }
-      }
-
-      function drawParticles() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        particles.forEach(p => {
-          ctx.beginPath();
-          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(26,143,78,${p.o})`;
-          ctx.fill();
-          p.x += p.dx;
-          p.y += p.dy;
-          if (p.x < 0 || p.x > canvas.width)  p.dx *= -1;
-          if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
+        dots.forEach((d, i) => {
+          const active = i === current;
+          d.classList.toggle('active', active);
+          d.setAttribute('aria-selected', active);
         });
-        for (let i = 0; i < particles.length; i++) {
-          for (let j = i + 1; j < particles.length; j++) {
-            const dx   = particles[i].x - particles[j].x;
-            const dy   = particles[i].y - particles[j].y;
-            const dist = Math.sqrt(dx * dx + dy * dy);
-            if (dist < 90) {
-              ctx.beginPath();
-              ctx.moveTo(particles[i].x, particles[i].y);
-              ctx.lineTo(particles[j].x, particles[j].y);
-              ctx.strokeStyle = `rgba(26,143,78,${0.06 * (1 - dist / 90)})`;
-              ctx.lineWidth = 0.6;
-              ctx.stroke();
-            }
-          }
-        }
-        animId = requestAnimationFrame(drawParticles);
+
+        slides.forEach((s, i) => {
+          s.setAttribute('aria-hidden', i !== current);
+        });
       }
 
-      resizeCanvas();
-      createParticles();
-      drawParticles();
+      function next() { goTo(current + 1); }
+      function prev() { goTo(current - 1); }
 
-      window.addEventListener('resize', () => {
-        cancelAnimationFrame(animId);
-        resizeCanvas();
-        createParticles();
-        drawParticles();
+      function startTimer() {
+        clearInterval(timer);
+        timer = setInterval(next, 5000);
+      }
+
+      prevBtn.addEventListener('click', () => { prev(); startTimer(); });
+      nextBtn.addEventListener('click', () => { next(); startTimer(); });
+      dots.forEach(d => d.addEventListener('click', () => { goTo(+d.dataset.slide); startTimer(); }));
+
+      // Pausa no hover
+      track.addEventListener('mouseenter', () => clearInterval(timer));
+      track.addEventListener('mouseleave', startTimer);
+
+      // Suporte touch / swipe
+      let touchX = 0;
+      track.addEventListener('touchstart', e => { touchX = e.touches[0].clientX; }, { passive: true });
+      track.addEventListener('touchend',   e => {
+        const diff = touchX - e.changedTouches[0].clientX;
+        if (Math.abs(diff) > 48) { diff > 0 ? next() : prev(); startTimer(); }
       }, { passive: true });
-    }
 
-    // Garante que o layout está estável antes de medir o hero
-    if (document.readyState === 'complete') {
-      initParticles();
-    } else {
-      window.addEventListener('load', initParticles);
-    }
-
-    /* -------------------------------------------------------
-       PARALLAX SUAVE NO HERO
-    ------------------------------------------------------- */
-    const heroSection = document.getElementById('hero');
-    const heroImgCol  = document.querySelector('.hero-image');
-    if (heroImgCol && heroSection) {
-      window.addEventListener('scroll', () => {
-        const heroBottom = heroSection.getBoundingClientRect().bottom;
-        if (heroBottom < 0) return;
-        const y = window.scrollY * 0.1;
-        heroImgCol.style.transform = `translateY(${-y}px)`;
-      }, { passive: true });
-    }
+      startTimer();
+    })();
 
     /* -------------------------------------------------------
        ANIMAÇÕES DE ENTRADA (IntersectionObserver)
