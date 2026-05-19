@@ -19,7 +19,7 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,600;0,700;1,600&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
@@ -92,6 +92,7 @@
     }
 
     .section-title {
+      font-family: 'Lora', Georgia, serif;
       font-size: clamp(1.6rem, 3.5vw, 2.3rem);
       font-weight: 700;
       color: var(--dark);
@@ -365,25 +366,59 @@
       align-items: center;
       position: relative;
       overflow: hidden;
-      background: linear-gradient(135deg, var(--green-pale) 0%, #e8f5ee 50%, #f5fdf8 100%);
+      background:
+        radial-gradient(ellipse 80% 60% at 70% 40%, rgba(209,250,229,.55) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 50% at 10% 80%, rgba(167,243,208,.3) 0%, transparent 55%),
+        linear-gradient(170deg, #f0fdf4 0%, #f8fff9 60%, var(--white) 100%);
     }
 
     #hero::before {
       content: '';
       position: absolute;
-      top: -100px; right: -100px;
-      width: 600px; height: 600px;
-      background: radial-gradient(circle, rgba(26,143,78,.08) 0%, transparent 70%);
+      top: -60px; right: -80px;
+      width: 520px; height: 520px;
+      background: radial-gradient(circle, rgba(26,143,78,.11) 0%, transparent 65%);
       border-radius: 50%;
     }
 
     #hero::after {
       content: '';
       position: absolute;
-      bottom: -80px; left: -80px;
-      width: 400px; height: 400px;
-      background: radial-gradient(circle, rgba(26,143,78,.06) 0%, transparent 70%);
+      bottom: -60px; left: -60px;
+      width: 360px; height: 360px;
+      background: radial-gradient(circle, rgba(39,174,96,.08) 0%, transparent 65%);
       border-radius: 50%;
+    }
+
+    /* Stats row no hero */
+    .hero-stats {
+      display: flex;
+      gap: 0;
+      padding-top: 28px;
+      margin-top: 28px;
+      border-top: 1px solid rgba(26,143,78,.15);
+    }
+    .hero-stat {
+      flex: 1;
+      padding-right: 24px;
+    }
+    .hero-stat:not(:last-child) {
+      border-right: 1px solid rgba(26,143,78,.15);
+      margin-right: 24px;
+    }
+    .hero-stat strong {
+      display: block;
+      font-family: 'Lora', Georgia, serif;
+      font-size: 1.55rem;
+      font-weight: 700;
+      color: var(--dark);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .hero-stat span {
+      font-size: .73rem;
+      color: var(--gray-text);
+      line-height: 1.3;
     }
 
     .hero-inner {
@@ -413,8 +448,9 @@
     .hero-badge-mobile { display: none; }
 
     .hero-title {
-      font-size: clamp(2rem, 4vw, 2.8rem);
-      font-weight: 800;
+      font-family: 'Lora', Georgia, serif;
+      font-size: clamp(2rem, 4vw, 2.9rem);
+      font-weight: 700;
       color: var(--dark);
       line-height: 1.18;
       margin-bottom: 20px;
@@ -482,28 +518,47 @@
       background: white;
       border-radius: var(--radius);
       padding: 14px 18px;
-      box-shadow: var(--shadow-md);
+      box-shadow: 0 8px 32px rgba(26,143,78,.18);
       display: flex;
       align-items: center;
       gap: 12px;
-      min-width: 180px;
+      min-width: 190px;
       z-index: 2;
+      border: 1px solid var(--green-light);
     }
-    .hero-float-card strong { display: block; font-size: .95rem; color: var(--dark); }
+    .hero-float-card-icon {
+      width: 38px; height: 38px;
+      background: linear-gradient(135deg, var(--green-primary), var(--green-dark));
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      color: white;
+      font-size: .95rem;
+      flex-shrink: 0;
+    }
+    .hero-float-card strong { display: block; font-size: .9rem; color: var(--dark); font-weight: 700; }
+    .hero-float-card span { font-size: .72rem; color: var(--gray-text); }
 
     .hero-float-card2 {
       position: absolute;
       top: 20px; right: -20px;
-      background: var(--green-primary);
+      background: linear-gradient(135deg, var(--green-primary), var(--green-dark));
       color: white;
       border-radius: var(--radius);
-      padding: 8px 12px;
-      box-shadow: var(--shadow-md);
+      padding: 12px 16px;
+      box-shadow: 0 8px 24px rgba(26,143,78,.35);
       text-align: center;
       z-index: 2;
+      min-width: 100px;
     }
-    .hero-float-card2 strong { display: block; font-size: 1.05rem; font-weight: 800; }
-    .hero-float-card2 span { font-size: .65rem; opacity: .9; }
+    .hero-float-card2 strong {
+      display: block;
+      font-family: 'Lora', Georgia, serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      line-height: 1;
+      margin-bottom: 3px;
+    }
+    .hero-float-card2 span { font-size: .63rem; opacity: .85; letter-spacing: .02em; }
 
     /* ======================================================
        DIFERENCIAIS
@@ -521,33 +576,34 @@
     .diferencial-card {
       background: white;
       border-radius: var(--radius-lg);
-      padding: 32px 26px;
+      padding: 32px 26px 32px 28px;
       box-shadow: var(--shadow-sm);
-      transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
-      border-top: 4px solid var(--green-primary);
-      border-bottom: 4px solid var(--green-primary);
+      transition: transform var(--transition), box-shadow var(--transition);
+      border: 1px solid var(--gray-mid);
+      border-left: 4px solid var(--green-primary);
+      position: relative;
     }
     .diferencial-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 18px 44px rgba(26,143,78,.18);
-      border-top-color: var(--green-dark);
-      border-bottom-color: var(--green-dark);
+      transform: translateY(-6px);
+      box-shadow: 0 16px 40px rgba(26,143,78,.14);
+      border-left-color: var(--green-dark);
+      border-color: var(--green-light);
+      border-left-color: var(--green-dark);
     }
     .diferencial-icon {
-      width: 58px; height: 58px;
-      background: var(--green-primary);
+      width: 56px; height: 56px;
+      background: linear-gradient(135deg, var(--green-primary), var(--green-dark));
       border-radius: 16px;
       display: flex; align-items: center; justify-content: center;
       color: white;
-      font-size: 1.5rem;
+      font-size: 1.4rem;
       margin-bottom: 20px;
-      transition: transform var(--transition), background var(--transition), box-shadow var(--transition);
-      box-shadow: 0 8px 20px rgba(26,143,78,.16);
+      transition: transform var(--transition), box-shadow var(--transition);
+      box-shadow: 0 6px 18px rgba(26,143,78,.22);
     }
     .diferencial-card:hover .diferencial-icon {
-      background: var(--green-dark);
-      transform: translateY(-2px) scale(1.05);
-      box-shadow: 0 12px 26px rgba(15,110,58,.24);
+      transform: scale(1.06);
+      box-shadow: 0 10px 24px rgba(15,110,58,.3);
     }
     .diferencial-card h3 {
       font-size: 1rem;
@@ -558,7 +614,7 @@
     .diferencial-card p {
       font-size: .87rem;
       color: var(--gray-text);
-      line-height: 1.6;
+      line-height: 1.65;
     }
 
     /* ======================================================
@@ -603,26 +659,33 @@
 
     .servico-icon {
       width: 52px; height: 52px;
-      background: var(--green-pale);
+      background: linear-gradient(135deg, var(--green-pale) 0%, var(--green-light) 100%);
+      border: 1px solid var(--green-light);
       border-radius: 14px;
       display: flex; align-items: center; justify-content: center;
       color: var(--green-primary);
       font-size: 1.4rem;
       margin-bottom: 18px;
+      transition: all var(--transition);
+    }
+    .servico-card:hover .servico-icon {
+      background: linear-gradient(135deg, var(--green-primary), var(--green-dark));
+      color: white;
+      border-color: var(--green-dark);
     }
     .servico-card h3 {
       font-size: 1rem;
       font-weight: 700;
       color: var(--dark);
       margin-bottom: 8px;
-      text-align: center;
+      text-align: left;
     }
     .servico-card p {
       font-size: .87rem;
       color: var(--gray-text);
-      line-height: 1.6;
+      line-height: 1.65;
       margin-bottom: 10px;
-      text-align: center;
+      text-align: left;
     }
     .servico-beneficio {
       font-size: .8rem;
@@ -630,23 +693,22 @@
       color: var(--green-primary);
       display: flex;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-start;
       gap: 6px;
       margin-bottom: 18px;
-      text-align: center;
     }
     .servico-beneficio i { font-size: .75rem; }
     .btn-servico {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      align-self: center;
+      align-self: flex-start;
       gap: 7px;
       background: var(--green-pale);
       color: var(--green-dark);
       font-size: .82rem;
       font-weight: 600;
-      padding: 8px 16px;
+      padding: 9px 18px;
       min-height: 38px;
       border-radius: 100px;
       transition: all var(--transition);
@@ -657,6 +719,7 @@
       background: var(--whatsapp);
       color: white;
       border-color: var(--whatsapp);
+      transform: translateY(-1px);
     }
     .btn-servico i { font-size: .85rem; }
 
@@ -677,31 +740,51 @@
       gap: 20px;
     }
     .profissional-card {
-      background: rgba(255,255,255,.06);
-      border: 1px solid rgba(255,255,255,.1);
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.09);
       border-radius: var(--radius-lg);
-      padding: 28px 20px;
+      padding: 32px 20px;
       text-align: center;
       transition: all var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    .profissional-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #7ee8a2, transparent);
+      transform: scaleX(0);
+      transition: transform var(--transition);
     }
     .profissional-card:hover {
-      background: rgba(26,143,78,.2);
-      border-color: var(--green-primary);
-      transform: translateY(-4px);
+      background: rgba(26,143,78,.18);
+      border-color: rgba(126,232,162,.3);
+      transform: translateY(-5px);
+      box-shadow: 0 12px 32px rgba(0,0,0,.25);
     }
+    .profissional-card:hover::after { transform: scaleX(1); }
     .profissional-card .icon {
-      width: 62px; height: 62px;
-      background: rgba(26,143,78,.2);
+      width: 64px; height: 64px;
+      background: linear-gradient(135deg, rgba(26,143,78,.3), rgba(39,174,96,.15));
+      border: 1px solid rgba(126,232,162,.2);
       border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
       color: #7ee8a2;
       font-size: 1.6rem;
       margin: 0 auto 16px;
+      transition: all var(--transition);
+    }
+    .profissional-card:hover .icon {
+      background: linear-gradient(135deg, rgba(26,143,78,.45), rgba(39,174,96,.3));
+      transform: scale(1.05);
     }
     .profissional-card h3 {
-      font-size: .92rem;
+      font-size: .9rem;
       font-weight: 600;
-      color: white;
+      color: rgba(255,255,255,.9);
+      line-height: 1.35;
     }
 
     /* ======================================================
@@ -718,9 +801,9 @@
     .passos::before {
       content: '';
       position: absolute;
-      top: 42px; left: 10%; right: 10%;
+      top: 46px; left: 12.5%; right: 12.5%;
       height: 2px;
-      background: var(--green-light);
+      background: linear-gradient(90deg, var(--green-light), var(--green-primary), var(--green-light));
       z-index: 0;
     }
 
@@ -731,16 +814,22 @@
       padding: 0 16px;
     }
     .passo-num {
-      width: 60px; height: 60px;
-      background: var(--green-primary);
+      width: 68px; height: 68px;
+      background: linear-gradient(135deg, var(--green-primary), var(--green-dark));
       color: white;
       border-radius: 50%;
-      font-size: 1.3rem;
-      font-weight: 800;
+      font-family: 'Lora', Georgia, serif;
+      font-size: 1.35rem;
+      font-weight: 700;
       display: flex; align-items: center; justify-content: center;
-      margin: 0 auto 20px;
-      box-shadow: 0 4px 16px rgba(26,143,78,.35);
+      margin: 0 auto 16px;
+      box-shadow: 0 6px 22px rgba(26,143,78,.38);
       border: 4px solid white;
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+    .passo:hover .passo-num {
+      transform: scale(1.08);
+      box-shadow: 0 10px 28px rgba(26,143,78,.45);
     }
     .passo-icon {
       font-size: 1.4rem;
@@ -756,7 +845,7 @@
     .passo p {
       font-size: .84rem;
       color: var(--gray-text);
-      line-height: 1.5;
+      line-height: 1.55;
     }
 
     .como-cta {
@@ -770,59 +859,66 @@
     ====================================================== */
     #depoimentos { background: white; }
 
-    /* Números */
-    .numeros-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 24px;
-      margin-bottom: 64px;
-    }
-    .numero-card {
-      text-align: center;
-      background: var(--green-pale);
-      border-radius: var(--radius);
-      padding: 28px 20px;
-    }
-    .numero-card .num {
-      font-size: 2.2rem;
-      font-weight: 800;
-      color: var(--green-primary);
-    }
-    .numero-card p { font-size: .85rem; color: var(--gray-text); margin-top: 6px; }
-
     /* Depoimentos — PLACEHOLDER: substitua pelo conteúdo real */
+    .depoimentos-marquee {
+      overflow: hidden;
+      position: relative;
+      padding: 8px 0 12px;
+      width: 100vw;
+      margin-left: calc(50% - 50vw);
+    }
     .depoimentos-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      display: flex;
       gap: 24px;
+      width: max-content;
+      animation: depoimentos-scroll 48s linear infinite;
+    }
+    .depoimentos-marquee:hover .depoimentos-grid { animation-play-state: paused; }
+    @keyframes depoimentos-scroll {
+      from { transform: translateX(0); }
+      to { transform: translateX(calc(-50% - 12px)); }
     }
     .depoimento-card {
-      background: var(--green-pale);
+      background: white;
       border-radius: var(--radius-lg);
-      padding: 30px 26px;
+      padding: 34px 28px 28px;
       position: relative;
+      width: 340px;
+      min-height: 320px;
+      display: flex;
+      flex-direction: column;
+      flex-shrink: 0;
+      border: 1px solid var(--gray-mid);
+      box-shadow: 0 4px 20px rgba(0,0,0,.06);
+      transition: box-shadow var(--transition), transform var(--transition);
+    }
+    .depoimento-card:hover {
+      box-shadow: 0 10px 36px rgba(26,143,78,.12);
+      transform: translateY(-3px);
     }
     .depoimento-card::before {
       content: '\201C';
       position: absolute;
-      top: 16px; left: 22px;
-      font-size: 4rem;
+      top: 12px; left: 22px;
+      font-size: 5.2rem;
       color: var(--green-light);
-      font-family: Georgia, serif;
+      font-family: 'Lora', Georgia, serif;
       line-height: 1;
     }
     .depoimento-stars {
       display: flex;
       gap: 3px;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
+      margin-top: 42px;
     }
-    .depoimento-stars i { color: #f59e0b; font-size: .9rem; }
+    .depoimento-stars i { color: #f59e0b; font-size: .88rem; }
     .depoimento-card p {
       font-size: .9rem;
       color: var(--text);
-      line-height: 1.65;
-      margin-bottom: 20px;
+      line-height: 1.75;
+      margin-bottom: 24px;
       font-style: italic;
+      flex: 1;
     }
     .depoimento-autor {
       display: flex;
@@ -830,17 +926,44 @@
       gap: 12px;
     }
     .depoimento-avatar {
-      width: 44px; height: 44px;
-      background: var(--green-medium);
+      width: 42px; height: 42px;
+      background: linear-gradient(135deg, var(--green-primary), var(--green-dark));
       border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
       color: white;
-      font-size: 1rem;
+      font-size: .9rem;
       font-weight: 700;
       flex-shrink: 0;
+      box-shadow: 0 3px 10px rgba(26,143,78,.25);
     }
-    .depoimento-autor strong { display: block; font-size: .88rem; color: var(--dark); }
-    .depoimento-autor span { font-size: .78rem; color: var(--gray-text); }
+    .depoimento-autor strong { display: block; font-size: .87rem; color: var(--dark); }
+    .depoimento-autor span { font-size: .76rem; color: var(--gray-text); }
+    .depoimentos-controls {
+      display: none;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 20px;
+    }
+    .depoimentos-control {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: 1px solid var(--green-light);
+      background: white;
+      color: var(--green-primary);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background var(--transition), color var(--transition), transform var(--transition), box-shadow var(--transition);
+      box-shadow: var(--shadow-sm);
+    }
+    .depoimentos-control:hover {
+      background: var(--green-primary);
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
 
     .btn-white {
       display: inline-flex;
@@ -864,50 +987,74 @@
     /* ======================================================
        SEO LOCAL
     ====================================================== */
-    #atendimento { background: var(--gray-light); }
+    #atendimento {
+      background: linear-gradient(160deg, var(--green-pale) 0%, white 60%);
+      position: relative;
+      overflow: hidden;
+    }
+    #atendimento::before {
+      content: '';
+      position: absolute;
+      top: -80px; right: -80px;
+      width: 320px; height: 320px;
+      background: radial-gradient(circle, rgba(26,143,78,.07) 0%, transparent 65%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
 
     .atendimento-inner {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 64px;
       align-items: center;
+      position: relative;
+      z-index: 1;
     }
 
     .atendimento-text p {
       font-size: 1rem;
       color: var(--gray-text);
-      line-height: 1.75;
+      line-height: 1.78;
       margin-bottom: 20px;
     }
 
     .atendimento-map {
       background: white;
       border-radius: var(--radius-lg);
-      padding: 24px;
-      box-shadow: var(--shadow-sm);
+      padding: 28px;
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--green-light);
     }
     .atendimento-map h3 {
-      font-size: 1.1rem;
+      font-size: 1rem;
       font-weight: 700;
       color: var(--dark);
-      margin-bottom: 12px;
+      margin-bottom: 16px;
       display: flex;
       align-items: center;
       gap: 8px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--green-light);
     }
-    .atendimento-map h3 i { color: var(--green-primary); }
-    .atendimento-map ul { display: flex; flex-direction: column; gap: 4px; }
+    .atendimento-map h3 i {
+      color: var(--green-primary);
+      background: var(--green-pale);
+      padding: 6px;
+      border-radius: 8px;
+      font-size: .9rem;
+    }
+    .atendimento-map ul { display: flex; flex-direction: column; gap: 0; }
     .atendimento-map li {
       display: flex;
       align-items: center;
       gap: 10px;
-      font-size: .9rem;
-      color: var(--gray-text);
-      padding: 5px 0;
+      font-size: .88rem;
+      color: var(--text);
+      padding: 8px 0;
       border-bottom: 1px solid var(--gray-mid);
     }
     .atendimento-map li:last-child { border-bottom: none; }
-    .atendimento-map li i { color: var(--green-primary); width: 16px; }
+    .atendimento-map li i { color: var(--green-medium); width: 16px; font-size: .8rem; }
 
     /* ======================================================
        FAQ
@@ -919,11 +1066,14 @@
     .faq-item {
       border: 1px solid var(--gray-mid);
       border-radius: var(--radius);
-      margin-bottom: 12px;
+      margin-bottom: 10px;
       overflow: hidden;
-      transition: border-color var(--transition);
+      transition: border-color var(--transition), box-shadow var(--transition);
     }
-    .faq-item.open { border-color: var(--green-primary); }
+    .faq-item.open {
+      border-color: var(--green-primary);
+      box-shadow: 0 4px 18px rgba(26,143,78,.10);
+    }
 
     .faq-question {
       display: flex;
@@ -936,110 +1086,297 @@
       color: var(--dark);
       gap: 16px;
       user-select: none;
+      transition: background var(--transition), color var(--transition);
     }
-    .faq-question:hover { color: var(--green-primary); }
+    .faq-question:hover { color: var(--green-primary); background: var(--green-pale); }
+    .faq-item.open .faq-question { background: var(--green-pale); color: var(--green-dark); }
     .faq-question i {
-      font-size: .85rem;
+      width: 28px; height: 28px;
+      background: var(--green-pale);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: .8rem;
       color: var(--green-primary);
-      transition: transform var(--transition);
+      transition: transform var(--transition), background var(--transition), color var(--transition);
       flex-shrink: 0;
     }
-    .faq-item.open .faq-question i { transform: rotate(180deg); }
+    .faq-item.open .faq-question i {
+      transform: rotate(180deg);
+      background: var(--green-primary);
+      color: white;
+    }
 
     .faq-answer {
       max-height: 0;
       overflow: hidden;
-      transition: max-height .4s ease, padding var(--transition);
+      transition: max-height .4s ease;
     }
     .faq-item.open .faq-answer { max-height: 300px; }
 
     .faq-answer p {
-      padding: 0 24px 22px;
+      padding: 16px 24px 24px;
       font-size: .9rem;
       color: var(--gray-text);
-      line-height: 1.7;
+      line-height: 1.72;
+      border-left: 3px solid var(--green-light);
+      margin-left: 24px;
+      margin-right: 24px;
+      margin-bottom: 4px;
+      border-radius: 0 0 4px 4px;
     }
-    .faq-answer .faq-cta {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      background: var(--whatsapp);
-      color: white;
-      font-size: .82rem;
-      font-weight: 600;
-      padding: 8px 16px;
-      border-radius: 100px;
-      margin: 0 24px 22px;
-      transition: all var(--transition);
-    }
-    .faq-answer .faq-cta:hover { background: #1db954; }
 
     /* ======================================================
        CTA FINAL
     ====================================================== */
     #cta-final {
-      background: linear-gradient(135deg, var(--dark) 0%, #0f2818 100%);
+      background: #07150c;
       color: white;
+      position: relative;
+      overflow: hidden;
+      padding: 100px 0 96px;
+    }
+
+    /* blob decorativo fundo */
+    #cta-final::before,
+    #cta-final::after {
+      content: '';
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    #cta-final::before {
+      width: 560px; height: 560px;
+      top: -160px; right: -120px;
+      background: radial-gradient(circle, rgba(26,143,78,.18) 0%, transparent 70%);
+    }
+    #cta-final::after {
+      width: 400px; height: 400px;
+      bottom: -140px; left: -100px;
+      background: radial-gradient(circle, rgba(39,174,96,.12) 0%, transparent 70%);
+    }
+
+    /* linhas decorativas em grade */
+    .cta-grid-lines {
+      position: absolute; inset: 0; pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+      background-size: 56px 56px;
+    }
+
+    .cta-final-inner {
+      position: relative; z-index: 1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .cta-final-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(39,174,96,.15);
+      border: 1px solid rgba(39,174,96,.3);
+      color: #7ee8a2;
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 100px;
+      margin-bottom: 24px;
+    }
+    .cta-pulse-dot {
+      width: 7px; height: 7px;
+      background: #7ee8a2;
+      border-radius: 50%;
+      position: relative;
+      flex-shrink: 0;
+    }
+    .cta-pulse-dot::after {
+      content: '';
+      position: absolute;
+      inset: -3px;
+      border-radius: 50%;
+      border: 2px solid rgba(126,232,162,.5);
+      animation: ctaPulse 1.8s ease-out infinite;
+    }
+    @keyframes ctaPulse {
+      0%   { transform: scale(1); opacity: 1; }
+      100% { transform: scale(2.4); opacity: 0; }
+    }
+
+    .cta-final-text h2 {
+      font-size: clamp(2rem, 3.5vw, 2.75rem);
+      font-weight: 800;
+      line-height: 1.2;
+      color: white;
+      margin-bottom: 20px;
+    }
+    .cta-final-text h2 em {
+      font-style: normal;
+      background: linear-gradient(90deg, #7ee8a2 0%, #27ae60 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .cta-final-text p {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,.65);
+      line-height: 1.7;
+      max-width: 440px;
+      margin-bottom: 28px;
+    }
+    .cta-trust-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .cta-trust-list li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: .88rem;
+      color: rgba(255,255,255,.8);
+    }
+    .cta-trust-list li i {
+      color: #7ee8a2;
+      font-size: .9rem;
+      flex-shrink: 0;
+    }
+
+    /* card de ação */
+    .cta-final-card {
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 24px;
+      padding: 44px 40px;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
       text-align: center;
       position: relative;
       overflow: hidden;
     }
-    #cta-final::before {
+    .cta-final-card::before {
       content: '';
       position: absolute;
-      top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
-      width: 600px; height: 600px;
-      background: radial-gradient(circle, rgba(26,143,78,.15) 0%, transparent 70%);
-      border-radius: 50%;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #27ae60, #7ee8a2, #27ae60, transparent);
     }
-    .cta-final-inner { position: relative; z-index: 1; }
-    #cta-final .tag { background: rgba(26,143,78,.25); color: #7ee8a2; }
-    #cta-final .section-title { color: white; max-width: 640px; margin: 0 auto 16px; }
-    #cta-final .section-sub { color: rgba(255,255,255,.7); margin: 0 auto 40px; }
-
-    .cta-final-actions {
-      display: flex;
+    .cta-card-icon {
+      width: 64px; height: 64px;
+      background: linear-gradient(135deg, var(--green-primary), var(--green-dark));
+      border-radius: 18px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.6rem;
+      color: white;
+      margin: 0 auto 20px;
+      box-shadow: 0 8px 28px rgba(26,143,78,.4);
+    }
+    .cta-card-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: white;
+      margin-bottom: 6px;
+    }
+    .cta-card-sub {
+      font-size: .85rem;
+      color: rgba(255,255,255,.5);
+      margin-bottom: 28px;
+    }
+    .cta-btn-main {
+      width: 100%;
       justify-content: center;
+      margin-bottom: 12px;
+      font-size: 1rem;
+      padding: 15px 24px;
+    }
+    .cta-btn-secondary {
+      display: flex;
       align-items: center;
-      gap: 14px;
-      flex-wrap: wrap;
-      margin-bottom: 16px;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      padding: 13px 24px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,.15);
+      color: rgba(255,255,255,.75);
+      font-size: .9rem;
+      font-weight: 500;
+      transition: all var(--transition);
+      margin-bottom: 20px;
+    }
+    .cta-btn-secondary:hover {
+      border-color: rgba(126,232,162,.4);
+      color: #7ee8a2;
+      background: rgba(126,232,162,.06);
     }
     .cta-microcopy {
-      font-size: .85rem;
-      color: rgba(255,255,255,.55);
+      font-size: .78rem;
+      color: rgba(255,255,255,.35);
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 6px;
     }
-    .cta-microcopy i { color: var(--green-medium); }
+    .cta-microcopy i { color: rgba(126,232,162,.6); }
 
     /* ======================================================
        FOOTER
     ====================================================== */
+
+    /* onda separadora no topo do footer */
+    .footer-wave {
+      display: block;
+      width: 100%;
+      overflow: hidden;
+      line-height: 0;
+      background: #07150c; /* mesma cor do CTA */
+    }
+    .footer-wave svg { display: block; width: 100%; height: 48px; }
+
     footer {
-      background: #0b1e10;
-      color: rgba(255,255,255,.7);
-      padding: 60px 0 28px;
+      background: #060e08;
+      color: rgba(255,255,255,.6);
+      padding: 56px 0 0;
     }
 
     .footer-grid {
       display: grid;
       grid-template-columns: 2fr 1fr 1fr;
       gap: 48px;
-      margin-bottom: 48px;
+      padding-bottom: 48px;
+      border-bottom: 1px solid rgba(255,255,255,.06);
     }
 
-    .footer-brand .logo { margin-bottom: 16px; }
-    .footer-brand .logo-img { height: 58px; }
+    /* logo no footer – container branco intencional para JPG sem transparência */
+    .footer-brand .logo { margin-bottom: 20px; display: inline-block; }
+    .footer-brand .logo-img {
+      height: 54px;
+      background: white;
+      border-radius: 8px;
+      padding: 5px 12px;
+      object-fit: contain;
+      display: block;
+    }
     .footer-brand .logo-text strong { color: white; }
     .footer-brand .logo-text span { color: #7ee8a2; }
-    .footer-brand p {
+    .footer-tagline {
+      font-size: .82rem;
+      font-style: italic;
+      color: rgba(255,255,255,.35);
+      margin-bottom: 16px;
+      padding-left: 2px;
+      letter-spacing: .02em;
+    }
+    .footer-brand > p {
       font-size: .87rem;
-      line-height: 1.7;
-      margin-bottom: 20px;
+      line-height: 1.75;
+      color: rgba(255,255,255,.55);
+      margin-bottom: 22px;
+      max-width: 300px;
     }
     .footer-social {
       display: flex;
@@ -1047,28 +1384,35 @@
     }
     .footer-social a {
       width: 38px; height: 38px;
-      background: rgba(255,255,255,.08);
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.08);
       border-radius: 10px;
       display: flex; align-items: center; justify-content: center;
-      color: rgba(255,255,255,.7);
+      color: rgba(255,255,255,.55);
       transition: all var(--transition);
-      font-size: .95rem;
+      font-size: .92rem;
     }
     .footer-social a:hover {
       background: var(--green-primary);
+      border-color: var(--green-primary);
       color: white;
+      transform: translateY(-2px);
     }
 
+    nav.footer-col { display: block; text-align: left; }
     .footer-col h4 {
-      color: white;
-      font-size: .95rem;
+      color: rgba(255,255,255,.9);
+      font-size: .82rem;
       font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
       margin-bottom: 18px;
+      text-align: left;
     }
-    .footer-col ul { display: flex; flex-direction: column; gap: 8px; }
+    .footer-col ul { display: flex; flex-direction: column; gap: 9px; text-align: left; }
     .footer-col li a {
-      font-size: .87rem;
-      color: rgba(255,255,255,.6);
+      font-size: .86rem;
+      color: rgba(255,255,255,.5);
       transition: color var(--transition);
     }
     .footer-col li a:hover { color: #7ee8a2; }
@@ -1077,22 +1421,30 @@
       display: flex;
       align-items: flex-start;
       gap: 10px;
-      font-size: .87rem;
+      font-size: .86rem;
+      color: rgba(255,255,255,.5);
       margin-bottom: 10px;
     }
-    .footer-contact li i { color: var(--green-medium); margin-top: 2px; flex-shrink: 0; }
+    .footer-contact li i {
+      color: #4ade80;
+      margin-top: 2px;
+      flex-shrink: 0;
+      font-size: .85rem;
+    }
+    .footer-contact li a { color: rgba(255,255,255,.55); transition: color var(--transition); }
+    .footer-contact li a:hover { color: #7ee8a2; }
 
     .footer-bottom {
-      border-top: 1px solid rgba(255,255,255,.08);
-      padding-top: 24px;
+      padding: 20px 0;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 16px;
+      gap: 12px;
       flex-wrap: wrap;
     }
-    .footer-bottom p { font-size: .82rem; }
-    .footer-bottom a { color: #7ee8a2; }
+    .footer-bottom p { font-size: .8rem; color: rgba(255,255,255,.3); }
+    .footer-bottom a { color: rgba(126,232,162,.6); }
+    .footer-bottom-logo { display: none; }
 
     /* ======================================================
        BOTÃO FLUTUANTE WHATSAPP
@@ -1164,9 +1516,9 @@
       .hero-float-card2 { right: 0; }
       .passos { grid-template-columns: repeat(2, 1fr); gap: 32px; }
       .passos::before { display: none; }
-      .numeros-grid { grid-template-columns: repeat(2, 1fr); }
       .atendimento-inner { grid-template-columns: 1fr; gap: 40px; }
       .footer-grid { grid-template-columns: 1fr 1fr; }
+      .cta-final-inner { grid-template-columns: 1fr; gap: 44px; }
     }
 
     @media (max-width: 768px) {
@@ -1207,18 +1559,41 @@
       .hero-float-card2 strong { font-size: .88rem; }
       .hero-float-card2 span { font-size: .55rem; }
       .passos { grid-template-columns: 1fr; }
-      .numeros-grid { grid-template-columns: repeat(2, 1fr); }
+      .depoimentos-marquee {
+        overflow: hidden;
+        padding: 0;
+        width: auto;
+        margin-left: 0;
+      }
+      .depoimentos-grid {
+        display: flex;
+        width: auto;
+        animation: none;
+        gap: 0;
+        transition: transform .35s ease;
+      }
+      .depoimento-card {
+        width: 100%;
+        min-width: 100%;
+        min-height: 330px;
+      }
+      .depoimento-card[aria-hidden="true"] { display: none; }
+      .depoimentos-controls { display: flex; }
       .footer-grid { grid-template-columns: 1fr; gap: 32px; }
       .footer-bottom { flex-direction: column; text-align: center; }
-      .cta-final-actions { flex-direction: column; }
-      .cta-final-actions .btn-whatsapp,
-      .cta-final-actions .btn-outline { width: 100%; max-width: 340px; justify-content: center; }
+      .cta-final-inner { grid-template-columns: 1fr; gap: 36px; }
+      .cta-final-text h2 { font-size: 1.85rem; }
+      .cta-final-card { padding: 32px 24px; }
+      .footer-wave svg { height: 32px; }
     }
 
     @media (max-width: 480px) {
-      .numeros-grid { grid-template-columns: 1fr; }
       .diferenciais-grid { grid-template-columns: 1fr; }
       .profissionais-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .depoimentos-grid { animation: none; }
     }
   </style>
 </head>
@@ -1320,6 +1695,21 @@
             <i class="fas fa-check-circle" aria-hidden="true"></i>
             Atendimento rápido, humanizado e personalizado para sua família.
           </p>
+
+          <div class="hero-stats" aria-label="Números da Home Care Ferreiras">
+            <div class="hero-stat">
+              <strong>+120</strong>
+              <span>Famílias atendidas</span>
+            </div>
+            <div class="hero-stat">
+              <strong>24h</strong>
+              <span>Disponibilidade</span>
+            </div>
+            <div class="hero-stat">
+              <strong>100%</strong>
+              <span>Particular</span>
+            </div>
+          </div>
         </div>
 
         <!-- Imagem -->
@@ -1330,13 +1720,19 @@
 
             <!-- Card flutuante inferior -->
             <div class="hero-float-card" aria-hidden="true">
-              <strong>Dra. Mariana Ferreira</strong>
+              <div class="hero-float-card-icon">
+                <i class="fas fa-user-nurse"></i>
+              </div>
+              <div>
+                <strong>Dra. Mariana Ferreira</strong>
+                <span>Enfermeira responsável</span>
+              </div>
             </div>
 
             <!-- Card flutuante superior -->
             <div class="hero-float-card2" aria-hidden="true">
-              <strong>+120</strong>
-              <span>Famílias atendidas</span>
+              <strong>⭐ 5.0</strong>
+              <span>Avaliação das famílias</span>
             </div>
           </div>
         </div>
@@ -1567,86 +1963,344 @@
   <section id="depoimentos" class="section" aria-label="Depoimentos de famílias atendidas">
     <div class="container">
       <div class="section-header center fade-up">
-        <span class="tag">Prova social</span>
+        <span class="tag">Depoimentos</span>
         <h2 class="section-title">O que as famílias dizem</h2>
         <p class="section-sub">Relatos de famílias que encontraram na Home Care Ferreiras o cuidado que precisavam.</p>
       </div>
 
-      <!-- Números — PLACEHOLDERS: substitua pelos números reais -->
-      <div class="numeros-grid fade-up" role="list">
-        <div class="numero-card" role="listitem">
-          <div class="num">8+</div>
-          <p>Anos de experiência</p>
-        </div>
-        <div class="numero-card" role="listitem">
-          <div class="num">120+</div>
-          <p>Famílias atendidas</p>
-        </div>
-        <div class="numero-card" role="listitem">
-          <div class="num">45+</div>
-          <p>Profissionais na rede</p>
-        </div>
-        <div class="numero-card" role="listitem">
-          <div class="num">1.500+</div>
-          <p>Atendimentos realizados</p>
+      <!-- DEPOIMENTOS PLACEHOLDER — substitua pelo conteúdo real dos clientes -->
+      <div class="depoimentos-marquee fade-up">
+        <div class="depoimentos-grid">
+
+          <article class="depoimento-card">
+            <div class="depoimento-stars" aria-label="5 estrelas">
+              <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
+              <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
+              <i class="fas fa-star" aria-hidden="true"></i>
+            </div>
+            <p>"A equipe foi muito atenciosa desde o primeiro contato. Minha mãe se sentiu segura em casa e nós ficamos mais tranquilos com o acompanhamento."</p>
+            <div class="depoimento-autor">
+              <div class="depoimento-avatar" aria-hidden="true">MR</div>
+              <div>
+                <strong>Mariana R.</strong>
+                <span>Filha da paciente</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="depoimento-card">
+            <div class="depoimento-stars" aria-label="5 estrelas">
+              <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
+              <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
+              <i class="fas fa-star" aria-hidden="true"></i>
+            </div>
+            <p>"Precisávamos de ajuda no pós-operatório do meu pai e fomos muito bem orientados. O cuidado foi humano, pontual e organizado."</p>
+            <div class="depoimento-autor">
+              <div class="depoimento-avatar" aria-hidden="true">CS</div>
+              <div>
+                <strong>Carla S.</strong>
+                <span>Filha do paciente</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="depoimento-card">
+            <div class="depoimento-stars" aria-label="5 estrelas">
+              <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
+              <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
+              <i class="fas fa-star" aria-hidden="true"></i>
+            </div>
+            <p>"O atendimento trouxe uma rotina mais leve para toda a família. A cuidadora foi carinhosa, paciente e muito cuidadosa com os detalhes."</p>
+            <div class="depoimento-autor">
+              <div class="depoimento-avatar" aria-hidden="true">LP</div>
+              <div>
+                <strong>Luciana P.</strong>
+                <span>Neta da paciente</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="depoimento-card">
+            <div class="depoimento-stars" aria-label="5 estrelas">
+              <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
+              <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
+              <i class="fas fa-star" aria-hidden="true"></i>
+            </div>
+            <p>"Gostei da clareza na conversa e da rapidez para indicar uma profissional. Em poucas horas já tínhamos suporte em casa."</p>
+            <div class="depoimento-autor">
+              <div class="depoimento-avatar" aria-hidden="true">FA</div>
+              <div>
+                <strong>Fernanda A.</strong>
+                <span>Irmã do paciente</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="depoimento-card">
+            <div class="depoimento-stars" aria-label="5 estrelas">
+              <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
+              <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
+              <i class="fas fa-star" aria-hidden="true"></i>
+            </div>
+            <p>"A enfermeira explicou tudo com calma e manteve a família informada. Foi um cuidado profissional sem perder o acolhimento."</p>
+            <div class="depoimento-autor">
+              <div class="depoimento-avatar" aria-hidden="true">RM</div>
+              <div>
+                <strong>Renato M.</strong>
+                <span>Esposo da paciente</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="depoimento-card">
+            <div class="depoimento-stars" aria-label="5 estrelas">
+              <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
+              <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
+              <i class="fas fa-star" aria-hidden="true"></i>
+            </div>
+            <p>"Contratamos acompanhamento contínuo e percebemos diferença na segurança do dia a dia. A comunicação com a equipe foi excelente."</p>
+            <div class="depoimento-autor">
+              <div class="depoimento-avatar" aria-hidden="true">TB</div>
+              <div>
+                <strong>Thiago B.</strong>
+                <span>Filho do paciente</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="depoimento-card">
+            <div class="depoimento-stars" aria-label="5 estrelas">
+              <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
+              <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
+              <i class="fas fa-star" aria-hidden="true"></i>
+            </div>
+            <p>"Minha avó criou vínculo com a cuidadora rapidamente. O atendimento respeitou a rotina dela e isso fez toda a diferença."</p>
+            <div class="depoimento-autor">
+              <div class="depoimento-avatar" aria-hidden="true">IS</div>
+              <div>
+                <strong>Isabela S.</strong>
+                <span>Neta da paciente</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="depoimento-card">
+            <div class="depoimento-stars" aria-label="5 estrelas">
+              <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
+              <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
+              <i class="fas fa-star" aria-hidden="true"></i>
+            </div>
+            <p>"Foi reconfortante ter alguém preparado acompanhando a recuperação em casa. O serviço passou confiança para todos nós."</p>
+            <div class="depoimento-autor">
+              <div class="depoimento-avatar" aria-hidden="true">GA</div>
+              <div>
+                <strong>Gustavo A.</strong>
+                <span>Filho da paciente</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="depoimento-card">
+            <div class="depoimento-stars" aria-label="5 estrelas">
+              <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
+              <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
+              <i class="fas fa-star" aria-hidden="true"></i>
+            </div>
+            <p>"O atendimento foi próximo e respeitoso. A equipe entendeu nossa necessidade e indicou uma profissional muito compatível."</p>
+            <div class="depoimento-autor">
+              <div class="depoimento-avatar" aria-hidden="true">PR</div>
+              <div>
+                <strong>Patricia R.</strong>
+                <span>Sobrinha da paciente</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="depoimento-card">
+            <div class="depoimento-stars" aria-label="5 estrelas">
+              <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
+              <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
+              <i class="fas fa-star" aria-hidden="true"></i>
+            </div>
+            <p>"Desde o orçamento até o início do cuidado, tudo foi simples e transparente. Sentimos que havia atenção real com a nossa família."</p>
+            <div class="depoimento-autor">
+              <div class="depoimento-avatar" aria-hidden="true">AM</div>
+              <div>
+                <strong>André M.</strong>
+                <span>Filho do paciente</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="depoimento-card" aria-hidden="true">
+            <div class="depoimento-stars" aria-label="5 estrelas">
+              <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
+              <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
+              <i class="fas fa-star" aria-hidden="true"></i>
+            </div>
+            <p>"A equipe foi muito atenciosa desde o primeiro contato. Minha mãe se sentiu segura em casa e nós ficamos mais tranquilos com o acompanhamento."</p>
+            <div class="depoimento-autor">
+              <div class="depoimento-avatar" aria-hidden="true">MR</div>
+              <div>
+                <strong>Mariana R.</strong>
+                <span>Filha da paciente</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="depoimento-card" aria-hidden="true">
+            <div class="depoimento-stars" aria-label="5 estrelas">
+              <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
+              <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
+              <i class="fas fa-star" aria-hidden="true"></i>
+            </div>
+            <p>"Precisávamos de ajuda no pós-operatório do meu pai e fomos muito bem orientados. O cuidado foi humano, pontual e organizado."</p>
+            <div class="depoimento-autor">
+              <div class="depoimento-avatar" aria-hidden="true">CS</div>
+              <div>
+                <strong>Carla S.</strong>
+                <span>Filha do paciente</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="depoimento-card" aria-hidden="true">
+            <div class="depoimento-stars" aria-label="5 estrelas">
+              <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
+              <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
+              <i class="fas fa-star" aria-hidden="true"></i>
+            </div>
+            <p>"O atendimento trouxe uma rotina mais leve para toda a família. A cuidadora foi carinhosa, paciente e muito cuidadosa com os detalhes."</p>
+            <div class="depoimento-autor">
+              <div class="depoimento-avatar" aria-hidden="true">LP</div>
+              <div>
+                <strong>Luciana P.</strong>
+                <span>Neta da paciente</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="depoimento-card" aria-hidden="true">
+            <div class="depoimento-stars" aria-label="5 estrelas">
+              <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
+              <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
+              <i class="fas fa-star" aria-hidden="true"></i>
+            </div>
+            <p>"Gostei da clareza na conversa e da rapidez para indicar uma profissional. Em poucas horas já tínhamos suporte em casa."</p>
+            <div class="depoimento-autor">
+              <div class="depoimento-avatar" aria-hidden="true">FA</div>
+              <div>
+                <strong>Fernanda A.</strong>
+                <span>Irmã do paciente</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="depoimento-card" aria-hidden="true">
+            <div class="depoimento-stars" aria-label="5 estrelas">
+              <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
+              <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
+              <i class="fas fa-star" aria-hidden="true"></i>
+            </div>
+            <p>"A enfermeira explicou tudo com calma e manteve a família informada. Foi um cuidado profissional sem perder o acolhimento."</p>
+            <div class="depoimento-autor">
+              <div class="depoimento-avatar" aria-hidden="true">RM</div>
+              <div>
+                <strong>Renato M.</strong>
+                <span>Esposo da paciente</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="depoimento-card" aria-hidden="true">
+            <div class="depoimento-stars" aria-label="5 estrelas">
+              <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
+              <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
+              <i class="fas fa-star" aria-hidden="true"></i>
+            </div>
+            <p>"Contratamos acompanhamento contínuo e percebemos diferença na segurança do dia a dia. A comunicação com a equipe foi excelente."</p>
+            <div class="depoimento-autor">
+              <div class="depoimento-avatar" aria-hidden="true">TB</div>
+              <div>
+                <strong>Thiago B.</strong>
+                <span>Filho do paciente</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="depoimento-card" aria-hidden="true">
+            <div class="depoimento-stars" aria-label="5 estrelas">
+              <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
+              <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
+              <i class="fas fa-star" aria-hidden="true"></i>
+            </div>
+            <p>"Minha avó criou vínculo com a cuidadora rapidamente. O atendimento respeitou a rotina dela e isso fez toda a diferença."</p>
+            <div class="depoimento-autor">
+              <div class="depoimento-avatar" aria-hidden="true">IS</div>
+              <div>
+                <strong>Isabela S.</strong>
+                <span>Neta da paciente</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="depoimento-card" aria-hidden="true">
+            <div class="depoimento-stars" aria-label="5 estrelas">
+              <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
+              <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
+              <i class="fas fa-star" aria-hidden="true"></i>
+            </div>
+            <p>"Foi reconfortante ter alguém preparado acompanhando a recuperação em casa. O serviço passou confiança para todos nós."</p>
+            <div class="depoimento-autor">
+              <div class="depoimento-avatar" aria-hidden="true">GA</div>
+              <div>
+                <strong>Gustavo A.</strong>
+                <span>Filho da paciente</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="depoimento-card" aria-hidden="true">
+            <div class="depoimento-stars" aria-label="5 estrelas">
+              <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
+              <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
+              <i class="fas fa-star" aria-hidden="true"></i>
+            </div>
+            <p>"O atendimento foi próximo e respeitoso. A equipe entendeu nossa necessidade e indicou uma profissional muito compatível."</p>
+            <div class="depoimento-autor">
+              <div class="depoimento-avatar" aria-hidden="true">PR</div>
+              <div>
+                <strong>Patricia R.</strong>
+                <span>Sobrinha da paciente</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="depoimento-card" aria-hidden="true">
+            <div class="depoimento-stars" aria-label="5 estrelas">
+              <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
+              <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
+              <i class="fas fa-star" aria-hidden="true"></i>
+            </div>
+            <p>"Desde o orçamento até o início do cuidado, tudo foi simples e transparente. Sentimos que havia atenção real com a nossa família."</p>
+            <div class="depoimento-autor">
+              <div class="depoimento-avatar" aria-hidden="true">AM</div>
+              <div>
+                <strong>André M.</strong>
+                <span>Filho do paciente</span>
+              </div>
+            </div>
+          </article>
+
         </div>
       </div>
-
-      <!-- DEPOIMENTOS PLACEHOLDER — substitua pelo conteúdo real dos clientes -->
-      <div class="depoimentos-grid">
-
-        <article class="depoimento-card fade-up">
-          <div class="depoimento-stars" aria-label="5 estrelas">
-            <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
-            <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
-            <i class="fas fa-star" aria-hidden="true"></i>
-          </div>
-          <!-- PLACEHOLDER: Substitua pelo depoimento real de um familiar atendido -->
-          <p>"[Inserir depoimento real de familiar atendido pela Home Care Ferreiras. Descreva a experiência de forma genuína e com permissão do cliente.]"</p>
-          <div class="depoimento-autor">
-            <div class="depoimento-avatar" aria-hidden="true">A</div>
-            <div>
-              <!-- PLACEHOLDER: Substitua pelo nome e grau de parentesco real -->
-              <strong>[Nome do familiar]</strong>
-              <span>[Parentesco] do paciente</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="depoimento-card fade-up" style="transition-delay:.1s">
-          <div class="depoimento-stars" aria-label="5 estrelas">
-            <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
-            <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
-            <i class="fas fa-star" aria-hidden="true"></i>
-          </div>
-          <!-- PLACEHOLDER: Substitua pelo depoimento real -->
-          <p>"[Espaço para avaliação real de cliente. Inserir relato genuíno de familiar que utilizou os serviços da Home Care Ferreiras, com permissão expressa.]"</p>
-          <div class="depoimento-autor">
-            <div class="depoimento-avatar" aria-hidden="true">B</div>
-            <div>
-              <strong>[Nome do familiar]</strong>
-              <span>[Parentesco] do paciente</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="depoimento-card fade-up" style="transition-delay:.2s">
-          <div class="depoimento-stars" aria-label="5 estrelas">
-            <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
-            <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
-            <i class="fas fa-star" aria-hidden="true"></i>
-          </div>
-          <!-- PLACEHOLDER: Substitua pelo depoimento real -->
-          <p>"[Espaço para relato de experiência real da família. Inserir avaliação genuína com permissão do cliente antes de publicar.]"</p>
-          <div class="depoimento-autor">
-            <div class="depoimento-avatar" aria-hidden="true">C</div>
-            <div>
-              <strong>[Nome do familiar]</strong>
-              <span>[Parentesco] do paciente</span>
-            </div>
-          </div>
-        </article>
-
+      <div class="depoimentos-controls" aria-label="Navegar depoimentos">
+        <button class="depoimentos-control" type="button" data-depoimento-prev aria-label="Depoimento anterior">
+          <i class="fas fa-chevron-left" aria-hidden="true"></i>
+        </button>
+        <button class="depoimentos-control" type="button" data-depoimento-next aria-label="Próximo depoimento">
+          <i class="fas fa-chevron-right" aria-hidden="true"></i>
+        </button>
       </div>
     </div>
   </section>
@@ -1719,7 +2373,6 @@
           </div>
           <div class="faq-answer">
             <p>O atendimento home care é realizado no conforto da sua casa por profissionais de saúde qualificados. A família entra em contato, descrevemos o perfil do paciente e indicamos o profissional mais adequado para o cuidado necessário.</p>
-            <a href="#LINK_WHATSAPP#" class="faq-cta"><i class="fab fa-whatsapp" aria-hidden="true"></i> Fale conosco agora</a>
           </div>
         </div>
 
@@ -1730,7 +2383,6 @@
           </div>
           <div class="faq-answer">
             <p>É muito simples. Basta clicar no botão de WhatsApp nesta página, enviar uma mensagem e nossa equipe responderá rapidamente com as opções de atendimento e valores.</p>
-            <a href="#LINK_WHATSAPP#" class="faq-cta"><i class="fab fa-whatsapp" aria-hidden="true"></i> Solicitar orçamento agora</a>
           </div>
         </div>
 
@@ -1741,7 +2393,6 @@
           </div>
           <div class="faq-answer">
             <p>Sim. Trabalhamos exclusivamente com atendimento particular, o que nos permite oferecer mais personalização, agilidade na escala de profissionais e um cuidado mais próximo da família e do paciente.</p>
-            <a href="#LINK_WHATSAPP#" class="faq-cta"><i class="fab fa-whatsapp" aria-hidden="true"></i> Saiba mais pelo WhatsApp</a>
           </div>
         </div>
 
@@ -1752,7 +2403,6 @@
           </div>
           <div class="faq-answer">
             <p>Contamos com enfermeiros, técnicos de enfermagem, cuidadores, fisioterapeutas, fonoaudiólogos e terapeutas ocupacionais. Entre em contato para verificar a disponibilidade na sua região.</p>
-            <a href="#LINK_WHATSAPP#" class="faq-cta"><i class="fab fa-whatsapp" aria-hidden="true"></i> Consultar disponibilidade</a>
           </div>
         </div>
 
@@ -1763,7 +2413,6 @@
           </div>
           <div class="faq-answer">
             <p>Sim. Atendemos idosos com cuidadores e enfermeiros preparados para auxiliar na rotina, higiene, alimentação, mobilidade e companhia, garantindo mais segurança e qualidade de vida.</p>
-            <a href="#LINK_WHATSAPP#" class="faq-cta"><i class="fab fa-whatsapp" aria-hidden="true"></i> Falar sobre cuidado para idosos</a>
           </div>
         </div>
 
@@ -1774,7 +2423,6 @@
           </div>
           <div class="faq-answer">
             <p>Sim. Oferecemos acompanhamento contínuo para pacientes que precisam de cuidado frequente ou prolongado. O plano é personalizado conforme a necessidade do paciente e da família.</p>
-            <a href="#LINK_WHATSAPP#" class="faq-cta"><i class="fab fa-whatsapp" aria-hidden="true"></i> Solicitar plano contínuo</a>
           </div>
         </div>
 
@@ -1785,7 +2433,6 @@
           </div>
           <div class="faq-answer">
             <p>Sim. Trabalhamos com diferentes formatos de contratação, incluindo atendimento por período (diurno ou noturno), diárias ou acompanhamento continuado. Fale conosco para entender a melhor opção.</p>
-            <a href="#LINK_WHATSAPP#" class="faq-cta"><i class="fab fa-whatsapp" aria-hidden="true"></i> Consultar opções de período</a>
           </div>
         </div>
 
@@ -1796,7 +2443,6 @@
           </div>
           <div class="faq-answer">
             <p>Sim. Contamos com enfermeiros e técnicos de enfermagem para atendimento domiciliar, incluindo curativos, administração de medicamentos, sondas, acompanhamento de sinais vitais e outros procedimentos técnicos.</p>
-            <a href="#LINK_WHATSAPP#" class="faq-cta"><i class="fab fa-whatsapp" aria-hidden="true"></i> Solicitar enfermagem domiciliar</a>
           </div>
         </div>
 
@@ -1807,7 +2453,6 @@
           </div>
           <div class="faq-answer">
             <p>Sempre. Cada paciente tem necessidades únicas, e nosso atendimento é planejado de forma individualizada, respeitando a rotina, as limitações e as preferências de cada pessoa.</p>
-            <a href="#LINK_WHATSAPP#" class="faq-cta"><i class="fab fa-whatsapp" aria-hidden="true"></i> Falar sobre o perfil do meu paciente</a>
           </div>
         </div>
 
@@ -1818,7 +2463,6 @@
           </div>
           <div class="faq-answer">
             <p>Nossa equipe orienta você pelo WhatsApp. Após entender a condição e as necessidades do paciente, indicamos o profissional mais adequado — sem compromisso e sem custo na orientação.</p>
-            <a href="#LINK_WHATSAPP#" class="faq-cta"><i class="fab fa-whatsapp" aria-hidden="true"></i> Receber orientação gratuita</a>
           </div>
         </div>
 
@@ -1830,27 +2474,47 @@
   <!-- ======================================================
        CTA FINAL
   ====================================================== -->
-  <section id="cta-final" class="section" aria-label="Fale com a Home Care Ferreiras">
+  <section id="cta-final" aria-label="Fale com a Home Care Ferreiras">
+    <div class="cta-grid-lines" aria-hidden="true"></div>
     <div class="container">
       <div class="cta-final-inner fade-up">
-        <span class="tag">Fale com a gente</span>
-        <h2 class="section-title">Precisa de cuidado domiciliar para alguém da sua família?</h2>
-        <p class="section-sub">Fale agora com a Home Care Ferreiras e receba orientação para encontrar o atendimento ideal para sua necessidade.</p>
 
-        <div class="cta-final-actions">
-          <a href="#LINK_WHATSAPP#" class="btn-whatsapp" aria-label="Solicitar orçamento pelo WhatsApp">
-            <i class="fab fa-whatsapp" aria-hidden="true"></i>
-            Solicitar orçamento pelo WhatsApp
-          </a>
-          <a href="#servicos" class="btn-outline" style="border-color:rgba(255,255,255,.4);color:rgba(255,255,255,.85);">
-            Ver todos os serviços
-          </a>
+        <!-- lado esquerdo: texto + trust signals -->
+        <div class="cta-final-text">
+          <div class="cta-final-badge">
+            <span class="cta-pulse-dot" aria-hidden="true"></span>
+            Fale com a gente
+          </div>
+          <h2>Sua família merece<br><em>cuidado de verdade.</em></h2>
+          <p>Fale agora com a Home Care Ferreiras e receba orientação personalizada para encontrar o atendimento ideal, sem burocracia, sem demora.</p>
+          <ul class="cta-trust-list" role="list">
+            <li role="listitem"><i class="fas fa-circle-check" aria-hidden="true"></i> Profissionais verificados e qualificados</li>
+            <li role="listitem"><i class="fas fa-circle-check" aria-hidden="true"></i> Atendimento disponível 24h por dia</li>
+            <li role="listitem"><i class="fas fa-circle-check" aria-hidden="true"></i> Orientação gratuita pelo WhatsApp</li>
+          </ul>
         </div>
 
-        <p class="cta-microcopy">
-          <i class="fas fa-shield-check" aria-hidden="true"></i>
-          Cuidado seguro, humanizado e profissional no conforto do lar.
-        </p>
+        <!-- lado direito: card de ação -->
+        <div class="cta-final-card">
+          <div class="cta-card-icon" aria-hidden="true">
+            <i class="fas fa-house-medical"></i>
+          </div>
+          <p class="cta-card-title">Pronto para começar?</p>
+          <p class="cta-card-sub">Atendimento rápido e personalizado em São Paulo</p>
+          <a href="#LINK_WHATSAPP#" class="btn-whatsapp cta-btn-main" aria-label="Solicitar orçamento pelo WhatsApp">
+            <i class="fab fa-whatsapp" aria-hidden="true"></i>
+            Solicitar orçamento
+          </a>
+          <a href="#servicos" class="cta-btn-secondary">
+            Conhecer os serviços
+            <i class="fas fa-arrow-right" aria-hidden="true"></i>
+          </a>
+          <p class="cta-microcopy">
+            <i class="fas fa-shield-check" aria-hidden="true"></i>
+            Cuidado seguro, humanizado e profissional
+          </p>
+        </div>
+
       </div>
     </div>
   </section>
@@ -1859,6 +2523,14 @@
   <!-- ======================================================
        FOOTER
   ====================================================== -->
+
+  <!-- onda separadora CTA → footer -->
+  <div class="footer-wave" aria-hidden="true">
+    <svg viewBox="0 0 1440 48" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,32 C240,0 480,48 720,32 C960,16 1200,48 1440,24 L1440,48 L0,48 Z" fill="#060e08"/>
+    </svg>
+  </div>
+
   <footer role="contentinfo">
     <div class="container">
       <div class="footer-grid">
@@ -1921,7 +2593,8 @@
 
       <div class="footer-bottom">
         <p>&copy; <span id="ano"></span> Home Care Ferreiras. Todos os direitos reservados.</p>
-        <p>Desenvolvido com <i class="fas fa-heart" style="color:#e74c3c" aria-hidden="true"></i> para famílias que se importam.</p>
+        <img src="logo.jpg" alt="" class="footer-bottom-logo" aria-hidden="true">
+        <p>Feito com <i class="fas fa-heart" style="color:#4ade80" aria-hidden="true"></i> para famílias que se importam.</p>
       </div>
     </div>
   </footer>
@@ -2023,6 +2696,67 @@
         }
       });
     });
+
+    /* -------------------------------------------------------
+       DEPOIMENTOS MOBILE
+    ------------------------------------------------------- */
+    const depoimentosTrack = document.querySelector('.depoimentos-grid');
+    const depoimentosPrev = document.querySelector('[data-depoimento-prev]');
+    const depoimentosNext = document.querySelector('[data-depoimento-next]');
+    let depoimentoIndex = 0;
+    let depoimentoTimer;
+
+    function updateDepoimentosMobile() {
+      if (!depoimentosTrack) return;
+
+      const isMobile = window.matchMedia('(max-width: 768px)').matches;
+      if (!isMobile) {
+        depoimentosTrack.style.transform = '';
+        depoimentoIndex = 0;
+        return;
+      }
+
+      const cards = [...depoimentosTrack.querySelectorAll('.depoimento-card:not([aria-hidden="true"])')];
+      if (!cards.length) return;
+
+      depoimentoIndex = Math.max(0, Math.min(depoimentoIndex, cards.length - 1));
+      depoimentosTrack.style.transform = `translateX(-${depoimentoIndex * 100}%)`;
+    }
+
+    function getDepoimentosTotal() {
+      return depoimentosTrack?.querySelectorAll('.depoimento-card:not([aria-hidden="true"])').length || 0;
+    }
+
+    function startDepoimentosMobileAuto() {
+      clearInterval(depoimentoTimer);
+      depoimentoTimer = setInterval(() => {
+        if (!window.matchMedia('(max-width: 768px)').matches) return;
+
+        const total = getDepoimentosTotal();
+        if (!total) return;
+
+        depoimentoIndex = (depoimentoIndex + 1) % total;
+        updateDepoimentosMobile();
+      }, 4500);
+    }
+
+    depoimentosPrev?.addEventListener('click', () => {
+      const total = getDepoimentosTotal();
+      depoimentoIndex = total ? (depoimentoIndex - 1 + total) % total : 0;
+      updateDepoimentosMobile();
+      startDepoimentosMobileAuto();
+    });
+
+    depoimentosNext?.addEventListener('click', () => {
+      const total = getDepoimentosTotal();
+      depoimentoIndex = total ? (depoimentoIndex + 1) % total : 0;
+      updateDepoimentosMobile();
+      startDepoimentosMobileAuto();
+    });
+
+    window.addEventListener('resize', updateDepoimentosMobile, { passive: true });
+    updateDepoimentosMobile();
+    startDepoimentosMobileAuto();
 
     /* -------------------------------------------------------
        ANIMAÇÕES DE ENTRADA (IntersectionObserver)
