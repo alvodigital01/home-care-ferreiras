@@ -923,6 +923,22 @@
     }
     .depoimento-autor strong { display: block; font-size: .87rem; color: var(--dark); }
     .depoimento-autor span { font-size: .76rem; color: var(--gray-text); }
+
+    .depoimento-card--dark {
+      background: var(--green-dark);
+      border-color: transparent;
+      box-shadow: 0 4px 20px rgba(0,0,0,.18);
+    }
+    .depoimento-card--dark::before { color: rgba(255,255,255,.15); }
+    .depoimento-card--dark:hover { box-shadow: 0 10px 36px rgba(0,0,0,.28); }
+    .depoimento-card--dark .depoimento-stars i { color: #fbbf24; }
+    .depoimento-card--dark p { color: rgba(255,255,255,.85); }
+    .depoimento-card--dark .depoimento-avatar {
+      background: rgba(255,255,255,.15);
+      box-shadow: none;
+    }
+    .depoimento-card--dark .depoimento-autor strong { color: white; }
+    .depoimento-card--dark .depoimento-autor span { color: rgba(255,255,255,.55); }
     .depoimentos-controls {
       display: none;
       justify-content: center;
@@ -1867,7 +1883,7 @@
             </div>
           </article>
 
-          <article class="depoimento-card">
+          <article class="depoimento-card depoimento-card--dark">
             <div class="depoimento-stars" aria-label="5 estrelas">
               <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
               <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
@@ -1899,7 +1915,7 @@
             </div>
           </article>
 
-          <article class="depoimento-card">
+          <article class="depoimento-card depoimento-card--dark">
             <div class="depoimento-stars" aria-label="5 estrelas">
               <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
               <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
@@ -1947,7 +1963,7 @@
             </div>
           </article>
 
-          <article class="depoimento-card">
+          <article class="depoimento-card depoimento-card--dark">
             <div class="depoimento-stars" aria-label="5 estrelas">
               <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
               <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
@@ -1979,6 +1995,22 @@
             </div>
           </article>
 
+          <article class="depoimento-card depoimento-card--dark">
+            <div class="depoimento-stars" aria-label="5 estrelas">
+              <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
+              <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
+              <i class="fas fa-star" aria-hidden="true"></i>
+            </div>
+            <p>"A tranquilidade que o serviço trouxe para a nossa família foi indescritível. Sabíamos que minha mãe estava em boas mãos o tempo todo."</p>
+            <div class="depoimento-autor">
+              <div class="depoimento-avatar" aria-hidden="true">BL</div>
+              <div>
+                <strong>Beatriz L.</strong>
+                <span>Filha da paciente</span>
+              </div>
+            </div>
+          </article>
+
           <article class="depoimento-card">
             <div class="depoimento-stars" aria-label="5 estrelas">
               <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
@@ -1995,7 +2027,7 @@
             </div>
           </article>
 
-          <article class="depoimento-card">
+          <article class="depoimento-card depoimento-card--dark">
             <div class="depoimento-stars" aria-label="5 estrelas">
               <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
               <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
@@ -2135,6 +2167,22 @@
               <div>
                 <strong>Gustavo A.</strong>
                 <span>Filho da paciente</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="depoimento-card depoimento-card--dark" aria-hidden="true">
+            <div class="depoimento-stars" aria-label="5 estrelas">
+              <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
+              <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
+              <i class="fas fa-star" aria-hidden="true"></i>
+            </div>
+            <p>"A tranquilidade que o serviço trouxe para a nossa família foi indescritível. Sabíamos que minha mãe estava em boas mãos o tempo todo."</p>
+            <div class="depoimento-autor">
+              <div class="depoimento-avatar" aria-hidden="true">BL</div>
+              <div>
+                <strong>Beatriz L.</strong>
+                <span>Filha da paciente</span>
               </div>
             </div>
           </article>
