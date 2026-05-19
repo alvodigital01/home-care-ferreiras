@@ -437,7 +437,13 @@
     }
 
     /* Overlay removido — banner já tem fundo próprio */
-    .slide-overlay { display: none; }
+    .slide-overlay {
+      display: none;
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+    }
 
     /* Conteúdo de texto sobre o banner */
     .slide-content {
@@ -480,6 +486,7 @@
     }
     .slide-title .highlight { color: var(--green-primary); }
     .slide-title .nowrap { white-space: nowrap; }
+    .mobile-only { display: none; }
 
     .slide-sub {
       font-size: 1.05rem;
@@ -1561,9 +1568,9 @@
         display: block;
         background: linear-gradient(
           to bottom,
-          rgba(10,30,15,.55) 0%,
-          rgba(10,30,15,.45) 60%,
-          rgba(10,30,15,.65) 100%
+          rgba(5,18,10,.68) 0%,
+          rgba(5,18,10,.58) 55%,
+          rgba(5,18,10,.76) 100%
         );
       }
       .slide-content {
@@ -1574,12 +1581,15 @@
       }
       /* Textos viram brancos por causa do overlay */
       .slide-tag {
-        background: rgba(255,255,255,.15);
-        border-color: rgba(255,255,255,.3);
-        color: white;
+        align-self: center;
+        background: var(--green-light);
+        border-color: var(--green-medium);
+        color: var(--green-dark);
       }
-      .slide-title { color: white; font-size: clamp(1.55rem, 6.5vw, 2rem); text-shadow: 0 2px 10px rgba(0,0,0,.3); }
+      .slide-title { color: white; font-size: clamp(1.85rem, 7.8vw, 2.35rem); text-shadow: 0 2px 10px rgba(0,0,0,.3); }
       .slide-title .highlight { color: #6ee89a; }
+      .desktop-only { display: none; }
+      .mobile-only { display: inline; }
       .slide-sub { color: rgba(255,255,255,.88); font-size: .9rem; }
       .slide-cta { align-self: center; }
       /* Setas e dots — estilo claro para fundo escuro */
@@ -1807,7 +1817,7 @@
             Cuidado humanizado
           </span>
           <h1 class="slide-title">
-            Acompanhamento <span class="highlight">contínuo</span> para sua <span class="nowrap">família ter tranquilidade</span>
+            Acompanhamento <span class="highlight">contínuo</span> para sua <span class="desktop-only nowrap">família ter tranquilidade</span><span class="mobile-only nowrap">família ficar tranquila</span>
           </h1>
           <p class="slide-sub">
             Suporte com profissionais dedicados para o cuidado frequente e prolongado do seu familiar.
