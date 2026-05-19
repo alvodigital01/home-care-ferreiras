@@ -487,7 +487,6 @@
     .slide-title .highlight { color: var(--green-primary); }
     .slide-title .nowrap { white-space: nowrap; }
     .mobile-only { display: none; }
-    .desktop-break { display: none; }
 
     .slide-sub {
       font-size: 1.05rem;
@@ -1565,6 +1564,10 @@
       .hamburger { display: flex; }
       /* Hero mobile — overlay escuro ativo */
       #hero { height: 70vh; min-height: 430px; }
+      .slide-bg {
+        object-fit: fill;
+        object-position: center;
+      }
       .slide-overlay {
         display: block;
         background: linear-gradient(
@@ -1596,7 +1599,6 @@
       .slide-title .highlight { color: #6ee89a; }
       .desktop-only { display: none; }
       .mobile-only { display: inline; }
-      .desktop-break { display: block; }
       .slide-sub { color: rgba(255,255,255,.88); font-size: .9rem; }
       .slide-cta { align-self: center; }
       /* Setas e dots — estilo claro para fundo escuro */
@@ -1851,7 +1853,7 @@
           </span>
           <h1 class="slide-title">
             <span class="nowrap">Cuidado planejado</span><br>
-            <span class="nowrap">para cada<span class="desktop-break"></span> <span class="highlight">necessidade</span></span>
+            <span class="nowrap">para cada <span class="highlight">necessidade</span></span>
           </h1>
           <p class="slide-sub">
             Orientação pelo WhatsApp para entender sua necessidade e indicar o melhor cuidado.
