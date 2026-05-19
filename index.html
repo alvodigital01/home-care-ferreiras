@@ -487,6 +487,7 @@
     .slide-title .highlight { color: var(--green-primary); }
     .slide-title .nowrap { white-space: nowrap; }
     .mobile-only { display: none; }
+    .desktop-break { display: none; }
 
     .slide-sub {
       font-size: 1.05rem;
@@ -1595,6 +1596,7 @@
       .slide-title .highlight { color: #6ee89a; }
       .desktop-only { display: none; }
       .mobile-only { display: inline; }
+      .desktop-break { display: block; }
       .slide-sub { color: rgba(255,255,255,.88); font-size: .9rem; }
       .slide-cta { align-self: center; }
       /* Setas e dots — estilo claro para fundo escuro */
@@ -1755,7 +1757,7 @@
     <div class="hero-track" id="heroTrack" aria-live="polite">
 
       <!-- ── Slide 1 ── -->
-      <div class="hero-slide" role="group" aria-label="Slide 1 de 3">
+      <div class="hero-slide" role="group" aria-label="Slide 1 de 4">
         <!-- Banner de fundo — substitua por banner completo quando pronto -->
         <picture>
           <source media="(max-width: 768px)" srcset="bgmobile.jpg">
@@ -1778,11 +1780,11 @@
             Solicitar orçamento
           </a>
         </div>
-        <span class="slide-counter" aria-hidden="true">01 / 03</span>
+        <span class="slide-counter" aria-hidden="true">01 / 04</span>
       </div>
 
       <!-- ── Slide 2 ── -->
-      <div class="hero-slide" role="group" aria-label="Slide 2 de 3" aria-hidden="true">
+      <div class="hero-slide" role="group" aria-label="Slide 2 de 4" aria-hidden="true">
         <picture>
           <source media="(max-width: 768px)" srcset="bgmobile2.jpg">
           <img class="slide-bg" src="bgpc.jpg" alt="" aria-hidden="true" width="1920" height="900" loading="lazy">
@@ -1806,11 +1808,11 @@
             Solicitar orçamento
           </a>
         </div>
-        <span class="slide-counter" aria-hidden="true">02 / 03</span>
+        <span class="slide-counter" aria-hidden="true">02 / 04</span>
       </div>
 
       <!-- ── Slide 3 ── -->
-      <div class="hero-slide" role="group" aria-label="Slide 3 de 3" aria-hidden="true">
+      <div class="hero-slide" role="group" aria-label="Slide 3 de 4" aria-hidden="true">
         <picture>
           <source media="(max-width: 768px)" srcset="bgmobile.jpg">
           <img class="slide-bg" src="bgpc.jpg" alt="" aria-hidden="true" width="1920" height="900" loading="lazy">
@@ -1832,7 +1834,34 @@
             Solicitar orçamento
           </a>
         </div>
-        <span class="slide-counter" aria-hidden="true">03 / 03</span>
+        <span class="slide-counter" aria-hidden="true">03 / 04</span>
+      </div>
+
+      <!-- ── Slide 4 ── -->
+      <div class="hero-slide" role="group" aria-label="Slide 4 de 4" aria-hidden="true">
+        <picture>
+          <source media="(max-width: 768px)" srcset="bgmobile2.jpg">
+          <img class="slide-bg" src="bgpc.jpg" alt="" aria-hidden="true" width="1920" height="900" loading="lazy">
+        </picture>
+        <div class="slide-overlay" aria-hidden="true"></div>
+        <div class="slide-content">
+          <span class="slide-tag">
+            <i class="fas fa-house-medical" aria-hidden="true"></i>
+            Cuidado no conforto do lar
+          </span>
+          <h1 class="slide-title">
+            <span class="nowrap">Cuidado planejado</span><br>
+            <span class="nowrap">para cada<span class="desktop-break"></span> <span class="highlight">necessidade</span></span>
+          </h1>
+          <p class="slide-sub">
+            Orientação pelo WhatsApp para entender sua necessidade e indicar o melhor cuidado.
+          </p>
+          <a href="#LINK_WHATSAPP#" class="slide-cta" aria-label="Solicitar orçamento pelo WhatsApp">
+            <i class="fab fa-whatsapp" aria-hidden="true"></i>
+            Solicitar orçamento
+          </a>
+        </div>
+        <span class="slide-counter" aria-hidden="true">04 / 04</span>
       </div>
 
     </div><!-- /hero-track -->
@@ -1851,6 +1880,7 @@
         <button class="hero-dot active" data-slide="0" role="tab" aria-selected="true"  aria-label="Slide 1"></button>
         <button class="hero-dot"        data-slide="1" role="tab" aria-selected="false" aria-label="Slide 2"></button>
         <button class="hero-dot"        data-slide="2" role="tab" aria-selected="false" aria-label="Slide 3"></button>
+        <button class="hero-dot"        data-slide="3" role="tab" aria-selected="false" aria-label="Slide 4"></button>
       </div>
     </div>
 
