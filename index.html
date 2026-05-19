@@ -1057,40 +1057,18 @@
        CTA FINAL
     ====================================================== */
     #cta-final {
-      background: #07150c;
-      color: white;
+      background: var(--green-pale);
+      color: var(--dark);
       position: relative;
       overflow: hidden;
       padding: 100px 0 96px;
+      border-top: 1px solid var(--green-light);
     }
 
-    /* blob decorativo fundo */
     #cta-final::before,
-    #cta-final::after {
-      content: '';
-      position: absolute;
-      border-radius: 50%;
-      pointer-events: none;
-    }
-    #cta-final::before {
-      width: 560px; height: 560px;
-      top: -160px; right: -120px;
-      background: radial-gradient(circle, rgba(26,143,78,.18) 0%, transparent 70%);
-    }
-    #cta-final::after {
-      width: 400px; height: 400px;
-      bottom: -140px; left: -100px;
-      background: radial-gradient(circle, rgba(39,174,96,.12) 0%, transparent 70%);
-    }
+    #cta-final::after { display: none; }
 
-    /* linhas decorativas em grade */
-    .cta-grid-lines {
-      position: absolute; inset: 0; pointer-events: none;
-      background-image:
-        linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
-      background-size: 56px 56px;
-    }
+    .cta-grid-lines { display: none; }
 
     .cta-final-inner {
       position: relative; z-index: 1;
@@ -1104,9 +1082,9 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: rgba(39,174,96,.15);
-      border: 1px solid rgba(39,174,96,.3);
-      color: #7ee8a2;
+      background: var(--green-light);
+      border: 1px solid var(--green-medium);
+      color: var(--green-dark);
       font-size: .72rem;
       font-weight: 700;
       letter-spacing: .1em;
@@ -1119,19 +1097,19 @@
       font-size: clamp(2rem, 3.5vw, 2.75rem);
       font-weight: 800;
       line-height: 1.2;
-      color: white;
+      color: var(--dark);
       margin-bottom: 20px;
     }
     .cta-final-text h2 em {
       font-style: normal;
-      background: linear-gradient(90deg, #7ee8a2 0%, #27ae60 100%);
+      background: linear-gradient(90deg, var(--green-primary) 0%, var(--green-dark) 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
     .cta-final-text p {
       font-size: 1.05rem;
-      color: rgba(255,255,255,.65);
+      color: var(--gray-text);
       line-height: 1.7;
       max-width: 440px;
       margin-bottom: 28px;
@@ -1146,32 +1124,31 @@
       align-items: center;
       gap: 10px;
       font-size: .88rem;
-      color: rgba(255,255,255,.8);
+      color: var(--text);
     }
     .cta-trust-list li i {
-      color: #7ee8a2;
+      color: var(--green-primary);
       font-size: .9rem;
       flex-shrink: 0;
     }
 
     /* card de ação */
     .cta-final-card {
-      background: rgba(255,255,255,.04);
-      border: 1px solid rgba(255,255,255,.1);
+      background: white;
+      border: 1px solid var(--green-light);
       border-radius: 24px;
       padding: 44px 40px;
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
       text-align: center;
       position: relative;
       overflow: hidden;
+      box-shadow: var(--shadow-md);
     }
     .cta-final-card::before {
       content: '';
       position: absolute;
       top: 0; left: 0; right: 0;
-      height: 2px;
-      background: linear-gradient(90deg, transparent, #27ae60, #7ee8a2, #27ae60, transparent);
+      height: 3px;
+      background: linear-gradient(90deg, var(--green-primary), var(--green-medium));
     }
     .cta-card-icon {
       width: 64px; height: 64px;
@@ -1181,17 +1158,17 @@
       font-size: 1.6rem;
       color: white;
       margin: 0 auto 20px;
-      box-shadow: 0 8px 28px rgba(26,143,78,.4);
+      box-shadow: 0 8px 28px rgba(26,143,78,.25);
     }
     .cta-card-title {
       font-size: 1.3rem;
       font-weight: 700;
-      color: white;
+      color: var(--dark);
       margin-bottom: 6px;
     }
     .cta-card-sub {
       font-size: .85rem;
-      color: rgba(255,255,255,.5);
+      color: var(--gray-text);
       margin-bottom: 28px;
     }
     .cta-btn-main {
@@ -1209,27 +1186,26 @@
       width: 100%;
       padding: 13px 24px;
       border-radius: 12px;
-      border: 1px solid rgba(255,255,255,.15);
-      color: rgba(255,255,255,.75);
+      border: 1px solid var(--green-light);
+      color: var(--green-dark);
       font-size: .9rem;
       font-weight: 500;
       transition: all var(--transition);
       margin-bottom: 20px;
     }
     .cta-btn-secondary:hover {
-      border-color: rgba(126,232,162,.4);
-      color: #7ee8a2;
-      background: rgba(126,232,162,.06);
+      border-color: var(--green-medium);
+      background: var(--green-light);
     }
     .cta-microcopy {
       font-size: .78rem;
-      color: rgba(255,255,255,.35);
+      color: var(--gray-text);
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 6px;
     }
-    .cta-microcopy i { color: rgba(126,232,162,.6); }
+    .cta-microcopy i { color: var(--green-medium); }
 
     /* ======================================================
        FOOTER
@@ -1241,12 +1217,12 @@
       width: 100%;
       overflow: hidden;
       line-height: 0;
-      background: #07150c; /* mesma cor do CTA */
+      background: var(--green-pale);
     }
     .footer-wave svg { display: block; width: 100%; height: 48px; }
 
     footer {
-      background: #060e08;
+      background: #041a0d;
       color: rgba(255,255,255,.6);
       padding: 56px 0 0;
     }
@@ -2379,7 +2355,7 @@
   <!-- onda separadora CTA → footer -->
   <div class="footer-wave" aria-hidden="true">
     <svg viewBox="0 0 1440 48" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M0,32 C240,0 480,48 720,32 C960,16 1200,48 1440,24 L1440,48 L0,48 Z" fill="#060e08"/>
+      <path d="M0,32 C240,0 480,48 720,32 C960,16 1200,48 1440,24 L1440,48 L0,48 Z" fill="#041a0d"/>
     </svg>
   </div>
 
