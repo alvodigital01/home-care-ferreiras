@@ -400,11 +400,11 @@
     }
     .hero-stat {
       flex: 1;
-      padding-right: 24px;
+      padding: 0 24px;
+      text-align: center;
     }
     .hero-stat:not(:last-child) {
       border-right: 1px solid rgba(26,143,78,.15);
-      margin-right: 24px;
     }
     .hero-stat strong {
       display: block;
@@ -433,18 +433,30 @@
     .hero-badge {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      background: white;
-      color: var(--green-primary);
-      font-size: .8rem;
-      font-weight: 600;
-      padding: 8px 16px;
+      gap: 9px;
+      background: linear-gradient(135deg, #ffffff 0%, #f0faf4 100%);
+      color: var(--green-dark);
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .03em;
+      text-transform: uppercase;
+      padding: 9px 18px;
       border-radius: 100px;
-      border: 1px solid var(--green-light);
+      border: 1.5px solid var(--green-medium);
       margin-bottom: 20px;
-      box-shadow: var(--shadow-sm);
+      box-shadow: 0 2px 14px rgba(26,143,78,.14), inset 0 1px 0 rgba(255,255,255,.9);
+      position: relative;
+      overflow: hidden;
     }
-    .hero-badge i { font-size: .9rem; }
+    .hero-badge::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background: linear-gradient(90deg, rgba(39,174,96,.08) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .hero-badge i { font-size: 1rem; color: var(--green-medium); }
     .hero-badge-mobile { display: none; }
 
     .hero-title {
@@ -477,16 +489,6 @@
       margin-bottom: 14px;
     }
 
-    .hero-microcopy {
-      font-size: .82rem;
-      color: var(--gray-text);
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      margin-bottom: 40px;
-    }
-    .hero-microcopy i { color: var(--green-medium); }
-
     /* Imagem hero */
     .hero-image {
       position: relative;
@@ -509,6 +511,13 @@
       object-fit: cover;
       object-position: center;
       box-shadow: var(--shadow-lg);
+      transition: transform .35s ease, box-shadow .35s ease, filter .35s ease;
+    }
+
+    .hero-img-wrapper:hover .hero-photo {
+      transform: translateY(-6px) scale(1.025);
+      box-shadow: 0 22px 58px rgba(26,143,78,.26);
+      filter: saturate(1.05) contrast(1.03);
     }
 
     /* Card flutuante sobre a imagem */
@@ -537,28 +546,6 @@
     }
     .hero-float-card strong { display: block; font-size: .9rem; color: var(--dark); font-weight: 700; }
     .hero-float-card span { font-size: .72rem; color: var(--gray-text); }
-
-    .hero-float-card2 {
-      position: absolute;
-      top: 20px; right: -20px;
-      background: linear-gradient(135deg, var(--green-primary), var(--green-dark));
-      color: white;
-      border-radius: var(--radius);
-      padding: 12px 16px;
-      box-shadow: 0 8px 24px rgba(26,143,78,.35);
-      text-align: center;
-      z-index: 2;
-      min-width: 100px;
-    }
-    .hero-float-card2 strong {
-      display: block;
-      font-family: 'Lora', Georgia, serif;
-      font-size: 1.3rem;
-      font-weight: 700;
-      line-height: 1;
-      margin-bottom: 3px;
-    }
-    .hero-float-card2 span { font-size: .63rem; opacity: .85; letter-spacing: .02em; }
 
     /* ======================================================
        DIFERENCIAIS
@@ -985,78 +972,6 @@
     }
 
     /* ======================================================
-       SEO LOCAL
-    ====================================================== */
-    #atendimento {
-      background: linear-gradient(160deg, var(--green-pale) 0%, white 60%);
-      position: relative;
-      overflow: hidden;
-    }
-    #atendimento::before {
-      content: '';
-      position: absolute;
-      top: -80px; right: -80px;
-      width: 320px; height: 320px;
-      background: radial-gradient(circle, rgba(26,143,78,.07) 0%, transparent 65%);
-      border-radius: 50%;
-      pointer-events: none;
-    }
-
-    .atendimento-inner {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 64px;
-      align-items: center;
-      position: relative;
-      z-index: 1;
-    }
-
-    .atendimento-text p {
-      font-size: 1rem;
-      color: var(--gray-text);
-      line-height: 1.78;
-      margin-bottom: 20px;
-    }
-
-    .atendimento-map {
-      background: white;
-      border-radius: var(--radius-lg);
-      padding: 28px;
-      box-shadow: var(--shadow-md);
-      border: 1px solid var(--green-light);
-    }
-    .atendimento-map h3 {
-      font-size: 1rem;
-      font-weight: 700;
-      color: var(--dark);
-      margin-bottom: 16px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      padding-bottom: 14px;
-      border-bottom: 1px solid var(--green-light);
-    }
-    .atendimento-map h3 i {
-      color: var(--green-primary);
-      background: var(--green-pale);
-      padding: 6px;
-      border-radius: 8px;
-      font-size: .9rem;
-    }
-    .atendimento-map ul { display: flex; flex-direction: column; gap: 0; }
-    .atendimento-map li {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: .88rem;
-      color: var(--text);
-      padding: 8px 0;
-      border-bottom: 1px solid var(--gray-mid);
-    }
-    .atendimento-map li:last-child { border-bottom: none; }
-    .atendimento-map li i { color: var(--green-medium); width: 16px; font-size: .8rem; }
-
-    /* ======================================================
        FAQ
     ====================================================== */
     #faq { background: white; }
@@ -1068,11 +983,18 @@
       border-radius: var(--radius);
       margin-bottom: 10px;
       overflow: hidden;
-      transition: border-color var(--transition), box-shadow var(--transition);
+      background: white;
+      transition: border-color var(--transition), box-shadow var(--transition), background var(--transition);
+    }
+    .faq-item:hover {
+      border-color: rgba(26,143,78,.22);
+      background: #fbfdfc;
+      box-shadow: 0 6px 18px rgba(28,43,34,.05);
     }
     .faq-item.open {
-      border-color: var(--green-primary);
-      box-shadow: 0 4px 18px rgba(26,143,78,.10);
+      border-color: rgba(26,143,78,.24);
+      background: #fbfdfc;
+      box-shadow: 0 8px 24px rgba(28,43,34,.06);
     }
 
     .faq-question {
@@ -1088,22 +1010,29 @@
       user-select: none;
       transition: background var(--transition), color var(--transition);
     }
-    .faq-question:hover { color: var(--green-primary); background: var(--green-pale); }
-    .faq-item.open .faq-question { background: var(--green-pale); color: var(--green-dark); }
+    .faq-question:hover { color: var(--dark); background: transparent; }
+    .faq-item:hover .faq-question i {
+      background: white;
+      border-color: rgba(26,143,78,.22);
+      color: var(--green-dark);
+    }
+    .faq-item.open .faq-question { background: transparent; color: var(--dark); }
     .faq-question i {
       width: 28px; height: 28px;
       background: var(--green-pale);
+      border: 1px solid transparent;
       border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
       font-size: .8rem;
       color: var(--green-primary);
-      transition: transform var(--transition), background var(--transition), color var(--transition);
+      transition: transform var(--transition), background var(--transition), color var(--transition), border-color var(--transition);
       flex-shrink: 0;
     }
     .faq-item.open .faq-question i {
       transform: rotate(180deg);
-      background: var(--green-primary);
-      color: white;
+      background: white;
+      border-color: rgba(26,143,78,.24);
+      color: var(--green-dark);
     }
 
     .faq-answer {
@@ -1123,6 +1052,7 @@
       margin-right: 24px;
       margin-bottom: 4px;
       border-radius: 0 0 4px 4px;
+      background: transparent;
     }
 
     /* ======================================================
@@ -1187,26 +1117,6 @@
       border-radius: 100px;
       margin-bottom: 24px;
     }
-    .cta-pulse-dot {
-      width: 7px; height: 7px;
-      background: #7ee8a2;
-      border-radius: 50%;
-      position: relative;
-      flex-shrink: 0;
-    }
-    .cta-pulse-dot::after {
-      content: '';
-      position: absolute;
-      inset: -3px;
-      border-radius: 50%;
-      border: 2px solid rgba(126,232,162,.5);
-      animation: ctaPulse 1.8s ease-out infinite;
-    }
-    @keyframes ctaPulse {
-      0%   { transform: scale(1); opacity: 1; }
-      100% { transform: scale(2.4); opacity: 0; }
-    }
-
     .cta-final-text h2 {
       font-size: clamp(2rem, 3.5vw, 2.75rem);
       font-weight: 800;
@@ -1345,7 +1255,7 @@
 
     .footer-grid {
       display: grid;
-      grid-template-columns: 2fr 1fr 1fr;
+      grid-template-columns: 1.4fr 1fr;
       gap: 48px;
       padding-bottom: 48px;
       border-bottom: 1px solid rgba(255,255,255,.06);
@@ -1513,10 +1423,8 @@
       .hero-inner { grid-template-columns: 1fr; gap: 48px; }
       .hero-img-wrapper { max-width: 330px; margin: 0 auto; }
       .hero-float-card { left: 0; bottom: -16px; }
-      .hero-float-card2 { right: 0; }
       .passos { grid-template-columns: repeat(2, 1fr); gap: 32px; }
       .passos::before { display: none; }
-      .atendimento-inner { grid-template-columns: 1fr; gap: 40px; }
       .footer-grid { grid-template-columns: 1fr 1fr; }
       .cta-final-inner { grid-template-columns: 1fr; gap: 44px; }
     }
@@ -1538,16 +1446,9 @@
       .hero-content .hero-badge { display: none; }
       .hero-image { order: 2; }
       .hero-title { font-size: 1.95rem; text-align: center; }
-      .hero-microcopy { justify-content: flex-start; text-align: left; }
       .hero-ctas { flex-direction: column; align-items: flex-start; }
       .hero-ctas .btn-whatsapp,
       .hero-ctas .btn-outline { width: 100%; justify-content: center; }
-      .hero-float-card2 {
-        top: 8px;
-        right: 6px;
-        padding: 6px 9px;
-        border-radius: 10px;
-      }
       .hero-float-card {
         bottom: -14px;
         left: 10px;
@@ -1556,8 +1457,6 @@
         border-radius: 10px;
       }
       .hero-float-card strong { font-size: .78rem; }
-      .hero-float-card2 strong { font-size: .88rem; }
-      .hero-float-card2 span { font-size: .55rem; }
       .passos { grid-template-columns: 1fr; }
       .depoimentos-marquee {
         overflow: hidden;
@@ -1691,11 +1590,6 @@
             </a>
           </div>
 
-          <p class="hero-microcopy">
-            <i class="fas fa-check-circle" aria-hidden="true"></i>
-            Atendimento rápido, humanizado e personalizado para sua família.
-          </p>
-
           <div class="hero-stats" aria-label="Números da Home Care Ferreiras">
             <div class="hero-stat">
               <strong>+120</strong>
@@ -1729,11 +1623,6 @@
               </div>
             </div>
 
-            <!-- Card flutuante superior -->
-            <div class="hero-float-card2" aria-hidden="true">
-              <strong>⭐ 5.0</strong>
-              <span>Avaliação das famílias</span>
-            </div>
           </div>
         </div>
 
@@ -2306,54 +2195,6 @@
   </section>
 
   <!-- ======================================================
-       SEO LOCAL / ATENDIMENTO REGIONAL
-  ====================================================== -->
-  <section id="atendimento" class="section" aria-label="Região de atendimento em São Paulo">
-    <div class="container">
-      <div class="atendimento-inner">
-
-        <div class="atendimento-text fade-up">
-          <span class="tag">Atendimento em São Paulo</span>
-          <h2 class="section-title">Home care em São Paulo com cuidado humanizado</h2>
-          <p>
-            Oferecemos atendimento home care particular em São Paulo, com cuidado domiciliar humanizado, profissionais qualificados e suporte personalizado para famílias que buscam segurança e conforto.
-          </p>
-          <p>
-            Se você busca um cuidador domiciliar, enfermagem domiciliar, acompanhamento pós-operatório ou qualquer outro serviço de atendimento domiciliar em São Paulo, a Home Care Ferreiras está pronta para ajudar sua família.
-          </p>
-
-          <div style="margin-top:28px">
-            <a href="#LINK_WHATSAPP#" class="btn-primary" aria-label="Solicitar orçamento pelo WhatsApp">
-              <i class="fab fa-whatsapp" aria-hidden="true"></i>
-              Solicitar orçamento
-            </a>
-          </div>
-        </div>
-
-        <div class="atendimento-map fade-up" style="transition-delay:.15s">
-          <h3><i class="fas fa-location-dot" aria-hidden="true"></i> Regiões de atendimento</h3>
-          <!-- PLACEHOLDER: Atualize com as regiões reais de atendimento da empresa -->
-          <ul role="list">
-            <li role="listitem"><i class="fas fa-check" aria-hidden="true"></i> Jardim Aurora</li>
-            <li role="listitem"><i class="fas fa-check" aria-hidden="true"></i> Vila Esperança</li>
-            <li role="listitem"><i class="fas fa-check" aria-hidden="true"></i> Parque das Flores</li>
-            <li role="listitem"><i class="fas fa-check" aria-hidden="true"></i> Bela Vista</li>
-            <li role="listitem"><i class="fas fa-check" aria-hidden="true"></i> Alto do Bosque</li>
-            <li role="listitem"><i class="fas fa-check" aria-hidden="true"></i> Vila Serena</li>
-            <li role="listitem"><i class="fas fa-check" aria-hidden="true"></i> Centro Paulista</li>
-          </ul>
-          <div style="margin-top:14px; padding:12px 14px; background:var(--green-pale); border-radius:10px; font-size:.84rem; color:var(--gray-text); line-height:1.5;">
-            <strong style="color:var(--dark);">Dúvidas sobre cobertura?</strong><br>
-            Entre em contato pelo WhatsApp e confirme o atendimento na sua região.
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ======================================================
        FAQ
   ====================================================== -->
   <section id="faq" class="section section-alt" aria-label="Perguntas frequentes">
@@ -2482,7 +2323,6 @@
         <!-- lado esquerdo: texto + trust signals -->
         <div class="cta-final-text">
           <div class="cta-final-badge">
-            <span class="cta-pulse-dot" aria-hidden="true"></span>
             Fale com a gente
           </div>
           <h2>Sua família merece<br><em>cuidado de verdade.</em></h2>
@@ -2548,20 +2388,6 @@
             <a href="#" aria-label="Facebook da Home Care Ferreiras"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
           </div>
         </div>
-
-        <!-- Links rápidos -->
-        <nav class="footer-col" aria-label="Links rápidos">
-          <h4>Links rápidos</h4>
-          <ul>
-            <li><a href="#hero">Início</a></li>
-            <li><a href="#servicos">Serviços</a></li>
-            <li><a href="#profissionais">Profissionais</a></li>
-            <li><a href="#diferenciais">Diferenciais</a></li>
-            <li><a href="#como-funciona">Como funciona</a></li>
-            <li><a href="#depoimentos">Depoimentos</a></li>
-            <li><a href="#faq">FAQ</a></li>
-          </ul>
-        </nav>
 
         <!-- Contato -->
         <div class="footer-col">
