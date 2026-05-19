@@ -93,7 +93,7 @@
 
     .section-title {
       font-family: 'Lora', Georgia, serif;
-      font-size: clamp(1.6rem, 3.5vw, 2.3rem);
+      font-size: clamp(2rem, 3.5vw, 2.75rem);
       font-weight: 700;
       color: var(--dark);
       line-height: 1.25;
@@ -1447,7 +1447,7 @@
       .hero-content { order: 3; }
       .hero-content .hero-badge { display: none; }
       .hero-image { order: 2; }
-      .hero-title { font-size: 1.95rem; text-align: center; }
+      .hero-title { font-size: clamp(2.12rem, 9vw, 2.35rem); text-align: center; }
       .hero-ctas { flex-direction: column; align-items: flex-start; }
       .hero-ctas .btn-whatsapp,
       .hero-ctas .btn-outline { width: 100%; justify-content: center; }
@@ -1483,6 +1483,8 @@
       .footer-grid { grid-template-columns: 1fr; gap: 32px; }
       .footer-bottom { flex-direction: column; text-align: center; }
       .cta-final-inner { grid-template-columns: 1fr; gap: 36px; }
+      .cta-final-badge { display: flex; width: max-content; margin: 0 auto 24px; }
+      .section-title { font-size: 1.85rem; }
       .cta-final-text h2 { font-size: 1.85rem; }
       .cta-final-card { padding: 32px 24px; }
       .footer-wave svg { height: 32px; }
