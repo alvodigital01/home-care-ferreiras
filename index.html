@@ -760,7 +760,7 @@
     .btn-servico i { font-size: .82rem; }
 
     /* ======================================================
-       PROFISSIONAIS
+       PROFISSIONAIS — FLIP CARDS
     ====================================================== */
     #profissionais {
       background: var(--dark);
@@ -770,56 +770,121 @@
 
     .profissionais-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      grid-template-columns: repeat(3, 1fr);
       gap: 20px;
     }
-    .profissional-card {
+
+    /* — container flip — */
+    .prof-flip {
+      height: 220px;
+      perspective: 1000px;
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+    }
+    .prof-flip-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transform-style: preserve-3d;
+      transition: transform .65s cubic-bezier(.4,0,.2,1);
+    }
+    .prof-flip.flipped .prof-flip-inner {
+      transform: rotateY(180deg);
+    }
+    .prof-face {
+      position: absolute;
+      inset: 0;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      border-radius: var(--radius-lg);
+    }
+
+    /* — FRENTE — */
+    .prof-front {
       background: rgba(255,255,255,.05);
       border: 1px solid rgba(255,255,255,.09);
-      border-radius: var(--radius-lg);
-      padding: 32px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding: 24px 16px;
       text-align: center;
-      transition: all var(--transition);
-      position: relative;
-      overflow: hidden;
+      transition: background .3s, border-color .3s;
     }
-    .profissional-card::after {
-      content: '';
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      height: 2px;
-      background: linear-gradient(90deg, transparent, #7ee8a2, transparent);
-      transform: scaleX(0);
-      transition: transform var(--transition);
-    }
-    .profissional-card:hover {
+    .prof-flip:not(.flipped):hover .prof-front {
       background: rgba(26,143,78,.18);
       border-color: rgba(126,232,162,.3);
-      transform: translateY(-5px);
-      box-shadow: 0 12px 32px rgba(0,0,0,.25);
     }
-    .profissional-card:hover::after { transform: scaleX(1); }
-    .profissional-card .icon {
-      width: 64px; height: 64px;
+    .prof-front .pf-icon {
+      width: 60px; height: 60px;
       background: linear-gradient(135deg, rgba(26,143,78,.3), rgba(39,174,96,.15));
       border: 1px solid rgba(126,232,162,.2);
       border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
       color: #7ee8a2;
-      font-size: 1.6rem;
-      margin: 0 auto 16px;
-      transition: all var(--transition);
+      font-size: 1.5rem;
+      flex-shrink: 0;
+      transition: all .3s;
     }
-    .profissional-card:hover .icon {
+    .prof-flip:not(.flipped):hover .prof-front .pf-icon {
       background: linear-gradient(135deg, rgba(26,143,78,.45), rgba(39,174,96,.3));
-      transform: scale(1.05);
+      transform: scale(1.08);
     }
-    .profissional-card h3 {
+    .prof-front h3 {
       font-size: .9rem;
       font-weight: 600;
       color: rgba(255,255,255,.9);
-      line-height: 1.35;
+      line-height: 1.3;
     }
+    .prof-front .pf-hint {
+      font-size: .63rem;
+      color: rgba(255,255,255,.35);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      margin-top: -4px;
+    }
+    .prof-front .pf-hint i { font-size: .6rem; }
+
+    /* — VERSO — */
+    .prof-back {
+      background: linear-gradient(145deg, var(--green-primary), var(--green-dark));
+      border: 1px solid rgba(255,255,255,.12);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 22px 18px;
+      text-align: center;
+      transform: rotateY(180deg);
+    }
+    .pf-back-icon {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,.6);
+    }
+    .pf-back-title {
+      font-size: .8rem;
+      font-weight: 700;
+      color: white;
+      line-height: 1.2;
+    }
+    .pf-back-desc {
+      font-size: .72rem;
+      color: rgba(255,255,255,.82);
+      line-height: 1.55;
+    }
+    .pf-close {
+      font-size: .6rem;
+      color: rgba(255,255,255,.4);
+      margin-top: 4px;
+      display: flex;
+      align-items: center;
+      gap: 3px;
+    }
+
     #profissionais .btn-white {
       font-size: 1rem;
       padding: 15px 30px;
@@ -1662,8 +1727,7 @@
         grid-template-columns: repeat(3, minmax(0, 1fr));
       }
       .diferencial-card,
-      .servico-card,
-      .profissional-card {
+      .servico-card {
         padding-left: 24px;
         padding-right: 24px;
       }
@@ -1848,6 +1912,7 @@
     @media (max-width: 480px) {
       .diferenciais-grid { grid-template-columns: 1fr; }
       .profissionais-grid { grid-template-columns: repeat(2, 1fr); }
+      .prof-flip { height: 235px; }
       .como-cta .btn-whatsapp {
         padding: 12px 14px;
         font-size: .82rem;
@@ -2466,30 +2531,109 @@
       </div>
 
       <div class="profissionais-grid">
-        <article class="profissional-card fade-up">
-          <div class="icon" aria-hidden="true"><i class="fas fa-user-nurse"></i></div>
-          <h3>Enfermeiros</h3>
-        </article>
-        <article class="profissional-card fade-up" style="transition-delay:.08s">
-          <div class="icon" aria-hidden="true"><i class="fas fa-stethoscope"></i></div>
-          <h3>Técnicos de Enfermagem</h3>
-        </article>
-        <article class="profissional-card fade-up" style="transition-delay:.16s">
-          <div class="icon" aria-hidden="true"><i class="fas fa-hand-holding-heart"></i></div>
-          <h3>Cuidadores</h3>
-        </article>
-        <article class="profissional-card fade-up" style="transition-delay:.24s">
-          <div class="icon" aria-hidden="true"><i class="fas fa-person-walking"></i></div>
-          <h3>Fisioterapeutas</h3>
-        </article>
-        <article class="profissional-card fade-up" style="transition-delay:.32s">
-          <div class="icon" aria-hidden="true"><i class="fas fa-comment-medical"></i></div>
-          <h3>Fonoaudiólogos</h3>
-        </article>
-        <article class="profissional-card fade-up" style="transition-delay:.40s">
-          <div class="icon" aria-hidden="true"><i class="fas fa-brain"></i></div>
-          <h3>Terapeutas Ocupacionais</h3>
-        </article>
+
+        <!-- Enfermeiros -->
+        <div class="prof-flip fade-up" role="button" tabindex="0" aria-label="Enfermeiros — clique para saber mais">
+          <div class="prof-flip-inner">
+            <div class="prof-face prof-front">
+              <div class="pf-icon" aria-hidden="true"><i class="fas fa-user-nurse"></i></div>
+              <h3>Enfermeiros</h3>
+              <span class="pf-hint"><i class="fas fa-hand-pointer"></i> toque para saber mais</span>
+            </div>
+            <div class="prof-face prof-back" aria-hidden="true">
+              <div class="pf-back-icon"><i class="fas fa-user-nurse"></i></div>
+              <p class="pf-back-title">Enfermeiros</p>
+              <p class="pf-back-desc">Curativos, medicamentos, monitoramento de sinais vitais e cuidados pós-operatórios realizados com segurança no domicílio.</p>
+              <span class="pf-close"><i class="fas fa-rotate-left"></i> voltar</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Técnicos de Enfermagem -->
+        <div class="prof-flip fade-up" style="transition-delay:.08s" role="button" tabindex="0" aria-label="Técnicos de Enfermagem — clique para saber mais">
+          <div class="prof-flip-inner">
+            <div class="prof-face prof-front">
+              <div class="pf-icon" aria-hidden="true"><i class="fas fa-stethoscope"></i></div>
+              <h3>Técnicos de Enfermagem</h3>
+              <span class="pf-hint"><i class="fas fa-hand-pointer"></i> toque para saber mais</span>
+            </div>
+            <div class="prof-face prof-back" aria-hidden="true">
+              <div class="pf-back-icon"><i class="fas fa-stethoscope"></i></div>
+              <p class="pf-back-title">Técnicos de Enfermagem</p>
+              <p class="pf-back-desc">Auxiliam em higiene corporal, curativos simples e acompanhamento do paciente, sob supervisão do enfermeiro.</p>
+              <span class="pf-close"><i class="fas fa-rotate-left"></i> voltar</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cuidadores -->
+        <div class="prof-flip fade-up" style="transition-delay:.16s" role="button" tabindex="0" aria-label="Cuidadores — clique para saber mais">
+          <div class="prof-flip-inner">
+            <div class="prof-face prof-front">
+              <div class="pf-icon" aria-hidden="true"><i class="fas fa-hand-holding-heart"></i></div>
+              <h3>Cuidadores</h3>
+              <span class="pf-hint"><i class="fas fa-hand-pointer"></i> toque para saber mais</span>
+            </div>
+            <div class="prof-face prof-back" aria-hidden="true">
+              <div class="pf-back-icon"><i class="fas fa-hand-holding-heart"></i></div>
+              <p class="pf-back-title">Cuidadores</p>
+              <p class="pf-back-desc">Apoiam na alimentação, higiene, mobilidade e companhia do idoso, promovendo segurança e bem-estar no lar.</p>
+              <span class="pf-close"><i class="fas fa-rotate-left"></i> voltar</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Fisioterapeutas -->
+        <div class="prof-flip fade-up" style="transition-delay:.24s" role="button" tabindex="0" aria-label="Fisioterapeutas — clique para saber mais">
+          <div class="prof-flip-inner">
+            <div class="prof-face prof-front">
+              <div class="pf-icon" aria-hidden="true"><i class="fas fa-person-walking"></i></div>
+              <h3>Fisioterapeutas</h3>
+              <span class="pf-hint"><i class="fas fa-hand-pointer"></i> toque para saber mais</span>
+            </div>
+            <div class="prof-face prof-back" aria-hidden="true">
+              <div class="pf-back-icon"><i class="fas fa-person-walking"></i></div>
+              <p class="pf-back-title">Fisioterapeutas</p>
+              <p class="pf-back-desc">Recuperação motora, prevenção de quedas, reabilitação pós-AVC e manutenção da mobilidade para mais independência.</p>
+              <span class="pf-close"><i class="fas fa-rotate-left"></i> voltar</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Fonoaudiólogos -->
+        <div class="prof-flip fade-up" style="transition-delay:.32s" role="button" tabindex="0" aria-label="Fonoaudiólogos — clique para saber mais">
+          <div class="prof-flip-inner">
+            <div class="prof-face prof-front">
+              <div class="pf-icon" aria-hidden="true"><i class="fas fa-comment-medical"></i></div>
+              <h3>Fonoaudiólogos</h3>
+              <span class="pf-hint"><i class="fas fa-hand-pointer"></i> toque para saber mais</span>
+            </div>
+            <div class="prof-face prof-back" aria-hidden="true">
+              <div class="pf-back-icon"><i class="fas fa-comment-medical"></i></div>
+              <p class="pf-back-title">Fonoaudiólogos</p>
+              <p class="pf-back-desc">Reabilitam fala, deglutição e comunicação. Essenciais para pacientes pós-AVC, Parkinson ou com dificuldades de comunicação.</p>
+              <span class="pf-close"><i class="fas fa-rotate-left"></i> voltar</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Terapeutas Ocupacionais -->
+        <div class="prof-flip fade-up" style="transition-delay:.40s" role="button" tabindex="0" aria-label="Terapeutas Ocupacionais — clique para saber mais">
+          <div class="prof-flip-inner">
+            <div class="prof-face prof-front">
+              <div class="pf-icon" aria-hidden="true"><i class="fas fa-brain"></i></div>
+              <h3>Terapeutas Ocupacionais</h3>
+              <span class="pf-hint"><i class="fas fa-hand-pointer"></i> toque para saber mais</span>
+            </div>
+            <div class="prof-face prof-back" aria-hidden="true">
+              <div class="pf-back-icon"><i class="fas fa-brain"></i></div>
+              <p class="pf-back-title">Terapeutas Ocupacionais</p>
+              <p class="pf-back-desc">Adaptam rotinas e ambientes para promover autonomia, trabalhando cognição, motricidade fina e atividades do cotidiano.</p>
+              <span class="pf-close"><i class="fas fa-rotate-left"></i> voltar</span>
+            </div>
+          </div>
+        </div>
+
       </div>
 
       <div class="como-cta" style="margin-top:48px">
@@ -3160,6 +3304,17 @@
         mobileNav.classList.remove('open');
         hamburger.classList.remove('open');
         hamburger.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    /* -------------------------------------------------------
+       PROFISSIONAIS — FLIP CARDS
+    ------------------------------------------------------- */
+    document.querySelectorAll('.prof-flip').forEach(card => {
+      const toggle = () => card.classList.toggle('flipped');
+      card.addEventListener('click', toggle);
+      card.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); }
       });
     });
 
