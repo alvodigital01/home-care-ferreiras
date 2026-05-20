@@ -400,7 +400,7 @@
     }
 
     /* ======================================================
-       HERO CAROUSEL — FULL SCREEN
+       HERO CAROUSEL, FULL SCREEN
     ====================================================== */
     #hero {
       margin-top: 70px;
@@ -418,7 +418,7 @@
       will-change: transform;
     }
 
-    /* Cada slide — ocupa 100% da tela */
+    /* Cada slide, ocupa 100% da tela */
     .hero-slide {
       min-width: 100%;
       height: 100%;
@@ -428,7 +428,7 @@
       align-items: center;
     }
 
-    /* Imagem de banner — bg completo */
+    /* Imagem de banner, bg completo */
     .slide-bg {
       position: absolute;
       inset: 0;
@@ -439,7 +439,7 @@
       display: block;
     }
 
-    /* Overlay removido — banner j tem fundo próprio */
+    /* Overlay removido, banner j tem fundo próprio */
     .slide-overlay {
       display: none;
       position: absolute;
@@ -541,7 +541,7 @@
       box-shadow: var(--shadow-sm);
     }
 
-    /* Controles: setas + dots — sobre o hero */
+    /* Controles: setas + dots, sobre o hero */
     .hero-controls {
       position: absolute;
       bottom: 36px;
@@ -761,7 +761,7 @@
     .btn-servico i { font-size: .82rem; }
 
     /* ======================================================
-       PROFISSIONAIS — FLIP CARDS
+       PROFISSIONAIS, FLIP CARDS
     ====================================================== */
     #profissionais {
       background: var(--dark);
@@ -775,7 +775,7 @@
       gap: 20px;
     }
 
-    /* — container flip — */
+    /*, container flip, */
     .prof-flip {
       height: 220px;
       perspective: 1000px;
@@ -802,7 +802,7 @@
       border-radius: var(--radius-lg);
     }
 
-    /* — FRENTE — */
+    /*, FRENTE, */
     .prof-front {
       background: rgba(255,255,255,.05);
       border: 1px solid rgba(255,255,255,.09);
@@ -850,7 +850,7 @@
     }
     .prof-front .pf-hint i { font-size: .6rem; }
 
-    /* — VERSO — */
+    /*, VERSO, */
     .prof-back {
       background: linear-gradient(150deg, #0c5430 0%, #083722 100%);
       border: 1px solid rgba(126,232,162,.18);
@@ -980,7 +980,7 @@
     ====================================================== */
     #depoimentos { background: var(--green-pale); }
 
-    /* Depoimentos — PLACEHOLDER: substitua pelo conteúdo real */
+    /* Depoimentos, PLACEHOLDER: substitua pelo conteúdo real */
     .depoimentos-marquee {
       overflow: hidden;
       position: relative;
@@ -1427,7 +1427,7 @@
       margin-right: auto;
     }
 
-    /* Botão WhatsApp principal — mais dominante */
+    /* Botão WhatsApp principal, mais dominante */
     .cta-btn-main {
       width: 100%;
       justify-content: center;
@@ -1439,7 +1439,7 @@
       letter-spacing: .01em;
     }
 
-    /* Link secundrio — discreto, no compete */
+    /* Link secundrio, discreto, no compete */
     .cta-link-secondary {
       display: inline-flex;
       align-items: center;
@@ -1516,7 +1516,7 @@
       border-bottom: 1px solid rgba(255,255,255,.06);
     }
 
-    /* logo no footer — container branco intencional para JPG sem transparncia */
+    /* logo no footer, container branco intencional para JPG sem transparncia */
     .footer-brand .logo { margin-bottom: 20px; display: inline-block; }
     .footer-brand .logo-img {
       height: 54px;
@@ -1813,7 +1813,7 @@
       }
       .slide-title {
         color: var(--dark);
-        font-size: clamp(1.55rem, 7vw, 2.25rem);
+        font-size: clamp(1.95rem, 9vw, 2.7rem);
         line-height: 1.12;
         text-align: center;
         text-shadow: none;
@@ -1964,7 +1964,7 @@
     }
 
     /* ======================================================
-       ANIMAÇÕES WHATSAPP — BOTES UNIFICADOS
+       ANIMAÇÕES WHATSAPP, BOTES UNIFICADOS
     ====================================================== */
 
     @keyframes wa-wiggle {
@@ -2053,7 +2053,7 @@
     .btn-servico                     { animation: wa-halo 3s ease-in-out infinite 1.5s; }
     #profissionais .btn-white        { animation: wa-halo 3s ease-in-out infinite 2.0s; }
 
-    /* -- Hover unificado — idêntico ao botão de referncia -- */
+    /* -- Hover unificado, idêntico ao botão de referncia -- */
     .btn-whatsapp:hover,
     .btn-nav-whatsapp:hover,
     .slide-cta:hover,
@@ -2116,7 +2116,7 @@
     }
 
     /* ======================================================
-       ANIMAÇÕES GLOBAIS — SITE VIVO
+       ANIMAÇÕES GLOBAIS, SITE VIVO
     ====================================================== */
 
     @keyframes float-gentle {
@@ -2191,7 +2191,7 @@
       animation: badge-bounce-in .55s cubic-bezier(.34,1.56,.64,1) .2s both;
     }
 
-    /* -- Diferenciais — glow suave + Ícone gira no hover -- */
+    /* -- Diferenciais, glow suave + Ícone gira no hover -- */
     .diferencial-card                     { animation: card-glow-soft 4.5s ease-in-out infinite; }
     .diferencial-card:nth-child(2)        { animation-delay: 1.1s; }
     .diferencial-card:nth-child(3)        { animation-delay: 2.2s; }
@@ -2200,10 +2200,10 @@
     .diferencial-card:hover .diferencial-icon   { transform: scale(1.1) rotate(6deg); }
     .diferencial-card:hover .diferencial-icon i { animation: icon-spin-once .65s cubic-bezier(.4,0,.2,1); }
 
-    /* -- Serviços — Ícone salta no hover -- */
+    /* -- Serviços, Ícone salta no hover -- */
     .servico-card:hover .servico-icon i { animation: icon-jump .5s cubic-bezier(.34,1.56,.64,1); }
 
-    /* -- Profissionais — Ícone gira no hover -- */
+    /* -- Profissionais, Ícone gira no hover -- */
     .profissional-card:hover .icon   { transform: scale(1.12); }
     .profissional-card:hover .icon i { animation: icon-spin-once .6s cubic-bezier(.4,0,.2,1); }
 
@@ -2239,7 +2239,7 @@
     /* Estrelas visíveis por padrão (fora do hover) */
     .depoimento-stars i { opacity: 1; }
 
-    /* -- FAQ — resposta faz fade ao abrir -- */
+    /* -- FAQ, resposta faz fade ao abrir -- */
     .faq-answer {
       opacity: 0;
       transition: max-height .45s cubic-bezier(.22,1,.36,1), opacity .3s ease .1s;
@@ -2251,7 +2251,7 @@
     }
     .faq-item:hover:not(.open) { transform: translateX(5px); }
 
-    /* -- CTA final — blobs de fundo + card flutuante -- */
+    /* -- CTA final, blobs de fundo + card flutuante -- */
     #cta-final::before,
     #cta-final::after {
       display: block !important;
@@ -2278,7 +2278,7 @@
     .cta-final-card  { animation: float-gentle 9s ease-in-out infinite; }
     .cta-final-card:hover { animation-play-state: paused; }
 
-    /* -- Footer — Ícones sociais giram no hover -- */
+    /* -- Footer, Ícones sociais giram no hover -- */
     .footer-social a:hover i { animation: icon-spin-once .5s cubic-bezier(.4,0,.2,1); }
 
     /* -- Reduced motion -- */
@@ -2359,7 +2359,7 @@
 
       <!-- -- Slide 1 -- -->
       <div class="hero-slide" role="group" aria-label="Slide 1 de 4">
-        <!-- Banner de fundo — substitua por banner completo quando pronto -->
+        <!-- Banner de fundo, substitua por banner completo quando pronto -->
         <picture>
           <source media="(max-width: 768px)" srcset="1.jpg">
           <img class="slide-bg" src="bgpc.jpg" alt="" aria-hidden="true" width="1920" height="900" loading="eager">
@@ -2551,7 +2551,7 @@
         <article class="servico-card fade-up" style="transition-delay:.32s">
           <div class="servico-icon" aria-hidden="true"><i class="fas fa-heart"></i></div>
           <h3>Cuidados paliativos</h3>
-          <p>Cuidado humanizado para oferecer conforto, dignidade e acolhimento ao paciente e — família.</p>
+          <p>Cuidado humanizado para oferecer conforto, dignidade e acolhimento ao paciente e à família.</p>
           <div class="servico-beneficio"><i class="fas fa-check" aria-hidden="true"></i> Dignidade e conforto ao paciente</div>
           <a href="#LINK_WHATSAPP#" class="btn-servico" aria-label="Falar com a equipe pelo WhatsApp">
             <i class="fab fa-whatsapp" aria-hidden="true"></i> Falar com a equipe
@@ -2585,7 +2585,7 @@
       <div class="profissionais-grid">
 
         <!-- Enfermeiros -->
-        <div class="prof-flip fade-up" role="button" tabindex="0" aria-label="Enfermeiros — clique para saber mais">
+        <div class="prof-flip fade-up" role="button" tabindex="0" aria-label="Enfermeiros, clique para saber mais">
           <div class="prof-flip-inner">
             <div class="prof-face prof-front">
               <div class="pf-icon" aria-hidden="true"><i class="fas fa-user-nurse"></i></div>
@@ -2602,7 +2602,7 @@
         </div>
 
         <!-- Técnicos de Enfermagem -->
-        <div class="prof-flip fade-up" style="transition-delay:.08s" role="button" tabindex="0" aria-label="Técnicos de Enfermagem — clique para saber mais">
+        <div class="prof-flip fade-up" style="transition-delay:.08s" role="button" tabindex="0" aria-label="Técnicos de Enfermagem, clique para saber mais">
           <div class="prof-flip-inner">
             <div class="prof-face prof-front">
               <div class="pf-icon" aria-hidden="true"><i class="fas fa-stethoscope"></i></div>
@@ -2619,7 +2619,7 @@
         </div>
 
         <!-- Cuidadores -->
-        <div class="prof-flip fade-up" style="transition-delay:.16s" role="button" tabindex="0" aria-label="Cuidadores — clique para saber mais">
+        <div class="prof-flip fade-up" style="transition-delay:.16s" role="button" tabindex="0" aria-label="Cuidadores, clique para saber mais">
           <div class="prof-flip-inner">
             <div class="prof-face prof-front">
               <div class="pf-icon" aria-hidden="true"><i class="fas fa-hand-holding-heart"></i></div>
@@ -2636,7 +2636,7 @@
         </div>
 
         <!-- Fisioterapeutas -->
-        <div class="prof-flip fade-up" style="transition-delay:.24s" role="button" tabindex="0" aria-label="Fisioterapeutas — clique para saber mais">
+        <div class="prof-flip fade-up" style="transition-delay:.24s" role="button" tabindex="0" aria-label="Fisioterapeutas, clique para saber mais">
           <div class="prof-flip-inner">
             <div class="prof-face prof-front">
               <div class="pf-icon" aria-hidden="true"><i class="fas fa-person-walking"></i></div>
@@ -2653,7 +2653,7 @@
         </div>
 
         <!-- Fonoaudiólogos -->
-        <div class="prof-flip fade-up" style="transition-delay:.32s" role="button" tabindex="0" aria-label="Fonoaudiólogos — clique para saber mais">
+        <div class="prof-flip fade-up" style="transition-delay:.32s" role="button" tabindex="0" aria-label="Fonoaudiólogos, clique para saber mais">
           <div class="prof-flip-inner">
             <div class="prof-face prof-front">
               <div class="pf-icon" aria-hidden="true"><i class="fas fa-comment-medical"></i></div>
@@ -2670,7 +2670,7 @@
         </div>
 
         <!-- Terapeutas Ocupacionais -->
-        <div class="prof-flip fade-up" style="transition-delay:.40s" role="button" tabindex="0" aria-label="Terapeutas Ocupacionais — clique para saber mais">
+        <div class="prof-flip fade-up" style="transition-delay:.40s" role="button" tabindex="0" aria-label="Terapeutas Ocupacionais, clique para saber mais">
           <div class="prof-flip-inner">
             <div class="prof-face prof-front">
               <div class="pf-icon" aria-hidden="true"><i class="fas fa-brain"></i></div>
@@ -3151,7 +3151,7 @@
             <i class="fas fa-chevron-down" aria-hidden="true"></i>
           </div>
           <div class="faq-answer">
-            <p>Nossa equipe orienta você pelo WhatsApp. Após entender a condição e as necessidades do paciente, indicamos o profissional mais adequado — sem compromisso e sem custo na orientação.</p>
+            <p>Nossa equipe orienta você pelo WhatsApp. Após entender a condição e as necessidades do paciente, indicamos o profissional mais adequado, sem compromisso e sem custo na orientação.</p>
           </div>
         </div>
 
@@ -3278,7 +3278,7 @@
             </li>
             <li role="listitem">
               <i class="fas fa-location-dot" aria-hidden="true"></i>
-              <span>São Paulo, SP — Grande SP</span>
+              <span>São Paulo, SP e Grande SP</span>
             </li>
             <li role="listitem">
               <i class="fas fa-clock" aria-hidden="true"></i>
@@ -3319,7 +3319,7 @@
   ====================================================== -->
   <script>
     /* -------------------------------------------------------
-       CONFIGURAO — EDITE APENAS AQUI
+       CONFIGURAO, EDITE APENAS AQUI
     ------------------------------------------------------- */
     // INSTRUES: Substitua o número abaixo pelo número real de WhatsApp
     // Formato: código do país + DDD + número (sem +, sem espaços, sem traos)
@@ -3342,7 +3342,7 @@
     document.getElementById('ano').textContent = new Date().getFullYear();
 
     /* -------------------------------------------------------
-       HEADER — EFEITO AO SCROLL
+       HEADER, EFEITO AO SCROLL
     ------------------------------------------------------- */
     /* -------------------------------------------------------
        MENU MOBILE
@@ -3366,7 +3366,7 @@
     });
 
     /* -------------------------------------------------------
-       PROFISSIONAIS — FLIP CARDS
+       PROFISSIONAIS, FLIP CARDS
     ------------------------------------------------------- */
     document.querySelectorAll('.prof-flip').forEach(card => {
       const toggle = () => card.classList.toggle('flipped');
@@ -3397,7 +3397,7 @@
         }
       });
 
-      // Acessibilidade — teclado
+      // Acessibilidade, teclado
       question.addEventListener('keydown', e => {
         if (e.key === 'Enter' || e.key === ' ') {
           e.preventDefault();
