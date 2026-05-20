@@ -1787,20 +1787,15 @@
       nav { display: none; }
       .header-actions > .btn-nav-whatsapp { display: none; }
       .hamburger { display: flex; }
-      /* Hero mobile — overlay escuro ativo */
+      /* Hero mobile */
       #hero { height: 70vh; min-height: 430px; }
       .slide-bg {
         object-fit: fill;
         object-position: center;
       }
       .slide-overlay {
-        display: block;
-        background: linear-gradient(
-          to bottom,
-          rgba(5,18,10,.68) 0%,
-          rgba(5,18,10,.58) 55%,
-          rgba(5,18,10,.76) 100%
-        );
+        display: none;
+        background: none;
       }
       .slide-content {
         padding: 56px 24px 0 24px;
@@ -1816,26 +1811,34 @@
         color: var(--green-dark);
       }
       .slide-title {
-        color: white;
-        font-size: clamp(1.85rem, 7.8vw, 2.35rem);
+        color: var(--dark);
+        font-size: clamp(1.55rem, 7vw, 2.25rem);
         line-height: 1.12;
         text-align: center;
-        text-shadow: 0 2px 10px rgba(0,0,0,.3);
+        text-shadow: none;
       }
       .slide-title .nowrap { white-space: normal; }
-      .slide-title .title-line { display: block; }
+      .slide-title .title-line {
+        display: block;
+        white-space: nowrap;
+      }
       .slide-title .highlight {
-        color: #22a85d;
+        color: var(--green-primary);
         text-shadow:
-          0 0 8px rgba(34,168,93,.28),
+          0 0 6px rgba(26,143,78,.16),
           0 1px 3px rgba(15,110,58,.14);
       }
       .desktop-only { display: none; }
       .mobile-only { display: inline; }
       .slide-sub {
-        color: rgba(255,255,255,.88);
-        font-size: .9rem;
+        color: var(--gray-text);
+        font-size: clamp(.78rem, 3.5vw, .9rem);
+        line-height: 1.35;
         text-align: center;
+      }
+      .slide-sub .sub-line {
+        display: block;
+        white-space: nowrap;
       }
       .slide-cta {
         margin-top: auto;
@@ -2367,12 +2370,13 @@
             Atendimento particular · São Paulo
           </span>
           <h1 class="slide-title">
-            <span class="title-line">Cuidado domiciliar</span>
+            <span class="title-line">Cuidado em casa</span>
             <span class="title-line"><span class="highlight">seguro</span> e humanizado</span>
             <span class="title-line">para quem você ama</span>
           </h1>
           <p class="slide-sub">
-            Profissionais capacitados, suporte humanizado e cuidado personalizado no conforto do lar.
+            <span class="sub-line">Profissionais capacitados</span>
+            <span class="sub-line">e cuidado no conforto do lar.</span>
           </p>
           <a href="#LINK_WHATSAPP#" class="slide-cta" aria-label="Falar com um especialista agora pelo WhatsApp">
             <i class="fab fa-whatsapp" aria-hidden="true"></i>
@@ -2395,12 +2399,13 @@
             Equipe qualificada disponível
           </span>
           <h1 class="slide-title">
-            <span class="title-line">Enfermagem domiciliar</span>
-            <span class="title-line">com <span class="highlight">profissionalismo</span></span>
-            <span class="title-line">e cuidado real</span>
+            <span class="title-line">Enfermagem em casa</span>
+            <span class="title-line">com cuidado técnico</span>
+            <span class="title-line">e <span class="highlight">profissional</span></span>
           </h1>
           <p class="slide-sub">
-            Atendimento técnico e humanizado no conforto do lar, com acompanhamento próximo e seguro.
+            <span class="sub-line">Atendimento técnico em casa</span>
+            <span class="sub-line">com acompanhamento seguro.</span>
           </p>
           <a href="#LINK_WHATSAPP#" class="slide-cta" aria-label="Preciso de atendimento pelo WhatsApp">
             <i class="fab fa-whatsapp" aria-hidden="true"></i>
@@ -2423,11 +2428,13 @@
             Cuidado humanizado
           </span>
           <h1 class="slide-title">
-            <span class="title-line">Acompanhamento <span class="highlight">contínuo</span></span>
-            <span class="title-line">para sua <span class="desktop-only">família ter tranquilidade</span><span class="mobile-only">família ficar tranquila</span></span>
+            <span class="title-line">Cuidado <span class="highlight">contínuo</span></span>
+            <span class="title-line">para sua família</span>
+            <span class="title-line">ter tranquilidade</span>
           </h1>
           <p class="slide-sub">
-            Suporte com profissionais dedicados para o cuidado frequente e prolongado do seu familiar.
+            <span class="sub-line">Suporte dedicado e frequente</span>
+            <span class="sub-line">para a rotina familiar.</span>
           </p>
           <a href="#LINK_WHATSAPP#" class="slide-cta" aria-label="Solicitar avaliação pelo WhatsApp">
             <i class="fab fa-whatsapp" aria-hidden="true"></i>
@@ -2451,10 +2458,12 @@
           </span>
           <h1 class="slide-title">
             <span class="title-line">Cuidado planejado</span>
-            <span class="title-line">para cada <span class="highlight">necessidade</span></span>
+            <span class="title-line">para cada rotina</span>
+            <span class="title-line">com <span class="highlight">orientação</span></span>
           </h1>
           <p class="slide-sub">
-            Orientação pelo WhatsApp para entender sua necessidade e indicar o melhor cuidado.
+            <span class="sub-line">Orientação pelo WhatsApp</span>
+            <span class="sub-line">para indicar o cuidado ideal.</span>
           </p>
           <a href="#LINK_WHATSAPP#" class="slide-cta" aria-label="Receber orientação agora pelo WhatsApp">
             <i class="fab fa-whatsapp" aria-hidden="true"></i>
@@ -3101,7 +3110,7 @@
             <i class="fas fa-chevron-down" aria-hidden="true"></i>
           </div>
           <div class="faq-answer">
-            <p>Sim. Contamos com cuidadores habilitados para atender pacientes com AVC, Alzheimer, Parkinson e outras condições neurolgicas ou degenerativas. Nossa equipe é preparada para lidar com as especificidades de cada condio, garantindo segurança, rotina e bem-estar ao paciente.</p>
+            <p>Sim. Contamos com cuidadores habilitados para atender pacientes com AVC, Alzheimer, Parkinson e outras condições neurológicas ou degenerativas. Nossa equipe é preparada para lidar com as especificidades de cada condição, garantindo segurança, rotina e bem-estar ao paciente.</p>
           </div>
         </div>
 
@@ -3141,7 +3150,7 @@
             <i class="fas fa-chevron-down" aria-hidden="true"></i>
           </div>
           <div class="faq-answer">
-            <p>Nossa equipe orienta você pelo WhatsApp. Após entender a condio e as necessidades do paciente, indicamos o profissional mais adequado — sem compromisso e sem custo na orientação.</p>
+            <p>Nossa equipe orienta você pelo WhatsApp. Após entender a condição e as necessidades do paciente, indicamos o profissional mais adequado — sem compromisso e sem custo na orientação.</p>
           </div>
         </div>
 
@@ -3623,7 +3632,7 @@
     });
 
     /* -------------------------------------------------------
-       SCROLL SUAVE PARA LINKS ÂNCORA
+       SCROLL SUAVE PARA LINKS ANCORA
     ------------------------------------------------------- */
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', e => {
