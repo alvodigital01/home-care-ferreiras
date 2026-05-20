@@ -1843,13 +1843,21 @@
         align-self: center;
         width: min(300px, calc(100vw - 48px));
         height: 52px;
+        min-height: 52px;
+        max-height: 52px;
+        min-width: 0;
+        align-items: center;
         justify-content: center;
-        font-size: clamp(.78rem, 3.6vw, .9rem);
-        line-height: 1;
-        padding: 0 16px;
-        gap: 9px;
-        white-space: nowrap;
+        font-size: clamp(.76rem, 3.4vw, .9rem);
+        line-height: 1.12;
+        padding: 0 14px;
+        gap: 8px;
+        white-space: normal;
         text-align: center;
+      }
+      .slide-cta i {
+        flex: 0 0 auto;
+        font-size: 1rem;
       }
       .hero-controls { left: 32px; transform: none; bottom: 22px; gap: 10px; }
       .hero-arrow {
@@ -2054,6 +2062,13 @@
     }
 
     /* -- Mobile nav: estático no layout vertical -- */
+    @media (max-width: 768px) {
+      .slide-cta:hover,
+      .slide-cta:active {
+        transform: none;
+      }
+    }
+
     .mobile-nav .btn-nav-whatsapp,
     .mobile-nav .btn-nav-whatsapp::before { animation: none; }
 
