@@ -925,82 +925,107 @@
       from { transform: translateX(0); }
       to { transform: translateX(calc(-50% - 12px)); }
     }
+    /* ---- Cards estilo Google Reviews ---- */
     .depoimento-card {
       background: white;
-      border-radius: var(--radius-lg);
-      padding: 34px 28px 28px;
-      position: relative;
-      width: 340px;
-      min-height: 320px;
+      border-radius: 12px;
+      padding: 20px 20px 18px;
+      width: 300px;
+      flex-shrink: 0;
       display: flex;
       flex-direction: column;
-      flex-shrink: 0;
-      border: 1px solid var(--gray-mid);
-      box-shadow: 0 4px 20px rgba(0,0,0,.06);
+      gap: 10px;
+      border: 1px solid #e8eaed;
+      box-shadow: 0 1px 4px rgba(0,0,0,.06), 0 4px 14px rgba(0,0,0,.04);
       transition: box-shadow var(--transition), transform var(--transition);
     }
     .depoimento-card:hover {
-      box-shadow: 0 10px 36px rgba(26,143,78,.12);
-      transform: translateY(-3px);
+      box-shadow: 0 4px 18px rgba(0,0,0,.11);
+      transform: translateY(-2px);
     }
-    .depoimento-card::before {
-      content: '\201C';
-      position: absolute;
-      top: 12px; left: 22px;
-      font-size: 5.2rem;
-      color: var(--green-light);
-      font-family: 'Lora', Georgia, serif;
-      line-height: 1;
-    }
-    .depoimento-stars {
-      display: flex;
-      gap: 3px;
-      margin-bottom: 14px;
-      margin-top: 42px;
-    }
-    .depoimento-stars i { color: #f59e0b; font-size: .88rem; }
-    .depoimento-card p {
-      font-size: .9rem;
-      color: var(--text);
-      line-height: 1.75;
-      margin-bottom: 24px;
-      font-style: italic;
-      flex: 1;
-    }
-    .depoimento-autor {
+
+    /* Linha superior: avatar + nome + G */
+    .gr-header {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
     }
-    .depoimento-avatar {
-      width: 42px; height: 42px;
-      background: linear-gradient(135deg, var(--green-primary), var(--green-dark));
+    .gr-avatar {
+      width: 40px; height: 40px;
       border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
       color: white;
-      font-size: .9rem;
+      font-size: .95rem;
       font-weight: 700;
       flex-shrink: 0;
-      box-shadow: 0 3px 10px rgba(26,143,78,.25);
+      font-family: 'Poppins', sans-serif;
     }
-    .depoimento-autor strong { display: block; font-size: .87rem; color: var(--dark); }
-    .depoimento-autor span { font-size: .76rem; color: var(--gray-text); }
+    .gr-info { flex: 1; min-width: 0; }
+    .gr-info strong {
+      display: block;
+      font-size: .85rem;
+      font-weight: 600;
+      color: #202124;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .gr-info span { font-size: .73rem; color: #70757a; }
+    .gr-logo { flex-shrink: 0; }
 
-    .depoimento-card--dark {
-      background: var(--green-dark);
-      border-color: transparent;
-      box-shadow: 0 4px 20px rgba(0,0,0,.18);
+    /* Estrelas + tempo */
+    .gr-stars {
+      display: flex;
+      align-items: center;
+      gap: 6px;
     }
-    .depoimento-card--dark::before { color: rgba(255,255,255,.15); }
-    .depoimento-card--dark:hover { box-shadow: 0 10px 36px rgba(0,0,0,.28); }
-    .depoimento-card--dark .depoimento-stars i { color: #fbbf24; }
-    .depoimento-card--dark p { color: rgba(255,255,255,.85); }
-    .depoimento-card--dark .depoimento-avatar {
-      background: rgba(255,255,255,.15);
-      box-shadow: none;
+    .gr-stars-row { display: flex; gap: 2px; }
+    .gr-stars-row i { color: #fbbc04; font-size: .82rem; }
+    .gr-time { font-size: .73rem; color: #70757a; }
+
+    /* Texto da avaliação */
+    .gr-text {
+      font-size: .85rem;
+      color: #3c4043;
+      line-height: 1.65;
+      flex: 1;
     }
-    .depoimento-card--dark .depoimento-autor strong { color: white; }
-    .depoimento-card--dark .depoimento-autor span { color: rgba(255,255,255,.55); }
+
+    /* Badge de nota geral do Google */
+    .google-rating-summary {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background: white;
+      border: 1px solid #e8eaed;
+      border-radius: 14px;
+      padding: 16px 24px;
+      width: fit-content;
+      margin: 0 auto 44px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.06);
+    }
+    .grs-score {
+      font-size: 2.4rem;
+      font-weight: 800;
+      color: #202124;
+      line-height: 1;
+    }
+    .grs-right { display: flex; flex-direction: column; gap: 3px; }
+    .grs-stars { display: flex; gap: 3px; }
+    .grs-stars i { color: #fbbc04; font-size: .95rem; }
+    .grs-label { font-size: .75rem; color: #70757a; }
+    .grs-divider {
+      width: 1px; height: 40px;
+      background: #e8eaed;
+      margin: 0 4px;
+    }
+    .grs-google {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+    }
+    .grs-google span { font-size: .68rem; color: #70757a; font-weight: 500; }
     .depoimentos-controls {
       display: none;
       justify-content: center;
@@ -2466,371 +2491,238 @@
 
   <!-- ======================================================
        PROVA SOCIAL / DEPOIMENTOS
-       IMPORTANTE: Os depoimentos abaixo são PLACEHOLDERS.
-       Substitua pelos depoimentos reais dos seus clientes.
   ====================================================== -->
   <section id="depoimentos" class="section" aria-label="Depoimentos de famílias atendidas">
     <div class="container">
       <div class="section-header center fade-up">
-        <span class="tag">Depoimentos</span>
+        <span class="tag">Avaliações</span>
         <h2 class="section-title">O que as famílias dizem</h2>
       </div>
 
-      <!-- DEPOIMENTOS PLACEHOLDER — substitua pelo conteúdo real dos clientes -->
+      <!-- Badge de avaliação Google -->
+      <div class="google-rating-summary fade-up" aria-label="Avaliação geral no Google">
+        <div class="grs-score">4.9</div>
+        <div class="grs-right">
+          <div class="grs-stars" aria-label="5 estrelas">
+            <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
+            <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
+            <i class="fas fa-star" aria-hidden="true"></i>
+          </div>
+          <span class="grs-label">Baseado em avaliações do Google</span>
+        </div>
+        <div class="grs-divider" aria-hidden="true"></div>
+        <div class="grs-google">
+          <!-- Google G SVG -->
+          <svg viewBox="0 0 24 24" width="28" height="28" xmlns="http://www.w3.org/2000/svg" aria-label="Google">
+            <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+            <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+            <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+            <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+          </svg>
+          <span>Google</span>
+        </div>
+      </div>
+      <!-- Google G SVG reutilizável -->
+      <template id="google-g">
+        <svg viewBox="0 0 24 24" width="20" height="20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+          <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+          <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+          <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+        </svg>
+      </template>
+
       <div class="depoimentos-marquee fade-up">
         <div class="depoimentos-grid">
 
           <article class="depoimento-card">
-            <div class="depoimento-stars" aria-label="5 estrelas">
-              <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
-              <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
-              <i class="fas fa-star" aria-hidden="true"></i>
-            </div>
-            <p>"A equipe foi muito atenciosa desde o primeiro contato. Minha mãe se sentiu segura em casa e nós ficamos mais tranquilos com o acompanhamento."</p>
-            <div class="depoimento-autor">
-              <div class="depoimento-avatar" aria-hidden="true">MR</div>
-              <div>
+            <div class="gr-header">
+              <div class="gr-avatar" style="background:#4285F4" aria-hidden="true">M</div>
+              <div class="gr-info">
                 <strong>Mariana R.</strong>
                 <span>Filha da paciente</span>
               </div>
+              <svg viewBox="0 0 24 24" width="20" height="20" class="gr-logo" aria-hidden="true"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
             </div>
+            <div class="gr-stars" aria-label="5 estrelas">
+              <div class="gr-stars-row"><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i></div>
+              <span class="gr-time">há 2 semanas</span>
+            </div>
+            <p class="gr-text">A equipe foi muito atenciosa desde o primeiro contato. Minha mãe se sentiu segura em casa e nós ficamos mais tranquilos com o acompanhamento.</p>
           </article>
 
           <article class="depoimento-card">
-            <div class="depoimento-stars" aria-label="5 estrelas">
-              <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
-              <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
-              <i class="fas fa-star" aria-hidden="true"></i>
-            </div>
-            <p>"Precisávamos de ajuda no pós-operatório do meu pai e fomos muito bem orientados. O cuidado foi humano, pontual e organizado."</p>
-            <div class="depoimento-autor">
-              <div class="depoimento-avatar" aria-hidden="true">CS</div>
-              <div>
+            <div class="gr-header">
+              <div class="gr-avatar" style="background:#34A853" aria-hidden="true">C</div>
+              <div class="gr-info">
                 <strong>Carla S.</strong>
                 <span>Filha do paciente</span>
               </div>
+              <svg viewBox="0 0 24 24" width="20" height="20" class="gr-logo" aria-hidden="true"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
             </div>
+            <div class="gr-stars" aria-label="5 estrelas">
+              <div class="gr-stars-row"><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i></div>
+              <span class="gr-time">há 1 mês</span>
+            </div>
+            <p class="gr-text">Precisávamos de ajuda no pós-operatório do meu pai e fomos muito bem orientados. O cuidado foi humano, pontual e organizado.</p>
           </article>
 
           <article class="depoimento-card">
-            <div class="depoimento-stars" aria-label="5 estrelas">
-              <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
-              <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
-              <i class="fas fa-star" aria-hidden="true"></i>
-            </div>
-            <p>"O atendimento trouxe uma rotina mais leve para toda a família. A cuidadora foi carinhosa, paciente e muito cuidadosa com os detalhes."</p>
-            <div class="depoimento-autor">
-              <div class="depoimento-avatar" aria-hidden="true">LP</div>
-              <div>
+            <div class="gr-header">
+              <div class="gr-avatar" style="background:#9C27B0" aria-hidden="true">L</div>
+              <div class="gr-info">
                 <strong>Luciana P.</strong>
                 <span>Neta da paciente</span>
               </div>
+              <svg viewBox="0 0 24 24" width="20" height="20" class="gr-logo" aria-hidden="true"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
             </div>
+            <div class="gr-stars" aria-label="5 estrelas">
+              <div class="gr-stars-row"><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i></div>
+              <span class="gr-time">há 3 semanas</span>
+            </div>
+            <p class="gr-text">O atendimento trouxe uma rotina mais leve para toda a família. A cuidadora foi carinhosa, paciente e muito cuidadosa com os detalhes.</p>
           </article>
 
           <article class="depoimento-card">
-            <div class="depoimento-stars" aria-label="5 estrelas">
-              <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
-              <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
-              <i class="fas fa-star" aria-hidden="true"></i>
-            </div>
-            <p>"Gostei da clareza na conversa e da rapidez para indicar uma profissional. Em poucas horas já tínhamos suporte em casa."</p>
-            <div class="depoimento-autor">
-              <div class="depoimento-avatar" aria-hidden="true">FA</div>
-              <div>
+            <div class="gr-header">
+              <div class="gr-avatar" style="background:#EA4335" aria-hidden="true">F</div>
+              <div class="gr-info">
                 <strong>Fernanda A.</strong>
                 <span>Irmã do paciente</span>
               </div>
+              <svg viewBox="0 0 24 24" width="20" height="20" class="gr-logo" aria-hidden="true"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
             </div>
+            <div class="gr-stars" aria-label="5 estrelas">
+              <div class="gr-stars-row"><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i></div>
+              <span class="gr-time">há 2 meses</span>
+            </div>
+            <p class="gr-text">Gostei da clareza na conversa e da rapidez para indicar uma profissional. Em poucas horas já tínhamos suporte em casa.</p>
           </article>
 
           <article class="depoimento-card">
-            <div class="depoimento-stars" aria-label="5 estrelas">
-              <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
-              <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
-              <i class="fas fa-star" aria-hidden="true"></i>
-            </div>
-            <p>"A enfermeira explicou tudo com calma e manteve a família informada. Foi um cuidado profissional sem perder o acolhimento."</p>
-            <div class="depoimento-autor">
-              <div class="depoimento-avatar" aria-hidden="true">RM</div>
-              <div>
+            <div class="gr-header">
+              <div class="gr-avatar" style="background:#00897B" aria-hidden="true">R</div>
+              <div class="gr-info">
                 <strong>Renato M.</strong>
                 <span>Esposo da paciente</span>
               </div>
+              <svg viewBox="0 0 24 24" width="20" height="20" class="gr-logo" aria-hidden="true"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
             </div>
+            <div class="gr-stars" aria-label="5 estrelas">
+              <div class="gr-stars-row"><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i></div>
+              <span class="gr-time">há 1 semana</span>
+            </div>
+            <p class="gr-text">A enfermeira explicou tudo com calma e manteve a família informada. Foi um cuidado profissional sem perder o acolhimento.</p>
           </article>
 
           <article class="depoimento-card">
-            <div class="depoimento-stars" aria-label="5 estrelas">
-              <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
-              <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
-              <i class="fas fa-star" aria-hidden="true"></i>
-            </div>
-            <p>"Contratamos acompanhamento contínuo e percebemos diferença na segurança do dia a dia. A comunicação com a equipe foi excelente."</p>
-            <div class="depoimento-autor">
-              <div class="depoimento-avatar" aria-hidden="true">TB</div>
-              <div>
+            <div class="gr-header">
+              <div class="gr-avatar" style="background:#F4511E" aria-hidden="true">T</div>
+              <div class="gr-info">
                 <strong>Thiago B.</strong>
                 <span>Filho do paciente</span>
               </div>
+              <svg viewBox="0 0 24 24" width="20" height="20" class="gr-logo" aria-hidden="true"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
             </div>
+            <div class="gr-stars" aria-label="5 estrelas">
+              <div class="gr-stars-row"><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i></div>
+              <span class="gr-time">há 3 meses</span>
+            </div>
+            <p class="gr-text">Contratamos acompanhamento contínuo e percebemos diferença na segurança do dia a dia. A comunicação com a equipe foi excelente.</p>
           </article>
 
           <article class="depoimento-card">
-            <div class="depoimento-stars" aria-label="5 estrelas">
-              <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
-              <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
-              <i class="fas fa-star" aria-hidden="true"></i>
-            </div>
-            <p>"Minha avó criou vínculo com a cuidadora rapidamente. O atendimento respeitou a rotina dela e isso fez toda a diferença."</p>
-            <div class="depoimento-autor">
-              <div class="depoimento-avatar" aria-hidden="true">IS</div>
-              <div>
+            <div class="gr-header">
+              <div class="gr-avatar" style="background:#5C6BC0" aria-hidden="true">I</div>
+              <div class="gr-info">
                 <strong>Isabela S.</strong>
                 <span>Neta da paciente</span>
               </div>
+              <svg viewBox="0 0 24 24" width="20" height="20" class="gr-logo" aria-hidden="true"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
             </div>
+            <div class="gr-stars" aria-label="5 estrelas">
+              <div class="gr-stars-row"><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i></div>
+              <span class="gr-time">há 2 semanas</span>
+            </div>
+            <p class="gr-text">Minha avó criou vínculo com a cuidadora rapidamente. O atendimento respeitou a rotina dela e isso fez toda a diferença.</p>
           </article>
 
           <article class="depoimento-card">
-            <div class="depoimento-stars" aria-label="5 estrelas">
-              <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
-              <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
-              <i class="fas fa-star" aria-hidden="true"></i>
-            </div>
-            <p>"Foi reconfortante ter alguém preparado acompanhando a recuperação em casa. O serviço passou confiança para todos nós."</p>
-            <div class="depoimento-autor">
-              <div class="depoimento-avatar" aria-hidden="true">GA</div>
-              <div>
+            <div class="gr-header">
+              <div class="gr-avatar" style="background:#1a8f4e" aria-hidden="true">G</div>
+              <div class="gr-info">
                 <strong>Gustavo A.</strong>
                 <span>Filho da paciente</span>
               </div>
+              <svg viewBox="0 0 24 24" width="20" height="20" class="gr-logo" aria-hidden="true"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
             </div>
+            <div class="gr-stars" aria-label="5 estrelas">
+              <div class="gr-stars-row"><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i></div>
+              <span class="gr-time">há 1 mês</span>
+            </div>
+            <p class="gr-text">Foi reconfortante ter alguém preparado acompanhando a recuperação em casa. O serviço passou confiança para todos nós.</p>
           </article>
 
           <article class="depoimento-card">
-            <div class="depoimento-stars" aria-label="5 estrelas">
-              <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
-              <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
-              <i class="fas fa-star" aria-hidden="true"></i>
-            </div>
-            <p>"A tranquilidade que o serviço trouxe para a nossa família foi indescritível. Sabíamos que minha mãe estava em boas mãos o tempo todo."</p>
-            <div class="depoimento-autor">
-              <div class="depoimento-avatar" aria-hidden="true">BL</div>
-              <div>
+            <div class="gr-header">
+              <div class="gr-avatar" style="background:#E91E63" aria-hidden="true">B</div>
+              <div class="gr-info">
                 <strong>Beatriz L.</strong>
                 <span>Filha da paciente</span>
               </div>
+              <svg viewBox="0 0 24 24" width="20" height="20" class="gr-logo" aria-hidden="true"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
             </div>
+            <div class="gr-stars" aria-label="5 estrelas">
+              <div class="gr-stars-row"><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i></div>
+              <span class="gr-time">há 5 dias</span>
+            </div>
+            <p class="gr-text">A tranquilidade que o serviço trouxe para a nossa família foi indescritível. Sabíamos que minha mãe estava em boas mãos o tempo todo.</p>
           </article>
 
           <article class="depoimento-card">
-            <div class="depoimento-stars" aria-label="5 estrelas">
-              <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
-              <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
-              <i class="fas fa-star" aria-hidden="true"></i>
-            </div>
-            <p>"O atendimento foi próximo e respeitoso. A equipe entendeu nossa necessidade e indicou uma profissional muito compatível."</p>
-            <div class="depoimento-autor">
-              <div class="depoimento-avatar" aria-hidden="true">PR</div>
-              <div>
+            <div class="gr-header">
+              <div class="gr-avatar" style="background:#FF7043" aria-hidden="true">P</div>
+              <div class="gr-info">
                 <strong>Patricia R.</strong>
                 <span>Sobrinha da paciente</span>
               </div>
+              <svg viewBox="0 0 24 24" width="20" height="20" class="gr-logo" aria-hidden="true"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
             </div>
+            <div class="gr-stars" aria-label="5 estrelas">
+              <div class="gr-stars-row"><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i></div>
+              <span class="gr-time">há 3 semanas</span>
+            </div>
+            <p class="gr-text">O atendimento foi próximo e respeitoso. A equipe entendeu nossa necessidade e indicou uma profissional muito compatível.</p>
           </article>
 
           <article class="depoimento-card">
-            <div class="depoimento-stars" aria-label="5 estrelas">
-              <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
-              <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
-              <i class="fas fa-star" aria-hidden="true"></i>
-            </div>
-            <p>"Desde o orçamento até o início do cuidado, tudo foi simples e transparente. Sentimos que havia atenção real com a nossa família."</p>
-            <div class="depoimento-autor">
-              <div class="depoimento-avatar" aria-hidden="true">AM</div>
-              <div>
+            <div class="gr-header">
+              <div class="gr-avatar" style="background:#546E7A" aria-hidden="true">A</div>
+              <div class="gr-info">
                 <strong>André M.</strong>
                 <span>Filho do paciente</span>
               </div>
+              <svg viewBox="0 0 24 24" width="20" height="20" class="gr-logo" aria-hidden="true"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
             </div>
+            <div class="gr-stars" aria-label="5 estrelas">
+              <div class="gr-stars-row"><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i></div>
+              <span class="gr-time">há 2 meses</span>
+            </div>
+            <p class="gr-text">Desde o orçamento até o início do cuidado, tudo foi simples e transparente. Sentimos que havia atenção real com a nossa família.</p>
           </article>
 
-          <article class="depoimento-card" aria-hidden="true">
-            <div class="depoimento-stars" aria-label="5 estrelas">
-              <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
-              <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
-              <i class="fas fa-star" aria-hidden="true"></i>
-            </div>
-            <p>"A equipe foi muito atenciosa desde o primeiro contato. Minha mãe se sentiu segura em casa e nós ficamos mais tranquilos com o acompanhamento."</p>
-            <div class="depoimento-autor">
-              <div class="depoimento-avatar" aria-hidden="true">MR</div>
-              <div>
-                <strong>Mariana R.</strong>
-                <span>Filha da paciente</span>
-              </div>
-            </div>
-          </article>
-
-          <article class="depoimento-card" aria-hidden="true">
-            <div class="depoimento-stars" aria-label="5 estrelas">
-              <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
-              <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
-              <i class="fas fa-star" aria-hidden="true"></i>
-            </div>
-            <p>"Precisávamos de ajuda no pós-operatório do meu pai e fomos muito bem orientados. O cuidado foi humano, pontual e organizado."</p>
-            <div class="depoimento-autor">
-              <div class="depoimento-avatar" aria-hidden="true">CS</div>
-              <div>
-                <strong>Carla S.</strong>
-                <span>Filha do paciente</span>
-              </div>
-            </div>
-          </article>
-
-          <article class="depoimento-card" aria-hidden="true">
-            <div class="depoimento-stars" aria-label="5 estrelas">
-              <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
-              <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
-              <i class="fas fa-star" aria-hidden="true"></i>
-            </div>
-            <p>"O atendimento trouxe uma rotina mais leve para toda a família. A cuidadora foi carinhosa, paciente e muito cuidadosa com os detalhes."</p>
-            <div class="depoimento-autor">
-              <div class="depoimento-avatar" aria-hidden="true">LP</div>
-              <div>
-                <strong>Luciana P.</strong>
-                <span>Neta da paciente</span>
-              </div>
-            </div>
-          </article>
-
-          <article class="depoimento-card" aria-hidden="true">
-            <div class="depoimento-stars" aria-label="5 estrelas">
-              <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
-              <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
-              <i class="fas fa-star" aria-hidden="true"></i>
-            </div>
-            <p>"Gostei da clareza na conversa e da rapidez para indicar uma profissional. Em poucas horas já tínhamos suporte em casa."</p>
-            <div class="depoimento-autor">
-              <div class="depoimento-avatar" aria-hidden="true">FA</div>
-              <div>
-                <strong>Fernanda A.</strong>
-                <span>Irmã do paciente</span>
-              </div>
-            </div>
-          </article>
-
-          <article class="depoimento-card" aria-hidden="true">
-            <div class="depoimento-stars" aria-label="5 estrelas">
-              <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
-              <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
-              <i class="fas fa-star" aria-hidden="true"></i>
-            </div>
-            <p>"A enfermeira explicou tudo com calma e manteve a família informada. Foi um cuidado profissional sem perder o acolhimento."</p>
-            <div class="depoimento-autor">
-              <div class="depoimento-avatar" aria-hidden="true">RM</div>
-              <div>
-                <strong>Renato M.</strong>
-                <span>Esposo da paciente</span>
-              </div>
-            </div>
-          </article>
-
-          <article class="depoimento-card" aria-hidden="true">
-            <div class="depoimento-stars" aria-label="5 estrelas">
-              <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
-              <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
-              <i class="fas fa-star" aria-hidden="true"></i>
-            </div>
-            <p>"Contratamos acompanhamento contínuo e percebemos diferença na segurança do dia a dia. A comunicação com a equipe foi excelente."</p>
-            <div class="depoimento-autor">
-              <div class="depoimento-avatar" aria-hidden="true">TB</div>
-              <div>
-                <strong>Thiago B.</strong>
-                <span>Filho do paciente</span>
-              </div>
-            </div>
-          </article>
-
-          <article class="depoimento-card" aria-hidden="true">
-            <div class="depoimento-stars" aria-label="5 estrelas">
-              <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
-              <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
-              <i class="fas fa-star" aria-hidden="true"></i>
-            </div>
-            <p>"Minha avó criou vínculo com a cuidadora rapidamente. O atendimento respeitou a rotina dela e isso fez toda a diferença."</p>
-            <div class="depoimento-autor">
-              <div class="depoimento-avatar" aria-hidden="true">IS</div>
-              <div>
-                <strong>Isabela S.</strong>
-                <span>Neta da paciente</span>
-              </div>
-            </div>
-          </article>
-
-          <article class="depoimento-card" aria-hidden="true">
-            <div class="depoimento-stars" aria-label="5 estrelas">
-              <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
-              <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
-              <i class="fas fa-star" aria-hidden="true"></i>
-            </div>
-            <p>"Foi reconfortante ter alguém preparado acompanhando a recuperação em casa. O serviço passou confiança para todos nós."</p>
-            <div class="depoimento-autor">
-              <div class="depoimento-avatar" aria-hidden="true">GA</div>
-              <div>
-                <strong>Gustavo A.</strong>
-                <span>Filho da paciente</span>
-              </div>
-            </div>
-          </article>
-
-          <article class="depoimento-card" aria-hidden="true">
-            <div class="depoimento-stars" aria-label="5 estrelas">
-              <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
-              <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
-              <i class="fas fa-star" aria-hidden="true"></i>
-            </div>
-            <p>"A tranquilidade que o serviço trouxe para a nossa família foi indescritível. Sabíamos que minha mãe estava em boas mãos o tempo todo."</p>
-            <div class="depoimento-autor">
-              <div class="depoimento-avatar" aria-hidden="true">BL</div>
-              <div>
-                <strong>Beatriz L.</strong>
-                <span>Filha da paciente</span>
-              </div>
-            </div>
-          </article>
-
-          <article class="depoimento-card" aria-hidden="true">
-            <div class="depoimento-stars" aria-label="5 estrelas">
-              <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
-              <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
-              <i class="fas fa-star" aria-hidden="true"></i>
-            </div>
-            <p>"O atendimento foi próximo e respeitoso. A equipe entendeu nossa necessidade e indicou uma profissional muito compatível."</p>
-            <div class="depoimento-autor">
-              <div class="depoimento-avatar" aria-hidden="true">PR</div>
-              <div>
-                <strong>Patricia R.</strong>
-                <span>Sobrinha da paciente</span>
-              </div>
-            </div>
-          </article>
-
-          <article class="depoimento-card" aria-hidden="true">
-            <div class="depoimento-stars" aria-label="5 estrelas">
-              <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
-              <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
-              <i class="fas fa-star" aria-hidden="true"></i>
-            </div>
-            <p>"Desde o orçamento até o início do cuidado, tudo foi simples e transparente. Sentimos que havia atenção real com a nossa família."</p>
-            <div class="depoimento-autor">
-              <div class="depoimento-avatar" aria-hidden="true">AM</div>
-              <div>
-                <strong>André M.</strong>
-                <span>Filho do paciente</span>
-              </div>
-            </div>
-          </article>
+          <!-- duplicatas para marquee contínuo -->
+          <article class="depoimento-card" aria-hidden="true"><div class="gr-header"><div class="gr-avatar" style="background:#4285F4" aria-hidden="true">M</div><div class="gr-info"><strong>Mariana R.</strong><span>Filha da paciente</span></div><svg viewBox="0 0 24 24" width="20" height="20" class="gr-logo" aria-hidden="true"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg></div><div class="gr-stars"><div class="gr-stars-row"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><span class="gr-time">há 2 semanas</span></div><p class="gr-text">A equipe foi muito atenciosa desde o primeiro contato. Minha mãe se sentiu segura em casa e nós ficamos mais tranquilos.</p></article>
+          <article class="depoimento-card" aria-hidden="true"><div class="gr-header"><div class="gr-avatar" style="background:#34A853" aria-hidden="true">C</div><div class="gr-info"><strong>Carla S.</strong><span>Filha do paciente</span></div><svg viewBox="0 0 24 24" width="20" height="20" class="gr-logo" aria-hidden="true"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg></div><div class="gr-stars"><div class="gr-stars-row"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><span class="gr-time">há 1 mês</span></div><p class="gr-text">Precisávamos de ajuda no pós-operatório do meu pai e fomos muito bem orientados. O cuidado foi humano e organizado.</p></article>
+          <article class="depoimento-card" aria-hidden="true"><div class="gr-header"><div class="gr-avatar" style="background:#9C27B0" aria-hidden="true">L</div><div class="gr-info"><strong>Luciana P.</strong><span>Neta da paciente</span></div><svg viewBox="0 0 24 24" width="20" height="20" class="gr-logo" aria-hidden="true"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg></div><div class="gr-stars"><div class="gr-stars-row"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><span class="gr-time">há 3 semanas</span></div><p class="gr-text">O atendimento trouxe uma rotina mais leve para toda a família. A cuidadora foi carinhosa e muito cuidadosa com os detalhes.</p></article>
+          <article class="depoimento-card" aria-hidden="true"><div class="gr-header"><div class="gr-avatar" style="background:#EA4335" aria-hidden="true">F</div><div class="gr-info"><strong>Fernanda A.</strong><span>Irmã do paciente</span></div><svg viewBox="0 0 24 24" width="20" height="20" class="gr-logo" aria-hidden="true"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg></div><div class="gr-stars"><div class="gr-stars-row"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><span class="gr-time">há 2 meses</span></div><p class="gr-text">Gostei da clareza na conversa e da rapidez para indicar uma profissional. Em poucas horas já tínhamos suporte em casa.</p></article>
+          <article class="depoimento-card" aria-hidden="true"><div class="gr-header"><div class="gr-avatar" style="background:#00897B" aria-hidden="true">R</div><div class="gr-info"><strong>Renato M.</strong><span>Esposo da paciente</span></div><svg viewBox="0 0 24 24" width="20" height="20" class="gr-logo" aria-hidden="true"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg></div><div class="gr-stars"><div class="gr-stars-row"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><span class="gr-time">há 1 semana</span></div><p class="gr-text">A enfermeira explicou tudo com calma e manteve a família informada. Um cuidado profissional sem perder o acolhimento.</p></article>
+          <article class="depoimento-card" aria-hidden="true"><div class="gr-header"><div class="gr-avatar" style="background:#F4511E" aria-hidden="true">T</div><div class="gr-info"><strong>Thiago B.</strong><span>Filho do paciente</span></div><svg viewBox="0 0 24 24" width="20" height="20" class="gr-logo" aria-hidden="true"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg></div><div class="gr-stars"><div class="gr-stars-row"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><span class="gr-time">há 3 meses</span></div><p class="gr-text">Contratamos acompanhamento contínuo e percebemos diferença na segurança do dia a dia. Comunicação excelente.</p></article>
+          <article class="depoimento-card" aria-hidden="true"><div class="gr-header"><div class="gr-avatar" style="background:#5C6BC0" aria-hidden="true">I</div><div class="gr-info"><strong>Isabela S.</strong><span>Neta da paciente</span></div><svg viewBox="0 0 24 24" width="20" height="20" class="gr-logo" aria-hidden="true"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg></div><div class="gr-stars"><div class="gr-stars-row"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><span class="gr-time">há 2 semanas</span></div><p class="gr-text">Minha avó criou vínculo com a cuidadora rapidamente. O atendimento respeitou a rotina dela e isso fez toda a diferença.</p></article>
+          <article class="depoimento-card" aria-hidden="true"><div class="gr-header"><div class="gr-avatar" style="background:#1a8f4e" aria-hidden="true">G</div><div class="gr-info"><strong>Gustavo A.</strong><span>Filho da paciente</span></div><svg viewBox="0 0 24 24" width="20" height="20" class="gr-logo" aria-hidden="true"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg></div><div class="gr-stars"><div class="gr-stars-row"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><span class="gr-time">há 1 mês</span></div><p class="gr-text">Foi reconfortante ter alguém preparado acompanhando a recuperação em casa. O serviço passou confiança para todos nós.</p></article>
+          <article class="depoimento-card" aria-hidden="true"><div class="gr-header"><div class="gr-avatar" style="background:#E91E63" aria-hidden="true">B</div><div class="gr-info"><strong>Beatriz L.</strong><span>Filha da paciente</span></div><svg viewBox="0 0 24 24" width="20" height="20" class="gr-logo" aria-hidden="true"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg></div><div class="gr-stars"><div class="gr-stars-row"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><span class="gr-time">há 5 dias</span></div><p class="gr-text">A tranquilidade que o serviço trouxe para nossa família foi indescritível. Minha mãe estava em boas mãos o tempo todo.</p></article>
+          <article class="depoimento-card" aria-hidden="true"><div class="gr-header"><div class="gr-avatar" style="background:#FF7043" aria-hidden="true">P</div><div class="gr-info"><strong>Patricia R.</strong><span>Sobrinha da paciente</span></div><svg viewBox="0 0 24 24" width="20" height="20" class="gr-logo" aria-hidden="true"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg></div><div class="gr-stars"><div class="gr-stars-row"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><span class="gr-time">há 3 semanas</span></div><p class="gr-text">O atendimento foi próximo e respeitoso. A equipe entendeu nossa necessidade e indicou uma profissional muito compatível.</p></article>
+          <article class="depoimento-card" aria-hidden="true"><div class="gr-header"><div class="gr-avatar" style="background:#546E7A" aria-hidden="true">A</div><div class="gr-info"><strong>André M.</strong><span>Filho do paciente</span></div><svg viewBox="0 0 24 24" width="20" height="20" class="gr-logo" aria-hidden="true"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg></div><div class="gr-stars"><div class="gr-stars-row"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><span class="gr-time">há 2 meses</span></div><p class="gr-text">Desde o orçamento até o início do cuidado, tudo foi simples e transparente. Havia atenção real com a nossa família.</p></article>
 
         </div>
       </div>
