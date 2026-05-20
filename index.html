@@ -1254,8 +1254,8 @@
       animation: pulse-ring 1.8s ease infinite;
     }
     @keyframes pulse-ring {
-      0%   { transform: scale(.9); opacity: .7; }
-      100% { transform: scale(1.5); opacity: 0; }
+      0%   { transform: scale(.8); opacity: 1; }
+      100% { transform: scale(1.9); opacity: 0; }
     }
 
     /* Avatar stack + rating */
@@ -1287,7 +1287,16 @@
       gap: 2px;
       margin-bottom: 2px;
     }
-    .cta-stars i { color: #f59e0b; font-size: .85rem; }
+    .cta-stars i { color: #f59e0b; font-size: .85rem; opacity: 0; }
+    .cta-stars.visible i {
+      animation: star-pop .35s cubic-bezier(.34,1.56,.64,1) both;
+      opacity: 1;
+    }
+    .cta-stars.visible i:nth-child(1) { animation-delay: .00s; }
+    .cta-stars.visible i:nth-child(2) { animation-delay: .07s; }
+    .cta-stars.visible i:nth-child(3) { animation-delay: .14s; }
+    .cta-stars.visible i:nth-child(4) { animation-delay: .21s; }
+    .cta-stars.visible i:nth-child(5) { animation-delay: .28s; }
     .cta-rating-info p {
       font-size: .75rem;
       color: var(--gray-text);
@@ -3333,6 +3342,9 @@
         }
       });
     });
+
+    /* Estrelas do CTA final entram em cascata ao rolar */
+    document.querySelectorAll('.cta-stars').forEach(el => revealObs.observe(el));
 
     /* Stagger nos itens do FAQ */
     document.querySelectorAll('.faq-list .faq-item').forEach((item, i) => {
