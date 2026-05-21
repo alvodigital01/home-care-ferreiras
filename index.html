@@ -1600,16 +1600,33 @@
     .footer-contact li a:hover { color: #7ee8a2; }
 
     .footer-bottom {
-      padding: 20px 0;
+      padding: 22px 0 4px;
+      border-top: 1px solid rgba(255,255,255,.08);
       display: flex;
       justify-content: space-between;
       align-items: center;
       gap: 12px;
       flex-wrap: wrap;
     }
-    .footer-bottom p { font-size: .8rem; color: rgba(255,255,255,.3); }
-    .footer-bottom a { color: rgba(126,232,162,.6); }
+    .footer-bottom p { font-size: .8rem; color: rgba(255,255,255,.35); }
+    .footer-bottom a { color: rgba(126,232,162,.6); transition: color var(--transition); }
+    .footer-bottom a:hover { color: #7ee8a2; }
     .footer-bottom-logo { display: none; }
+    .footer-dev {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: .8rem;
+      color: rgba(255,255,255,.35);
+    }
+    .footer-dev .dev-link {
+      font-weight: 600;
+      color: rgba(126,232,162,.7);
+      letter-spacing: .02em;
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+    .footer-dev .dev-link:hover { color: #7ee8a2; }
 
     /* ======================================================
        BOTÃO FLUTUANTE WHATSAPP
@@ -3261,7 +3278,7 @@
           <div class="logo" aria-label="Home Care Ferreiras">
             <img class="logo-img" src="logo.jpg" alt="Home Care Ferreiras" width="500" height="200">
           </div>
-          <p>Cuidado domiciliar seguro, humanizado e profissional para quem você ama. Profissionais qualificados, atendimento rápido e personalizado em São Paulo.</p>
+          <p class="footer-tagline-desc">Cuidado domiciliar seguro, humanizado e profissional para quem você ama. Profissionais qualificados, atendimento rápido e personalizado em São Paulo.</p>
           <div class="footer-social" aria-label="Redes sociais">
             <a href="#LINK_WHATSAPP#" aria-label="WhatsApp da Home Care Ferreiras"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
             <a href="https://www.instagram.com/home_care_ferreiras/" target="_blank" rel="noopener" aria-label="Instagram da Home Care Ferreiras"><i class="fab fa-instagram" aria-hidden="true"></i></a>
@@ -3296,8 +3313,9 @@
 
       <div class="footer-bottom">
         <p>&copy; <span id="ano"></span> Home Care Ferreiras. Todos os direitos reservados.</p>
-        <img src="logo.jpg" alt="" class="footer-bottom-logo" aria-hidden="true">
-        <p>Feito com <i class="fas fa-heart" style="color:#4ade80" aria-hidden="true"></i> para famílias que se importam.</p>
+        <span class="footer-dev">
+          Desenvolvido por <a href="#" class="dev-link">Auditorium Corporate</a>
+        </span>
       </div>
     </div>
   </footer>
